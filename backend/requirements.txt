@@ -1,0 +1,28 @@
+# Core Framework
+Flask
+flask-cors
+flask-limiter
+
+# Database
+SQLAlchemy
+oracledb
+
+# LangChain & AI
+langchain
+langchain-community
+langchain-core
+langchain-groq
+langchain-huggingface
+
+# Vector Store & Embeddings
+faiss-cpu
+sentence-transformers
+
+# Utilities
+python-dotenv
+pydantic
+redis
+
+# Optional but recommended
+gunicorn
+pytest

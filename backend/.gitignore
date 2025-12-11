@@ -1,0 +1,4 @@
+/venv
+.env*
+app.log
+query_logs.txt
