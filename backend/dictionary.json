@@ -1,0 +1,256 @@
+{
+  "EXPO_INFO": {
+    "description": "Master tracking table for export product registration, dossier submission, and regulatory status.",
+    "synonyms": ["export registration", "dossier status", "regulatory info", "approval status"],
+    "columns": {
+      "IM_TEAM": "International Marketing Team code (e.g., 'IM-1', 'IM-2').",
+      "CURRENT_STATUS": "Real-time status: 'REG' (Registered/Approved), 'DBAM' (Database Mismatch/Pending), 'Edit' (Draft), 'SUB' (Submitted).",
+      "DOSSIER_TYPE": "Type of regulatory dossier (e.g., 'CTD', 'ACTD', 'API DMF').",
+      "SUBMITTED_TO_REGULARITY": "Date when the dossier was submitted to the foreign authority.",
+      "APPROVAL_DATE": "Date when the registration was officially approved.",
+      "EXPORT_COUNTRY": "Target Country Name."
+    }
+  },
+  "EXPO_ABC": {
+    "description": "Agent and Business Contact information for export markets.",
+    "synonyms": ["foreign agents", "partners", "distributors"],
+    "columns": {
+      "AGENT_COMPANY": "Name of the partner company in the foreign country.",
+      "AGENT_PERSON": "Contact person name.",
+      "EXPORT_COUNTRY": "Country where the agent operates."
+    }
+  },
+  "EXPO_COUNTRY_WISE_PRODUCTS": {
+    "description": "List of specific products approved or assigned to specific countries.",
+    "synonyms": ["country list", "approved products per country"],
+    "columns": {
+      "EXPORT_COUNTRY": "Target country name.",
+      "PACK_SIZE": "Packaging size (e.g., '10''s'). Note: contains single quotes.",
+      "PRODUCT_NAME": "Commercial Brand Name."
+    }
+  },
+  "EXPO_PLANT": {
+    "description": "Mapping of Plant IDs to Factory Names.",
+    "columns": {
+      "PLANT_ID": "Unique ID (STRING, e.g., '1100'). Use this to join with other tables.",
+      "PLANT_NAME": "Full name of the factory (e.g., 'FACTORY(SAVAR)', 'IBS')."
+    }
+  },
+  "EXPORT_INSTITUTE_SALES_DETAILS": {
+    "description": "Transactional sales data for Export and Institutional sales. WARNING: Date column is Text.",
+    "synonyms": ["export sales", "revenue", "sold quantity", "sales report"],
+    "columns": {
+      "SALES_MONTH": "Month of sale as TEXT (e.g., 'JAN-21' or 'SEP-2023'). Use LIKE '%2023%' to filter. DO NOT use date functions.",
+      "P_NAME": "Product Name (e.g., 'AMIDOL 370 INJECTION').",
+      "SOLD_VALUE": "Revenue in BDT (Taka).",
+      "SOLD_QTY": "Quantity sold.",
+      "SALES_TYPE": "Category: 'INSTITUTION', 'DEEMED EXPORT', 'EXPORT'."
+    }
+  },
+  "EXPORT_SALES_GROWTH": {
+    "description": "High-level yearly export growth summary.",
+    "synonyms": ["sales trend", "growth year over year"],
+    "columns": {
+      "SALES_YEAR": "Year (String, e.g., '2023').",
+      "SALES_USD": "Total Sales in USD (Million).",
+      "GROWTH": "Year-over-year growth percentage."
+    }
+  },
+  "LONG_LIST_INFORMATION": {
+    "description": "Central Product Lifecycle Management (PLM) table. Tracks a product from R&D to Regulatory Submission.",
+    "synonyms": ["R&D tracker", "feasibility list", "regulatory pipeline", "long list", "new product development"],
+    "columns": {
+      "IRA_PROD_NAME": "Product Name used by Regulatory Affairs.",
+      "IRA_REG_CAT": "Regulatory Category (e.g., 'New', 'Renewal').",
+      "IRA_DOSS_TYPE": "Dossier format (e.g., 'CTD', 'ACTD').",
+      "RDA_FEAS_ONGOING": "R&D Feasibility Status (e.g., 'Available', 'Not Required', 'Ongoing').",
+      "RDA_API_AVAIL": "Status of Active Pharmaceutical Ingredient availability for R&D.",
+      "SCM_MAT_AVAIL": "Supply Chain Material Availability status."
+    }
+  },
+  "SCM_BLOCKLIST_MATERIAL": {
+    "description": "The MAIN Active table for Approved Raw Materials & Packaging Blocklists for the CURRENT fiscal year.",
+    "synonyms": ["active blocklist", "approved materials", "import permission"],
+    "columns": {
+      "BLOCKLIST_NO": "Unique Blocklist ID (e.g., 'I003-2025-001'). Key for joining with Clearance.",
+      "MATERIAL_NAME": "Name of the item (API/Excipient).",
+      "AIR_PRICE": "Approved freight cost by Air.",
+      "SEA_PRICE": "Approved freight cost by Sea.",
+      "MANUFACTURER_NAME": "Approved Manufacturer.",
+      "SUPPLIER_NAME": "Approved Supplier."
+    }
+  },
+  "SCM_BLOCKLIST_MATERIAL_24_25": {
+    "description": "ARCHIVE: Blocklist data for the 2024-2025 fiscal year. Only query if user asks for history.",
+    "synonyms": ["previous blocklist", "archive blocklist"]
+  },
+  "SCM_APP_BLOCKLIST": {
+    "description": "Applications for Blocklist approval. These are requests, not yet approved/active blocklists.",
+    "synonyms": ["blocklist application", "import request"],
+    "columns": {
+      "BL_TYPE": "Blocklist Type (e.g., 'API', 'PM' for Packaging).",
+      "MATERIAL_NAME": "Name of the raw material."
+    }
+  },
+  "SCM_APPLY_REJECTED_DATA": {
+    "description": "Archive of rejected Blocklist applications.",
+    "synonyms": ["rejected apps", "failed imports", "rejections"]
+  },
+  "SCM_CLEARANCE": {
+    "description": "Tracks the actual arrival and customs clearance of goods against a Blocklist.",
+    "synonyms": ["shipment arrival", "customs clearance", "LC clearance", "goods received"],
+    "columns": {
+      "LC_NO": "Letter of Credit Number.",
+      "INV_NO": "Commercial Invoice Number.",
+      "BLOCKLIST_NO": "The Blocklist ID being cleared.",
+      "CRTF_DATE": "Date of Clearance Certificate (Actual Arrival Date).",
+      "QTY": "Quantity actually cleared/arrived in this shipment.",
+      "RATE": "Unit rate of the material."
+    }
+  },
+  "SCM_COMPANY_INFO": {
+    "description": "Master list of Incepta Business Units / Plants.",
+    "synonyms": ["plant list", "company codes", "units"],
+    "columns": {
+      "PLANT": "Plant Code (e.g., 'I003', 'I018').",
+      "COMPANY_SHORT_NAME": "Short code (e.g., 'IPL', 'IVL').",
+      "COMPANY_FULL_NAME": "Full legal name (e.g., 'Incepta Pharmaceuticals Ltd.').",
+      "COMPANY_IMPORT_LN": "Import License Number."
+    }
+  },
+  "SCM_MATERIAL_MANAGEMENT": {
+    "description": "Central Hub for Procurement. Links PR (Requisition), PO (Order), and LC (Bank) numbers together.",
+    "synonyms": ["procurement master", "PO tracker", "requisition list", "order management"],
+    "columns": {
+      "PR_NUM": "Purchase Request Number (Internal).",
+      "PO_NUM": "Purchase Order Number (External).",
+      "LC_NUMBER": "Letter of Credit Number.",
+      "PI_VALUE": "Proforma Invoice Value (Cost).",
+      "LC_TT_CAD_SHARE": "Payment terms (e.g., 'LC', 'TT')."
+    }
+  },
+  "SCM_MATERIAL_PURCHASE_INFO": {
+    "description": "Detailed logistics tracking. Use this for Shipment Status, Tracking Numbers, and Arrival Dates.",
+    "synonyms": ["shipment tracking", "logistics", "courier tracking", "material receipt"],
+    "columns": {
+      "TRACKING_NUM": "DHL/FedEx/Courier tracking number.",
+      "MAT_RCV_STATUS": "Status of goods at factory (e.g., 'RECEIVED', 'PENDING').",
+      "LC_OPEN_STATUS": "Status of the LC opening process.",
+      "PO_NUM": "Purchase Order Number."
+    }
+  },
+  "SCM_FINANCE_MANAGEMENT": {
+    "description": "Financial status of LCs. Use this for Payment Dues and Maturity Dates.",
+    "synonyms": ["finance", "payments", "LC maturity", "bank dues"],
+    "columns": {
+      "PAYMENT_STATUS": "Current state (e.g., 'DUE', 'PAID').",
+      "DUE_DATE_ACTUAL": "The date when payment must be made to the bank.",
+      "ACCEPT_VAL": "The accepted value in foreign currency.",
+      "LC_NUMBER": "Letter of Credit Number."
+    }
+  },
+  "SCM_COMPARATIVE_MASTER_UP": {
+    "description": "Price comparison history for raw materials. WARNING: Price column is text.",
+    "synonyms": ["price history", "comparative study", "price list"],
+    "columns": {
+      "LAST_UNIT_PRICE_KG": "TEXT FIELD (e.g., 'USD 32.75'). Do NOT calculate SUM/AVG on this directly. Extract number if needed.",
+      "SUPPLIER_VENDOR": "Vendor Name.",
+      "MODE_OF_SHIPMENT": "'Air' or 'Sea'.",
+      "MATERIAL_DESC": "Description of the material."
+    }
+  },
+  "SCM_PR_RQ_RAW_MAT_UP": {
+    "description": "Raw Material Purchase Requisitions (PR). The start of the buying process.",
+    "synonyms": ["requisition", "PR list", "demand request"],
+    "columns": {
+      "PURCH_REQ": "PR Number.",
+      "MATERIAL_DESC": "Description of item requested.",
+      "QUANTITY": "Amount requested.",
+      "MATERIAL_GROUP": "SAP Material Group Code (Join with SCM_SAP_MATERIAL_GROUP)."
+    }
+  },
+  "SCM_SAP_MATERIAL_GROUP": {
+    "description": "Mapping of Material Group Codes to Names.",
+    "synonyms": ["material groups", "categories"],
+    "columns": {
+      "MATERIAL_GROUP": "Code (e.g., 110001).",
+      "DESCRIPTION": "Name (e.g., 'Active Ingredients', 'Excipients', 'Coating', 'Packing Material')."
+    }
+  },
+  "SCM_SHORT_PRODUCT_LIST": {
+    "description": "Critical table for Stock vs Demand analysis. Use this to find shortages.",
+    "synonyms": ["shortage list", "stock status", "forecast", "inventory check"],
+    "columns": {
+      "NATIONAL_STOCK": "Current physical stock available.",
+      "REQUIRED_QTY": "Quantity needed for production.",
+      "FORECAST_QTY": "Projected demand.",
+      "P_NAME": "Product Name."
+    }
+  },
+  "SCM_WARNING_MATERIAL": {
+    "description": "Tracks materials with specific Blocklist risks (e.g., low remaining quantity vs approved quantity).",
+    "synonyms": ["warning list", "risky materials", "blocklist limits"],
+    "columns": {
+      "AVL_QTY": "Available Quantity remaining in the blocklist.",
+      "QTY": "Original Approved Quantity in the blocklist.",
+      "PRICE": "Unit Price string."
+    }
+  },
+  "SCM_TRIAL_REQ": {
+    "description": "The starting point of a Packaging Material Trial. Contains product and supplier details.",
+    "synonyms": ["trial request", "new packaging test", "sample trial"],
+    "columns": {
+      "TRIAL_REF_NO": "Unique Trial Reference (e.g., 'Reference: PACK/779/2022').",
+      "ITEM_DESC": "Description of the packaging item (e.g., 'Lami tube').",
+      "SUPPLIER_NAME": "Vendor providing the sample."
+    }
+  },
+  "SCM_TRIAL_FINAL": {
+    "description": "The final verdict of a Packaging Trial.",
+    "synonyms": ["trial result", "trial verdict", "packaging approval"],
+    "columns": {
+      "TRIAL_REF_NO": "Reference Number matching the Request.",
+      "REMARKS": "The Outcome. Look for 'Trial Ok', 'Trial Not Ok', or 'For PQ Test'."
+    }
+  },
+  "SCM_SUPPLIER_LIST": {
+    "description": "Master directory of all local and foreign suppliers.",
+    "synonyms": ["vendor list", "supplier address", "supplier contact"],
+    "columns": {
+      "NAME1": "Supplier Name.",
+      "COUNTRY": "Country Code (e.g., 'IN', 'CN', 'US').",
+      "ACC_GROUP": "'ZIMP' = Import Supplier, 'ZDOM' = Domestic Supplier."
+    }
+  },
+  "SCM_MANUFACTURER_LIST": {
+    "description": "Global directory of approved manufacturers.",
+    "synonyms": ["manufacturer list", "maker list"],
+    "columns": {
+      "NAME1": "Manufacturer Name.",
+      "COUNTRY": "Country Code."
+    }
+  },
+  "SCM_FP_DATA": {
+    "description": "Finished Product Master List. Use this for querying Brands.",
+    "synonyms": ["finished goods", "brands", "products"],
+    "columns": {
+      "BRAND_NAME": "Commercial name (e.g., 'Adora').",
+      "DOSAGE_FORM": "Form type (e.g., 'Tablet', 'Capsule', 'Injection')."
+    }
+  },
+  "SCM_MM_DATA": {
+    "description": "Raw Material Master List. Use this for querying Chemicals/APIs.",
+    "synonyms": ["raw materials", "chemicals", "API list", "ingredients"],
+    "columns": {
+      "MATERIAL_NAME": "Name of the raw material."
+    }
+  },
+  "SCM_UNIT_LIST": {
+    "description": "Mapping of internal Unit of Measure (UOM) codes to text.",
+    "synonyms": ["units", "uom"],
+    "columns": {
+      "INTERNAL_UOM": "System code (e.g., 'G', 'KG').",
+      "UNIT_OF_MEASUREMENT_TEXT": "Readable text (e.g., 'Gram', 'Kilogram')."
+    }
+  }
+}
