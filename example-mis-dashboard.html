@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS Dashboard - Sales Comparison Integration Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .dashboard-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #10b981;
+        }
+
+        .dashboard-card h3 {
+            color: #1f2937;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-card .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .dashboard-card p {
+            color: #6b7280;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .talk-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .talk-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .talk-btn:active {
+            transform: scale(0.98);
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h4 {
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .info-box p {
+            color: #1e3a8a;
+            line-height: 1.6;
+        }
+
+        .info-box code {
+            background: #dbeafe;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #1e40af;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 MIS Dashboard</h1>
+            <p>Management Information System - Data Analytics Portal</p>
+        </div>
+
+        <div class="content">
+            <div class="info-box">
+                <h4>🔗 Integration Guide</h4>
+                <p>
+                    This is an example of how the external MIS Dashboard can integrate with the 
+                    Incepta Vision AI system. When users click "Talk with LLM" on any report section, 
+                    they will be redirected to the corresponding AI chat interface with access restricted 
+                    to that specific database table.
+                </p>
+                <p style="margin-top: 10px;">
+                    <strong>Example URL:</strong> <code>http://localhost:3000/sales-comparison</code>
+                </p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Sales Comparison Card -->
+                <div class="dashboard-card">
+                    <h3>
+                        <div class="icon">📈</div>
+                        Sales Comparison
+                    </h3>
+                    <p>
+                        Analyze yearly sales data with month-by-month breakdowns. 
+                        Compare performance across different time periods and identify trends.
+                    </p>
+                    <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 15px;">
+                        <strong>Table:</strong> MIS.YEARLY_SALES_ANALYSIS_WEB
+                    </p>
+                    <button class="talk-btn" onclick="redirectToSalesComparison()">
+                        <span>💬</span>
+                        Talk with LLM
+                    </button>
+                </div>
+
+                <!-- Channel Wise Sales Card -->
+                <div class="dashboard-card">
+                    <h3>
+                        <div class="icon">🏪</div>
+                        Channel Wise Sales
+                    </h3>
+                    <p>
+                        View sales performance across different distribution channels. 
+                        Analyze channel effectiveness and market penetration.
+                    </p>
+                    <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 15px;">
+                        <strong>Tables:</strong> Multiple channel tables
+                    </p>
+                    <button class="talk-btn" onclick="redirectToChannelSales()">
+                        <span>💬</span>
+                        Talk with LLM
+                    </button>
+                </div>
+
+                <!-- Brand Ranking Card -->
+                <div class="dashboard-card">
+                    <h3>
+                        <div class="icon">🏆</div>
+                        Brand Ranking
+                    </h3>
+                    <p>
+                        Track brand performance rankings and market share. 
+                        Identify top-performing products and growth opportunities.
+                    </p>
+                    <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 15px;">
+                        <strong>Tables:</strong> Brand ranking tables
+                    </p>
+                    <button class="talk-btn" onclick="redirectToBrandRanking()">
+                        <span>💬</span>
+                        Talk with LLM
+                    </button>
+                </div>
+
+                <!-- National Report Card -->
+                <div class="dashboard-card">
+                    <h3>
+                        <div class="icon">🌍</div>
+                        National Report
+                    </h3>
+                    <p>
+                        Comprehensive national sales overview with regional breakdowns. 
+                        Monitor overall business performance and market trends.
+                    </p>
+                    <p style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 15px;">
+                        <strong>Table:</strong> MIS.DASH_NATIONAL_REPORT
+                    </p>
+                    <button class="talk-btn" onclick="redirectToNationalReport()">
+                        <span>💬</span>
+                        Talk with LLM
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Base URL for the Next.js application
+        const AI_APP_BASE_URL = 'http://localhost:3000';
+
+        function redirectToSalesComparison() {
+            // Redirect to the dedicated sales comparison route
+            window.location.href = `${AI_APP_BASE_URL}/sales-comparison`;
+        }
+
+        function redirectToChannelSales() {
+            // Redirect to main app with channel_wise_yearly_sales page context
+            window.location.href = `${AI_APP_BASE_URL}/?page=channel_wise_yearly_sales`;
+        }
+
+        function redirectToBrandRanking() {
+            // Redirect to main app with brand_ranking page context
+            window.location.href = `${AI_APP_BASE_URL}/?page=brand_ranking`;
+        }
+
+        function redirectToNationalReport() {
+            // Redirect to main app with national_report page context
+            window.location.href = `${AI_APP_BASE_URL}/?page=national_report`;
+        }
+    </script>
+</body>
+</html>

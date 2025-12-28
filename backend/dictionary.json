@@ -2,10 +2,10 @@
   "ALL_COMP_SALES_CWISE_WB03_B04": {
     "description": "Comprehensive annual sales matrix for WB03 and B04 business units. This table tracks financial performance across multiple decades (2000-2025), breaking down revenue by Sales Year, Entity (IPL, IVL, IHHL, IHNL), and Channel (Depot, Institution, Export, Service Export, and Toll Manufacturing).",
     "synonyms": [
-      "wb03 company sales", 
-      "b04 yearly achievement", 
-      "pharma vs vaccine sales matrix", 
-      "export channel totals wb03", 
+      "wb03 company sales",
+      "b04 yearly achievement",
+      "pharma vs vaccine sales matrix",
+      "export channel totals wb03",
       "institutional sales breakdown",
       "toll manufacturing revenue",
       "yearly revenue by business unit"
@@ -43,9 +43,21 @@
     },
     "usage_notes": "Use for long-term trend analysis (2000-2025). Note that IVL, IHHL, and IHNL columns may contain null/empty values in earlier years (2000-2010) as those units were likely established later. 'Depot' refers to general trade/pharmacy sales, while 'Inst' refers to bulk hospital/government tenders. All monetary values should be treated as the same currency unit (likely Millions).",
     "sample_values": {
-      "SALES_YEAR": [2023, 2024, 2025],
-      "DEPOT_TOTAL": [4068.37, 5199.43, 5539.61],
-      "ALL_COM_TOTAL": [4379.41, 5588.87, 5842.02]
+      "SALES_YEAR": [
+        2023,
+        2024,
+        2025
+      ],
+      "DEPOT_TOTAL": [
+        4068.37,
+        5199.43,
+        5539.61
+      ],
+      "ALL_COM_TOTAL": [
+        4379.41,
+        5588.87,
+        5842.02
+      ]
     }
   },
   "ALL_COMPANY_SALES": {
@@ -83,9 +95,21 @@
     },
     "usage_notes": "Use this table for high-level executive summaries and growth tracking. 'Growth' columns are percentages (e.g., 7.79 means 7.79% growth). Negative values in 'Growth' indicate a contraction. Inter-company sales are tracked separately to allow for both Gross and Net revenue reporting.",
     "sample_values": {
-      "SALES_YEAR": [2023, 2024, 2025],
-      "NET_SALES": [4765.59, 5642.6, 5881.77],
-      "IPL_GROWTH": [7.95, 17.7, 4.44]
+      "SALES_YEAR": [
+        2023,
+        2024,
+        2025
+      ],
+      "NET_SALES": [
+        4765.59,
+        5642.6,
+        5881.77
+      ],
+      "IPL_GROWTH": [
+        7.95,
+        17.7,
+        4.44
+      ]
     }
   },
   "ALL_COMPANY_SALES_CHANNEL_WISE": {
@@ -130,9 +154,21 @@
     },
     "usage_notes": "Use this table when the user asks for a channel breakdown (e.g., 'How much did we export?' or 'What are the domestic sales?') for the *entire* company. If the user specifically mentions 'WB03' or 'B04', use the 'ALL_COMP_SALES_CWISE_WB03_B04' table instead.",
     "sample_values": {
-      "SALES_YEAR": [2023, 2024, 2025],
-      "DEPOT_TOTAL": [4414.04, 5199.43, 5539.61],
-      "ALL_COM_TOTAL": [4765.6, 5642.6, 5881.77]
+      "SALES_YEAR": [
+        2023,
+        2024,
+        2025
+      ],
+      "DEPOT_TOTAL": [
+        4414.04,
+        5199.43,
+        5539.61
+      ],
+      "ALL_COM_TOTAL": [
+        4765.6,
+        5642.6,
+        5881.77
+      ]
     }
   },
   "ALL_COMPANY_SALES_WB03_B04": {
@@ -170,9 +206,21 @@
     },
     "usage_notes": "Use this table ONLY when the user explicitly queries about 'WB03' or 'B04'. For general company-wide queries, use 'ALL_COMPANY_SALES'. The data structure is identical to the general table, but the values are subsets specific to these units.",
     "sample_values": {
-      "SALES_YEAR": [2023, 2024, 2025],
-      "NET_SALES": [4379.41, 5588.87, 5842.02],
-      "IPL_GROWTH": [-1.01, 16.45, 3.65]
+      "SALES_YEAR": [
+        2023,
+        2024,
+        2025
+      ],
+      "NET_SALES": [
+        4379.41,
+        5588.87,
+        5842.02
+      ],
+      "IPL_GROWTH": [
+        -1.01,
+        16.45,
+        3.65
+      ]
     }
   },
   "BRAND_RANKING_YEARLY": {
@@ -214,12 +262,28 @@
     },
     "usage_notes": "This table is critical for 'Top 10' or 'Best Performing' brand queries. Pay attention to 'YEAR2_RANK_POSITION' for current rankings. 'GROWTH_INDICATE' provides a quick 'UP'/'DOWN' status without calculating numbers.",
     "sample_values": {
-      "BRAND_NAME": ["PANTONIX", "MAXSULIN", "OSARTIL"],
-      "YEAR2_VALUE": [3371005852, 1302512830, 1360781163],
-      "YEAR2_RANK_POSITION": [1, 3, 4],
-      "GROWTH_INDICATE": ["UP", "DOWN"]
+      "BRAND_NAME": [
+        "PANTONIX",
+        "MAXSULIN",
+        "OSARTIL"
+      ],
+      "YEAR2_VALUE": [
+        3371005852,
+        1302512830,
+        1360781163
+      ],
+      "YEAR2_RANK_POSITION": [
+        1,
+        3,
+        4
+      ],
+      "GROWTH_INDICATE": [
+        "UP",
+        "DOWN"
+      ]
     }
-  },"BRAND_WISE_SALES_DATA": {
+  },
+  "BRAND_WISE_SALES_DATA": {
     "description": "Granular monthly sales performance report broken down by Brand, Product, and Territory. Unlike the annual tables, this dataset focuses on specific date ranges (e.g., Month-to-Month comparison) and geographical hierarchy (Region, Area, Territory), tracking both Quantity and Sales Value.",
     "synonyms": [
       "monthly brand sales",
@@ -259,10 +323,24 @@
     },
     "usage_notes": "Use this table for deep-dive queries requiring specific geographical data (e.g., 'How did Sylhet region perform?') or specific time-period comparisons (e.g., 'Compare March 2024 to March 2023'). It is also the only table that provides SKU-level details (P_NAME) distinguishing between different pack sizes or strengths of the same brand.",
     "sample_values": {
-      "BRAND_NAME": ["VITAGROW", "NEOCARE", "ALGICID"],
-      "CUR_MONTH_RANGE": ["MAR-MAR-24"],
-      "RM_TERR_ID": ["MZR-00", "SYL-00", "DHK5-00"],
-      "CMR_SOLD_VALUE": [2519, 10000, 52469]
+      "BRAND_NAME": [
+        "VITAGROW",
+        "NEOCARE",
+        "ALGICID"
+      ],
+      "CUR_MONTH_RANGE": [
+        "MAR-MAR-24"
+      ],
+      "RM_TERR_ID": [
+        "MZR-00",
+        "SYL-00",
+        "DHK5-00"
+      ],
+      "CMR_SOLD_VALUE": [
+        2519,
+        10000,
+        52469
+      ]
     }
   },
   "BRAND_WISE_SALES_REPORT": {
@@ -314,11 +392,26 @@
     },
     "usage_notes": "Use this table when the user asks about 'Growth Trends' (e.g., 'Which brands are going UP?'), 'Rankings' (e.g., 'What is the rank of Repose?'), or 'Contribution' (e.g., 'How much does this SKU contribute to total sales?'). It allows for nuanced analysis because a single SKU might be 'DOWN' while the overall Brand is 'UP'.",
     "sample_values": {
-      "BRAND_NAME": ["REPOSE", "REVERT", "SIESTA"],
-      "P_NAME": ["REPOSE 100 TABLET 10'S AFG", "REVERT TABLET 100'S"],
-      "P_GROWTH_INDICATE": ["UP", "DOWN"],
-      "PB_GROWTH_INDICATE": ["DOWN", "UP"],
-      "CUR_MONTH_RANGE": ["NOV-DEC-22"]
+      "BRAND_NAME": [
+        "REPOSE",
+        "REVERT",
+        "SIESTA"
+      ],
+      "P_NAME": [
+        "REPOSE 100 TABLET 10'S AFG",
+        "REVERT TABLET 100'S"
+      ],
+      "P_GROWTH_INDICATE": [
+        "UP",
+        "DOWN"
+      ],
+      "PB_GROWTH_INDICATE": [
+        "DOWN",
+        "UP"
+      ],
+      "CUR_MONTH_RANGE": [
+        "NOV-DEC-22"
+      ]
     }
   },
   "COMPANY_WISE_SALES_SUMMARY": {
@@ -357,9 +450,18 @@
     },
     "usage_notes": "Use this table specifically when the user asks about 'Animal Health', 'Diaper', or 'Infusion' sales, or wants to compare 'Human vs Animal' performance. The 'IPL_GENERAL' column typically represents the core human pharmaceutical business.",
     "sample_values": {
-      "SALES_MONTH": ["SEP-19", "FEB-20"],
-      "IPL_ANIMAL_HEALTH": [1.61, 2.27],
-      "IHHL_DIAPER": [3.23, 4.1]
+      "SALES_MONTH": [
+        "SEP-19",
+        "FEB-20"
+      ],
+      "IPL_ANIMAL_HEALTH": [
+        1.61,
+        2.27
+      ],
+      "IHHL_DIAPER": [
+        3.23,
+        4.1
+      ]
     }
   },
   "DASH_NATIONAL_REPORT": {
@@ -411,10 +513,25 @@
     },
     "usage_notes": "Use this table for tactical, daily queries like 'Which depots missed their target yesterday?' or 'What is the stock level of Omidon in Kushtia?'. The 'ACH' column gives a direct percentage performance metric. 'QTY_EXP_SALE' represents the total effective sales volume.",
     "sample_values": {
-      "NAME": ["Kushtia", "Comilla", "Feni"],
-      "DESCRIPTION": ["OMIDON D 10 TABLET (100S)", "OSARTIL 50 PLUS TABLET (50S)"],
-      "ACH": [81, 19.3, 124.9],
-      "QTY_STOCK": [21, 158, 2383]
+      "NAME": [
+        "Kushtia",
+        "Comilla",
+        "Feni"
+      ],
+      "DESCRIPTION": [
+        "OMIDON D 10 TABLET (100S)",
+        "OSARTIL 50 PLUS TABLET (50S)"
+      ],
+      "ACH": [
+        81,
+        19.3,
+        124.9
+      ],
+      "QTY_STOCK": [
+        21,
+        158,
+        2383
+      ]
     }
   },
   "DASHBOARD_USERS_INFO": {
@@ -457,11 +574,29 @@
     },
     "usage_notes": "Use this table to look up who has access to specific data (via P_GROUP or TERR_ID) or to map 'CREATE_USER' IDs from other tables to actual names. WARNING: This table contains 'RAW_PASSWORD' and 'UPASSWORD'; treat this data as highly sensitive credential information.",
     "sample_values": {
-      "NAME": ["NSM NSM", "Mohammad Anwar Hossain", "Md. Titumir Chowdhury"],
-      "DESIG": ["NSM", "HO"],
-      "P_GROUP": ["GENERAL", "ALL", "HO"],
-      "TERR_ID": ["NSM0", "HO", "All", "IT"],
-      "VALID": ["YES"]
+      "NAME": [
+        "NSM NSM",
+        "Mohammad Anwar Hossain",
+        "Md. Titumir Chowdhury"
+      ],
+      "DESIG": [
+        "NSM",
+        "HO"
+      ],
+      "P_GROUP": [
+        "GENERAL",
+        "ALL",
+        "HO"
+      ],
+      "TERR_ID": [
+        "NSM0",
+        "HO",
+        "All",
+        "IT"
+      ],
+      "VALID": [
+        "YES"
+      ]
     }
   },
   "DEPOT_GROUP_WISE_SALES": {
@@ -492,11 +627,25 @@
     },
     "usage_notes": "Use this table to analyze divisional performance at a depot level. The 'TWD' (Total Working Days) and 'WD' (Worked Days) columns are essential for calculating 'Required Run Rate' or 'Pro-rated Target' (e.g., is the depot ahead or behind schedule given the number of days passed?).",
     "sample_values": {
-      "P_GROUP": ["HYGIENE (DIAPER)", "HUMAN VACCINE", "KINETIX"],
-      "REPORT_MONTH": ["DEC-25"],
-      "TWD": [27],
-      "WD": [19],
-      "SALES_VALUE": [2720431, 3756593, 15329733]
+      "P_GROUP": [
+        "HYGIENE (DIAPER)",
+        "HUMAN VACCINE",
+        "KINETIX"
+      ],
+      "REPORT_MONTH": [
+        "DEC-25"
+      ],
+      "TWD": [
+        27
+      ],
+      "WD": [
+        19
+      ],
+      "SALES_VALUE": [
+        2720431,
+        3756593,
+        15329733
+      ]
     }
   },
   "DEPOT_SALE": {
@@ -548,10 +697,24 @@
     },
     "usage_notes": "Use this table for auditing daily operations. It answers questions like 'How much discount was given on Zymos products in Kushtia yesterday?' or 'What is the daily split between Trade Sales and Internal Sales for this territory?'. It contains the rawest form of daily transactional data.",
     "sample_values": {
-      "TERR_ID": ["KUS-Z-72", "SYL-BK-62"],
-      "P_CODE": ["CMS", "OTX", "ALC"],
-      "SOLD_VALUE": [2436, 112, 225],
-      "INT_VALUE": [225, 0]
+      "TERR_ID": [
+        "KUS-Z-72",
+        "SYL-BK-62"
+      ],
+      "P_CODE": [
+        "CMS",
+        "OTX",
+        "ALC"
+      ],
+      "SOLD_VALUE": [
+        2436,
+        112,
+        225
+      ],
+      "INT_VALUE": [
+        225,
+        0
+      ]
     }
   },
   "DHK_GRP_MKT_WISE_SALES": {
@@ -585,10 +748,21 @@
     },
     "usage_notes": "Use this table specifically to analyze the 'Mitford' effect (wholesale contribution) or to compare city-center retail vs. peripheral sales for specific product groups in Dhaka.",
     "sample_values": {
-      "P_GROUP": ["CELLBIOTIC", "ZYMOS"],
-      "MITFORD": [10028, 5817],
-      "DHAKA_RETAIL": [0],
-      "GRAND_TOTAL": [4037881, 2001833]
+      "P_GROUP": [
+        "CELLBIOTIC",
+        "ZYMOS"
+      ],
+      "MITFORD": [
+        10028,
+        5817
+      ],
+      "DHAKA_RETAIL": [
+        0
+      ],
+      "GRAND_TOTAL": [
+        4037881,
+        2001833
+      ]
     }
   },
   "EXPO_ABC": {
@@ -618,9 +792,22 @@
     },
     "usage_notes": "Use this table to answer questions about international operations, such as 'Who is our agent in Sri Lanka?', 'What products are registered in Togo?', or 'Who is the contact person for APES Pharma?'. It bridges the gap between products and foreign markets.",
     "sample_values": {
-      "EXPORT_COUNTRY": ["Armenia", "Burundi", "Togo", "Vietnam"],
-      "AGENT_COMPANY": ["Armfarm", "Citihealth Imports (Pvt) Limited", "APES Pharma"],
-      "AGENT_PERSON": ["Mr. Eduard", "Mr. Snajay Jayaratne", "Mr. KLOKPA Komlan Sefandji"]
+      "EXPORT_COUNTRY": [
+        "Armenia",
+        "Burundi",
+        "Togo",
+        "Vietnam"
+      ],
+      "AGENT_COMPANY": [
+        "Armfarm",
+        "Citihealth Imports (Pvt) Limited",
+        "APES Pharma"
+      ],
+      "AGENT_PERSON": [
+        "Mr. Eduard",
+        "Mr. Snajay Jayaratne",
+        "Mr. KLOKPA Komlan Sefandji"
+      ]
     }
   },
   "EXPO_AGENT_LIST": {
@@ -655,9 +842,21 @@
     },
     "usage_notes": "Use this table when you need the physical address or phone number of an international partner. It is often cross-referenced with 'EXPO_ABC' using the Agent Name to get full contact details.",
     "sample_values": {
-      "CUSTOMER": [5000000, 5000001, 5000140],
-      "COUNTRY": ["Cambodia", "Togo", "Uganda"],
-      "NAME_1": ["World Heath Pharmaceuticals Co Ltd", "Universal Marketing", "Pharma Ville Ltd"]
+      "CUSTOMER": [
+        5000000,
+        5000001,
+        5000140
+      ],
+      "COUNTRY": [
+        "Cambodia",
+        "Togo",
+        "Uganda"
+      ],
+      "NAME_1": [
+        "World Heath Pharmaceuticals Co Ltd",
+        "Universal Marketing",
+        "Pharma Ville Ltd"
+      ]
     }
   },
   "EXPO_COUNTRY_LIST": {
@@ -682,8 +881,16 @@
     },
     "usage_notes": "Use this table to standardize country names or resolve codes found in other tables. For example, if another table uses 'AE', this table confirms it stands for 'United Arab Emirates'. It is essential for generating dropdown lists or validating user input for geography.",
     "sample_values": {
-      "COUNTRY_CODE": ["AD", "AE", "AF"],
-      "COUNTRY_NAME": ["Andorra", "United Arab Emirates", "Afghanistan"]
+      "COUNTRY_CODE": [
+        "AD",
+        "AE",
+        "AF"
+      ],
+      "COUNTRY_NAME": [
+        "Andorra",
+        "United Arab Emirates",
+        "Afghanistan"
+      ]
     }
   },
   "EXPO_COUNTRY_WISE_PRODUCTS": {
@@ -718,9 +925,21 @@
     },
     "usage_notes": "Use this table when the query requires the specific *address* of an agent for a particular product, or for auditing purposes (e.g., 'Who updated the record for Myanmar?'). It provides the most complete contact details linked to a specific SKU.",
     "sample_values": {
-      "EXPORT_COUNTRY": ["Bolivia", "Ethiopia", "Myanmar"],
-      "PRODUCT_NAME": ["Cispenam 500 Injection", "Exephin 1 gm IV/IM Injection", "Uroben XR 50 Tablet"],
-      "COMPANY_AGENT_NAME": ["Cell Chem Pharmaceuticals Inc", "Remkaln General Trading Plc.", "RNA Global Trading Company limited"]
+      "EXPORT_COUNTRY": [
+        "Bolivia",
+        "Ethiopia",
+        "Myanmar"
+      ],
+      "PRODUCT_NAME": [
+        "Cispenam 500 Injection",
+        "Exephin 1 gm IV/IM Injection",
+        "Uroben XR 50 Tablet"
+      ],
+      "COMPANY_AGENT_NAME": [
+        "Cell Chem Pharmaceuticals Inc",
+        "Remkaln General Trading Plc.",
+        "RNA Global Trading Company limited"
+      ]
     }
   },
   "EXPO_INFO": {
@@ -803,11 +1022,26 @@
     },
     "usage_notes": "Use this table for deep-dive questions about the *status* of a registration (e.g., 'Is Cefamax registered in Sri Lanka?', 'When does the license for Pantonix expire in Kenya?'). It is the definitive source for regulatory compliance data.",
     "sample_values": {
-      "STATUS": ["REG", "NEW", "Process"],
-      "EXPORT_COUNTRY": ["Sri Lanka", "Togo", "Vietnam"],
-      "DOSSIER_TYPE": ["CTD", "NON_CTD"],
-      "APPROVAL_DATE": ["6/8/2021 11:46:14 AM"],
-      "REG_CERT_PATH": ["/IRA_PDF/NONCTD/Sri_Cenolo_API_CoA.pdf"]
+      "STATUS": [
+        "REG",
+        "NEW",
+        "Process"
+      ],
+      "EXPORT_COUNTRY": [
+        "Sri Lanka",
+        "Togo",
+        "Vietnam"
+      ],
+      "DOSSIER_TYPE": [
+        "CTD",
+        "NON_CTD"
+      ],
+      "APPROVAL_DATE": [
+        "6/8/2021 11:46:14 AM"
+      ],
+      "REG_CERT_PATH": [
+        "/IRA_PDF/NONCTD/Sri_Cenolo_API_CoA.pdf"
+      ]
     }
   },
   "EXPO_INFO_ABC": {
@@ -867,10 +1101,22 @@
     },
     "usage_notes": "Use this table when queries focus on the *timeline* of submissions (e.g., 'When was the dossier sent to the agent?') or for tracking the specific workflow steps between IM and IRA teams. For full technical dossier details (API source, Stability data), use 'EXPO_INFO' instead.",
     "sample_values": {
-      "COMPANY_AGENT_NAME": ["Radiance Pharmaceuticals Limited", "Han Ideal Trading Ltd."],
-      "IM_TEAM": ["IM-1", "IM-2"],
-      "SUBMITTED_TO_IM": ["12/28/2016", "2/22/2015"],
-      "CURRENT_STATUS": ["REG", "NEW"]
+      "COMPANY_AGENT_NAME": [
+        "Radiance Pharmaceuticals Limited",
+        "Han Ideal Trading Ltd."
+      ],
+      "IM_TEAM": [
+        "IM-1",
+        "IM-2"
+      ],
+      "SUBMITTED_TO_IM": [
+        "12/28/2016",
+        "2/22/2015"
+      ],
+      "CURRENT_STATUS": [
+        "REG",
+        "NEW"
+      ]
     }
   },
   "EXPO_PERMISSION_GROUP": {
@@ -898,8 +1144,16 @@
     },
     "usage_notes": "Use this table to interpret the 'Permission ID' found in user assignment tables. It explains what a specific ID (e.g., 1, 2, 3) actually allows the user to do.",
     "sample_values": {
-      "PERMISSION_ID": [1, 2, 3],
-      "PERMISSION_TYPE": ["Read, Write and Extract", "Read and Extract", "Read only"]
+      "PERMISSION_ID": [
+        1,
+        2,
+        3
+      ],
+      "PERMISSION_TYPE": [
+        "Read, Write and Extract",
+        "Read and Extract",
+        "Read only"
+      ]
     }
   },
   "EXPO_PLANT": {
@@ -925,8 +1179,16 @@
     },
     "usage_notes": "Use this table to resolve 'PLANT_ID' references found in other tables like 'EXPO_INFO', 'EXPO_ABC', or 'DASHBOARD_USERS_INFO'. For example, if a user asks 'Which products are made in the Vaccine Unit?', you first look up the ID for 'Vaccine' here (2100) and then filter the product tables by that ID.",
     "sample_values": {
-      "PLANT_ID": [1100, 1300, 2100],
-      "PLANT_NAME": ["FACTORY(SAVAR)", "IPL-DHAMRAI", "FACTORY (VACCINE)"]
+      "PLANT_ID": [
+        1100,
+        1300,
+        2100
+      ],
+      "PLANT_NAME": [
+        "FACTORY(SAVAR)",
+        "IPL-DHAMRAI",
+        "FACTORY (VACCINE)"
+      ]
     }
   },
   "EXPO_PLANT_WISE_PRODUCTS": {
@@ -954,9 +1216,20 @@
     },
     "usage_notes": "Use this table to answer questions about manufacturing origins, such as 'Which products are manufactured in the Vaccine Unit?' or 'Where is Fitaro produced?'. It links directly to 'EXPO_PLANT' via 'PLANT_ID'.",
     "sample_values": {
-      "PLANT_ID": [1100, 2100, 5200],
-      "PRODUCT_NAME": ["Tetrafast 250 Capsule", "Prenovax Vaccine", "Assembled Chamber"],
-      "PRODUCT_GENERIC": ["Sucralfate", "Pneumococcal Polysaccharide (23 serotypes)"]
+      "PLANT_ID": [
+        1100,
+        2100,
+        5200
+      ],
+      "PRODUCT_NAME": [
+        "Tetrafast 250 Capsule",
+        "Prenovax Vaccine",
+        "Assembled Chamber"
+      ],
+      "PRODUCT_GENERIC": [
+        "Sucralfate",
+        "Pneumococcal Polysaccharide (23 serotypes)"
+      ]
     }
   },
   "EXPO_REPORT_GROUP": {
@@ -982,9 +1255,19 @@
     },
     "usage_notes": "Use this table to understand which specific reports (by ID) are included in a group. You will often need to split the 'RPT_TYPE' string by the '|' character to get the individual Report IDs.",
     "sample_values": {
-      "RPT_ID": [1, 2, 3],
-      "RPT_TYPE": ["All", "3|4|9|10", "3|4"],
-      "REMARKS": ["All Report"]
+      "RPT_ID": [
+        1,
+        2,
+        3
+      ],
+      "RPT_TYPE": [
+        "All",
+        "3|4|9|10",
+        "3|4"
+      ],
+      "REMARKS": [
+        "All Report"
+      ]
     }
   },
   "EXPO_REPORT_GROUP_DETAILS": {
@@ -1019,9 +1302,18 @@
     },
     "usage_notes": "Use this table to check an individual user's access rights. For example, 'Does Ehsan Aziz have write access?' or 'Who are the members of IM-1 with access to the system?'. It bridges the gap between the abstract 'Groups' and actual 'People'.",
     "sample_values": {
-      "EMP_ID": [1000001, 1011586],
-      "TEAM": ["IM-1", "Quality Control"],
-      "PERMISSION_TYPE": ["Read and Extract", "Read only"]
+      "EMP_ID": [
+        1000001,
+        1011586
+      ],
+      "TEAM": [
+        "IM-1",
+        "Quality Control"
+      ],
+      "PERMISSION_TYPE": [
+        "Read and Extract",
+        "Read only"
+      ]
     }
   },
   "EXPORT_INSTITUTE_SAL_DET_TEMP": {
@@ -1055,10 +1347,23 @@
     },
     "usage_notes": "Use this table for granular queries about specific export shipments or institutional deals, such as 'How much Amidol was sold to institutions in April 2023?' or 'List all export sales to Chile'. Note that the 'P_NAME' often contains specific market identifiers.",
     "sample_values": {
-      "SALES_MONTH": ["APR-2023", "SEP-2023"],
-      "P_NAME": ["AMIDOL 370 INJECTION 50 ML", "RECONIL (HCQS) 200 TABLET 60'S (CHILE)"],
-      "COUNTRY": ["ZAMBIA", "CHILE", "MAURITIUS"],
-      "SALES_TYPE": ["INSTITUTION", "EXPORT"]
+      "SALES_MONTH": [
+        "APR-2023",
+        "SEP-2023"
+      ],
+      "P_NAME": [
+        "AMIDOL 370 INJECTION 50 ML",
+        "RECONIL (HCQS) 200 TABLET 60'S (CHILE)"
+      ],
+      "COUNTRY": [
+        "ZAMBIA",
+        "CHILE",
+        "MAURITIUS"
+      ],
+      "SALES_TYPE": [
+        "INSTITUTION",
+        "EXPORT"
+      ]
     }
   },
   "EXPORT_INSTITUTE_SALES_DETAILS": {
@@ -1092,10 +1397,21 @@
     },
     "usage_notes": "Use this table for long-term historical analysis (e.g., 'Show me Deemed Export sales for 2021'). If the user specifically asks about 'Deemed Export', this is the primary table to check, as other tables may group it under generic 'Export' or 'Institution' headers.",
     "sample_values": {
-      "SALES_MONTH": ["JAN-21"],
-      "SALES_TYPE": ["DEEMED EXPORT", "INSTITUTION"],
-      "P_NAME": ["PANOVIR TABLET 28'S", "TOFACENT 5 TABLET 60'S"],
-      "SOLD_VALUE": [6600000, 503043.4]
+      "SALES_MONTH": [
+        "JAN-21"
+      ],
+      "SALES_TYPE": [
+        "DEEMED EXPORT",
+        "INSTITUTION"
+      ],
+      "P_NAME": [
+        "PANOVIR TABLET 28'S",
+        "TOFACENT 5 TABLET 60'S"
+      ],
+      "SOLD_VALUE": [
+        6600000,
+        503043.4
+      ]
     }
   },
   "EXPORT_SALES_GROWTH": {
@@ -1120,9 +1436,21 @@
     },
     "usage_notes": "Use this table for high-level financial trend analysis. It is the only table that explicitly provides the USD equivalent of sales, which is useful for forex analysis. Note that the 'GROWTH' column is typically calculated based on the BDT figures.",
     "sample_values": {
-      "SALES_YEAR": [2007, 2011, 2013],
-      "SALES_USD": [0.95, 5.22, 7.92],
-      "GROWTH": [473.45, 84.69, 77.09]
+      "SALES_YEAR": [
+        2007,
+        2011,
+        2013
+      ],
+      "SALES_USD": [
+        0.95,
+        5.22,
+        7.92
+      ],
+      "GROWTH": [
+        473.45,
+        84.69,
+        77.09
+      ]
     }
   },
   "GM_SM_SALES_ANALYSIS_ACH": {
@@ -1152,9 +1480,21 @@
     },
     "usage_notes": "Use this table when the user asks about specific people in leadership (e.g., 'How did Ashraf Uddin Ahmed perform in 2025?') or wants to compare management tiers (e.g., 'List all SMs who achieved 100% target').",
     "sample_values": {
-      "SALES_PERSON": ["GM", "SM", "DSM"],
-      "NAME": ["ABDUL MANNAN", "AHMED SHARIF", "EHSAN AZIZ"],
-      "ACHIEVEMENT": [101.22, 98.96, 96.95]
+      "SALES_PERSON": [
+        "GM",
+        "SM",
+        "DSM"
+      ],
+      "NAME": [
+        "ABDUL MANNAN",
+        "AHMED SHARIF",
+        "EHSAN AZIZ"
+      ],
+      "ACHIEVEMENT": [
+        101.22,
+        98.96,
+        96.95
+      ]
     }
   },
   "GROUP_WISE_SALES_RM_TO_GM": {
@@ -1204,10 +1544,21 @@
     },
     "usage_notes": "Use this table for organizational structure queries (e.g., 'Who is the ASM for Kushtia?', 'Who does Alamgir Hossain report to?') or for evaluating leadership performance (e.g., 'Which SM has the highest achievement in the Zymos group?').",
     "sample_values": {
-      "RM_NAME": ["Alamgir Hossain", "Munshi Sayam Hossen"],
-      "GM_NAME": ["Kh. Mainul Islam"],
-      "P_GROUP": ["ZYMOS", "CELLBIOTIC"],
-      "ACH": [56.51, 87.61]
+      "RM_NAME": [
+        "Alamgir Hossain",
+        "Munshi Sayam Hossen"
+      ],
+      "GM_NAME": [
+        "Kh. Mainul Islam"
+      ],
+      "P_GROUP": [
+        "ZYMOS",
+        "CELLBIOTIC"
+      ],
+      "ACH": [
+        56.51,
+        87.61
+      ]
     }
   },
   "LONG_LIST_INFORMATION": {
@@ -1440,12 +1791,33 @@
     },
     "usage_notes": "Use this table for complex status queries like 'Is the method validation complete for Emixef?' or 'What is the stability status of Timozin in Zone 4B?'. It provides a granular view of every stage of product development for export markets. The prefixes (IRA, SCM, RDA, QC, RDF) indicate which department owns the data.",
     "sample_values": {
-      "IRA_COUNTRY": ["GH", "KE", "MY", "PH", "VN"],
-      "IRA_PROD_NAME": ["EMIXEF 400 CAPSULE", "TIMOZIN SYRUP", "MENARIL 8 TABLET"],
-      "IRA_DOSS_TYPE": ["CTD", "ACTD", "Non-CTD"],
-      "SCM_MAT_AVAIL": ["Available"],
-      "RDA_FEAS_DONE": ["Yes"],
-      "IRA_DOSS_COMP_STATUS": ["Compilation In-process", "Completed"]
+      "IRA_COUNTRY": [
+        "GH",
+        "KE",
+        "MY",
+        "PH",
+        "VN"
+      ],
+      "IRA_PROD_NAME": [
+        "EMIXEF 400 CAPSULE",
+        "TIMOZIN SYRUP",
+        "MENARIL 8 TABLET"
+      ],
+      "IRA_DOSS_TYPE": [
+        "CTD",
+        "ACTD",
+        "Non-CTD"
+      ],
+      "SCM_MAT_AVAIL": [
+        "Available"
+      ],
+      "RDA_FEAS_DONE": [
+        "Yes"
+      ],
+      "IRA_DOSS_COMP_STATUS": [
+        "Compilation In-process",
+        "Completed"
+      ]
     }
   },
   "LONG_LIST_REQ_PROD_LIST": {
@@ -1467,8 +1839,14 @@
     },
     "usage_notes": "Use this table as a simple lookup to find which IM Team is responsible for a specific product, or to get a clean list of all products currently under consideration for the Long List without the complexity of the full tracking table.",
     "sample_values": {
-      "PRODUCT_NAME": ["CARYON TABLET", "EMPATAB 25 TABLET", "LINATAB E 5/10 TABLET"],
-      "TEAM": ["IM-1"]
+      "PRODUCT_NAME": [
+        "CARYON TABLET",
+        "EMPATAB 25 TABLET",
+        "LINATAB E 5/10 TABLET"
+      ],
+      "TEAM": [
+        "IM-1"
+      ]
     }
   },
   "LONG_LIST_ROLES": {
@@ -1496,8 +1874,16 @@
     },
     "usage_notes": "Use this table to interpret user capabilities. For instance, if you need to know who can edit SCM data, you would look for the 'SCM User' role here and then find users assigned that role in the user table.",
     "sample_values": {
-      "ROLE_NAME": ["Super Admin", "SCM User", "IRA User"],
-      "ROLE_SLUG": ["super-admin", "scm-user", "ira-user"]
+      "ROLE_NAME": [
+        "Super Admin",
+        "SCM User",
+        "IRA User"
+      ],
+      "ROLE_SLUG": [
+        "super-admin",
+        "scm-user",
+        "ira-user"
+      ]
     }
   },
   "MONTH_WISE_SALES_REPORT": {
@@ -1525,10 +1911,22 @@
     },
     "usage_notes": "Use this table for high-level trend analysis, such as 'How much did sales grow in January compared to last year?' or 'Did we hit the target in December?'. It does not provide breakdowns by product or depot.",
     "sample_values": {
-      "REPORT_YEAR": [2024, 2025],
-      "REPORT_MONTH": ["JAN-24", "DEC-25"],
-      "ACHIEVEMENT": [102.32, 98.5],
-      "GROWTH": [12.5, -5.2]
+      "REPORT_YEAR": [
+        2024,
+        2025
+      ],
+      "REPORT_MONTH": [
+        "JAN-24",
+        "DEC-25"
+      ],
+      "ACHIEVEMENT": [
+        102.32,
+        98.5
+      ],
+      "GROWTH": [
+        12.5,
+        -5.2
+      ]
     }
   },
   "MONTH_WISE_SALES_RP_WB03_B04": {
@@ -1576,9 +1974,18 @@
     },
     "usage_notes": "Use this table for long-term historical analysis (e.g., 'How has export revenue changed from 2010 to 2024?', 'What was the sales growth in 2020?'). It is the best source for seeing the composition of total revenue (Depot vs Export vs Inst) over time.",
     "sample_values": {
-      "SALES_YEAR": [2020, 2024],
-      "GRAND_TOTAL": [3119.62, 5588.89],
-      "GRAND_GROWTH": [7.3, 18.28]
+      "SALES_YEAR": [
+        2020,
+        2024
+      ],
+      "GRAND_TOTAL": [
+        3119.62,
+        5588.89
+      ],
+      "GRAND_GROWTH": [
+        7.3,
+        18.28
+      ]
     }
   },
   "NATIONAL_TARGET_SALES_ACHVM": {
@@ -1611,9 +2018,21 @@
     },
     "usage_notes": "Use this table to check the specific performance of a product, such as 'What is the achievement for Timopress Eye Drops?'. It provides the most direct comparison of 'Plan vs. Actual' for the sales team.",
     "sample_values": {
-      "P_GROUP": ["OPERON-XENOVISION", "GYRUS", "CELLBIOTIC"],
-      "P_NAME": ["TIMOPRESS 0.5% EYE DROPS", "PANOVIR TABLET 6'S", "NALBUN DS INJECTION 1ML"],
-      "ACHIEVEMENT": [60.68, 80, 53.33]
+      "P_GROUP": [
+        "OPERON-XENOVISION",
+        "GYRUS",
+        "CELLBIOTIC"
+      ],
+      "P_NAME": [
+        "TIMOPRESS 0.5% EYE DROPS",
+        "PANOVIR TABLET 6'S",
+        "NALBUN DS INJECTION 1ML"
+      ],
+      "ACHIEVEMENT": [
+        60.68,
+        80,
+        53.33
+      ]
     }
   },
   "PRODUCT_GROUP_WISE_SALES": {
@@ -1647,10 +2066,23 @@
     },
     "usage_notes": "Use this table to identify which business divisions are growing or shrinking compared to the previous month. The inclusion of 'TODAY_SALES' also allows for immediate daily performance checks.",
     "sample_values": {
-      "P_GROUP": ["KINETIX", "ANIMAL VACCINE", "OPERON-XENOVISION"],
-      "REPORT_CMONTH": ["DEC-25"],
-      "GROWTH": [-8.81, 22.54, 7.48],
-      "CURRENT_MONTH_SALES": [732830621, 37285695]
+      "P_GROUP": [
+        "KINETIX",
+        "ANIMAL VACCINE",
+        "OPERON-XENOVISION"
+      ],
+      "REPORT_CMONTH": [
+        "DEC-25"
+      ],
+      "GROWTH": [
+        -8.81,
+        22.54,
+        7.48
+      ],
+      "CURRENT_MONTH_SALES": [
+        732830621,
+        37285695
+      ]
     }
   },
   "PRODUCT_RANKING_DEPOT_SALES": {
@@ -1692,11 +2124,26 @@
     },
     "usage_notes": "Use this table to find the top performing products for a specific month or to see which products are losing market share. Queries like 'What were the top 10 products in November?' or 'Which products sales went down compared to last month?' should use this table.",
     "sample_values": {
-      "BRAND_NAME": ["RIFAMAX", "BONE-GUARD", "SCARFIX"],
-      "GROWTH_INDICATE": ["DOWN", "UP"],
-      "MONTH1_NAME": ["OCT-25"],
-      "MONTH2_NAME": ["NOV-25"],
-      "MONTH2_RANK_POSITION": [254, 249, 257]
+      "BRAND_NAME": [
+        "RIFAMAX",
+        "BONE-GUARD",
+        "SCARFIX"
+      ],
+      "GROWTH_INDICATE": [
+        "DOWN",
+        "UP"
+      ],
+      "MONTH1_NAME": [
+        "OCT-25"
+      ],
+      "MONTH2_NAME": [
+        "NOV-25"
+      ],
+      "MONTH2_RANK_POSITION": [
+        254,
+        249,
+        257
+      ]
     }
   },
   "RM_SALES_ANALYSIS_ACH": {
@@ -1725,10 +2172,26 @@
     },
     "usage_notes": "Use this table to evaluate the performance of specific Regional Managers or to compare achievement across different territories. For example, 'Who was the RM for Comilla in 2019?' or 'Which RM achieved the highest percentage in the General division?'.",
     "sample_values": {
-      "RM_TERR_ID": ["SO-00", "CTG1-00", "NRG-00"],
-      "P_GROUP": ["OPERON-XENOVISION", "GENERAL", "ASTER"],
-      "NAME": ["MD. MATIUR RAHMAN", "MD. SULTAN MAHMUD", "SHEIKH FARIDUZZAMAN"],
-      "ACHIEVEMENT": [92.04, 90.13, 101.05]
+      "RM_TERR_ID": [
+        "SO-00",
+        "CTG1-00",
+        "NRG-00"
+      ],
+      "P_GROUP": [
+        "OPERON-XENOVISION",
+        "GENERAL",
+        "ASTER"
+      ],
+      "NAME": [
+        "MD. MATIUR RAHMAN",
+        "MD. SULTAN MAHMUD",
+        "SHEIKH FARIDUZZAMAN"
+      ],
+      "ACHIEVEMENT": [
+        92.04,
+        90.13,
+        101.05
+      ]
     }
   },
   "SCM_APP_BLOCKLIST": {
@@ -1775,10 +2238,22 @@
     },
     "usage_notes": "Use this table to find details about approved import permissions. For example, 'Who is the approved manufacturer for Cinnarizine BP?' or 'What is the approved quantity for Mefenamic Acid in the 2021-2022 block list?'. It links raw materials to their specific approved sources.",
     "sample_values": {
-      "BL_TYPE": ["API", "Lab Item"],
-      "MATERIAL_NAME": ["Cinnarizine BP", "Mefenamic Acid Micronized USP", "Evening Primrose Oil"],
-      "MANUFACTURER_NAME": ["Fleming Laboratories Limited, India", "Shaanxi Baoxin Pharmaceutical Co. Ltd., China"],
-      "BLOCKLIST_YEAR": ["2021-2022"]
+      "BL_TYPE": [
+        "API",
+        "Lab Item"
+      ],
+      "MATERIAL_NAME": [
+        "Cinnarizine BP",
+        "Mefenamic Acid Micronized USP",
+        "Evening Primrose Oil"
+      ],
+      "MANUFACTURER_NAME": [
+        "Fleming Laboratories Limited, India",
+        "Shaanxi Baoxin Pharmaceutical Co. Ltd., China"
+      ],
+      "BLOCKLIST_YEAR": [
+        "2021-2022"
+      ]
     }
   },
   "SCM_APPLY_REJECTED_DATA": {
@@ -1822,10 +2297,24 @@
     },
     "usage_notes": "Use this table to audit failed import attempts. For example, 'Which suppliers had the most rejected applications in 2021?' or 'Was the request for Danazol USP rejected?'. It helps identify problematic suppliers or pricing issues.",
     "sample_values": {
-      "MATERIAL_NAME": ["Danazol USP", "Lubiprostone INN", "Virgin Olive Oil Ph. Gr."],
-      "MANUFACTURER_NAME": ["Micro Orgo-Chem., India", "Chemvon Biotechnology Co. Ltd., China"],
-      "CFP": ["Lozana 100 Capsule", "Lubistone 24 Capsule"],
-      "APP_ID": [27, 28, 82]
+      "MATERIAL_NAME": [
+        "Danazol USP",
+        "Lubiprostone INN",
+        "Virgin Olive Oil Ph. Gr."
+      ],
+      "MANUFACTURER_NAME": [
+        "Micro Orgo-Chem., India",
+        "Chemvon Biotechnology Co. Ltd., China"
+      ],
+      "CFP": [
+        "Lozana 100 Capsule",
+        "Lubistone 24 Capsule"
+      ],
+      "APP_ID": [
+        27,
+        28,
+        82
+      ]
     }
   },
   "SCM_AVAILABLE_QTY_CLEAR": {
@@ -1852,9 +2341,21 @@
     },
     "usage_notes": "Use this table to check the status of specific import permissions. For example, 'How much Glycocholic Acid has been cleared from blocklist I003-2018-00068?' or 'Check available quantities for Amikacin Sulphate'.",
     "sample_values": {
-      "BLOCKLIST_NO": ["I003-2018-00068", "I003-2018-00069", "I003-2018-00072"],
-      "MATERIAL_NAME": ["GLYCOCHOLIC ACID INN", "Lipoid S 100 Pharma Gra", "Amikacin Sulphate EP"],
-      "CLEAR_QTY": [15, 10, 150]
+      "BLOCKLIST_NO": [
+        "I003-2018-00068",
+        "I003-2018-00069",
+        "I003-2018-00072"
+      ],
+      "MATERIAL_NAME": [
+        "GLYCOCHOLIC ACID INN",
+        "Lipoid S 100 Pharma Gra",
+        "Amikacin Sulphate EP"
+      ],
+      "CLEAR_QTY": [
+        15,
+        10,
+        150
+      ]
     }
   },
   "SCM_AVAILABLE_QTY_CLEAR_T": {
@@ -1881,9 +2382,19 @@
     },
     "usage_notes": "Use this table primarily for debugging or checking data that might be in-transit or processing. For definitive historical records, prefer the main 'SCM_AVAILABLE_QTY_CLEAR' table.",
     "sample_values": {
-      "BLOCKLIST_NO": ["I003-2018-00068", "I003-2018-00069"],
-      "MATERIAL_NAME": ["GLYCOCHOLIC ACID INN", "Lipoid S 100 Pharma Gra"],
-      "CLEAR_QTY": [15, 10, 4]
+      "BLOCKLIST_NO": [
+        "I003-2018-00068",
+        "I003-2018-00069"
+      ],
+      "MATERIAL_NAME": [
+        "GLYCOCHOLIC ACID INN",
+        "Lipoid S 100 Pharma Gra"
+      ],
+      "CLEAR_QTY": [
+        15,
+        10,
+        4
+      ]
     }
   },
   "SCM_BL_AMENDMENT_INFORMATION": {
@@ -1914,9 +2425,18 @@
     },
     "usage_notes": "Use this table to trace the history of a block list. If a user asks 'Why did the price change for Blocklist I003?' or 'Show me all amendments for 2018', this is the source.",
     "sample_values": {
-      "BLOCKLIST_NO": ["I003-2018-00003", "I003-2018-00015"],
-      "AMENDMENT_NO": ["1st Amendment", "Correction"],
-      "AMENDMENT_REASON": ["Price Correction", "Change of Supplier"]
+      "BLOCKLIST_NO": [
+        "I003-2018-00003",
+        "I003-2018-00015"
+      ],
+      "AMENDMENT_NO": [
+        "1st Amendment",
+        "Correction"
+      ],
+      "AMENDMENT_REASON": [
+        "Price Correction",
+        "Change of Supplier"
+      ]
     }
   },
   "SCM_BLK_MAT_BK_2017_2019": {
@@ -1954,10 +2474,21 @@
     },
     "usage_notes": "Use this table for historical queries specifically targeting the 2017-2019 period. For example, 'What was the price of Valsartan in 2018?' or 'Who supplied Goat anti Mouse IgG in 2019?'. Do not use this for current operational data.",
     "sample_values": {
-      "BLOCKLIST_YEAR": ["2018-2019"],
-      "MATERIAL_NAME": ["HYPAKSCF1MLL29G1/2-5BTWBD260LWEBPPBTH Ph. Gr.", "Valsartan USP"],
-      "MANUFACTURER_NAME": ["Becton Dickinson Holdings Pte. Ltd.", "Aurobindo Pharma Ltd."],
-      "SUPPLIER_NAME": ["Singapore", "India"]
+      "BLOCKLIST_YEAR": [
+        "2018-2019"
+      ],
+      "MATERIAL_NAME": [
+        "HYPAKSCF1MLL29G1/2-5BTWBD260LWEBPPBTH Ph. Gr.",
+        "Valsartan USP"
+      ],
+      "MANUFACTURER_NAME": [
+        "Becton Dickinson Holdings Pte. Ltd.",
+        "Aurobindo Pharma Ltd."
+      ],
+      "SUPPLIER_NAME": [
+        "Singapore",
+        "India"
+      ]
     }
   },
   "SCM_BLOCKLIST_FILES_TABLE": {
@@ -1987,9 +2518,16 @@
     },
     "usage_notes": "Use this table to find the actual PDF document associated with a block list. For example, 'Where is the scanned copy of Blocklist I003-2021-00001 stored?'. Note that the 'FILENAME' usually corresponds directly to the 'BLOCKLIST_NO' found in other tables.",
     "sample_values": {
-      "FILENAME": ["I003-2021-00001.pdf", "I003-2021-00015.pdf"],
-      "FILELOCATION": ["public\\SCM\\BlockListFiles\\I003-2021-00001.pdf"],
-      "PLANT": ["I003"]
+      "FILENAME": [
+        "I003-2021-00001.pdf",
+        "I003-2021-00015.pdf"
+      ],
+      "FILELOCATION": [
+        "public\\SCM\\BlockListFiles\\I003-2021-00001.pdf"
+      ],
+      "PLANT": [
+        "I003"
+      ]
     }
   },
   "SCM_BLOCKLIST_MATERIAL": {
@@ -2029,10 +2567,22 @@
     },
     "usage_notes": "Use this table to find the approved price or supplier for a specific material. For example, 'What is the air price for Sodium metabisulfite?' or 'Who supplies Tert-Butyl Methyl Ether for blocklist I017-2025-R25063232?'. Note the inclusion of CAS numbers in the material name field.",
     "sample_values": {
-      "MATERIAL_NAME": ["Sodium metabisulfite; CAS No.7681-57-4", "Tert-Butyl Methyl Ether; CAS No.1634-04-4"],
-      "MANUFACTURER_NAME": ["Boyu Chemical Co., Ltd. China", "SHANDONG WONFULL PETROCHEMICAL GROUP CO., LTD. CHINA"],
-      "SUPPLIER_NAME": ["United Pharma Industries Co., Ltd. China", "HANGZHOU CHERRY PHARMACEUTICAL TECHNOLOGY CO., LTD. China"],
-      "BLOCKLIST_NO": ["I017-2025-R25063233", "I017-2025-R25063232"]
+      "MATERIAL_NAME": [
+        "Sodium metabisulfite; CAS No.7681-57-4",
+        "Tert-Butyl Methyl Ether; CAS No.1634-04-4"
+      ],
+      "MANUFACTURER_NAME": [
+        "Boyu Chemical Co., Ltd. China",
+        "SHANDONG WONFULL PETROCHEMICAL GROUP CO., LTD. CHINA"
+      ],
+      "SUPPLIER_NAME": [
+        "United Pharma Industries Co., Ltd. China",
+        "HANGZHOU CHERRY PHARMACEUTICAL TECHNOLOGY CO., LTD. China"
+      ],
+      "BLOCKLIST_NO": [
+        "I017-2025-R25063233",
+        "I017-2025-R25063232"
+      ]
     }
   },
   "SCM_BLOCKLIST_MATERIAL_24_25": {
@@ -2070,10 +2620,20 @@
     },
     "usage_notes": "Use this table for queries specifically targeting the 2024-2025 fiscal year. For example, 'What was the approved price for Sitagliptin in 2024?' or 'List all materials imported from China in the 24-25 block list'.",
     "sample_values": {
-      "BLOCKLIST_YEAR": ["2024-2025"],
-      "MATERIAL_NAME": ["Sitagliptin Phosphate Monohydrate INN", "Empagliflozin INN"],
-      "MANUFACTURER_NAME": ["Zhejiang Supor Pharmaceuticals Co. Ltd.", "Hubei Biocause Heilen Pharmaceutical Co. Ltd."],
-      "BLOCKLIST_NO": ["I003-2024-00001"]
+      "BLOCKLIST_YEAR": [
+        "2024-2025"
+      ],
+      "MATERIAL_NAME": [
+        "Sitagliptin Phosphate Monohydrate INN",
+        "Empagliflozin INN"
+      ],
+      "MANUFACTURER_NAME": [
+        "Zhejiang Supor Pharmaceuticals Co. Ltd.",
+        "Hubei Biocause Heilen Pharmaceutical Co. Ltd."
+      ],
+      "BLOCKLIST_NO": [
+        "I003-2024-00001"
+      ]
     }
   },
   "SCM_BLOCKLIST_MATERIAL_BKUP": {
@@ -2111,10 +2671,19 @@
     },
     "usage_notes": "Use this table to recover lost data or investigate accidental deletions. For example, 'When was the entry for Spirulina Powder deleted?' or 'Show me all materials deleted in 2019'.",
     "sample_values": {
-      "BLOCKLIST_YEAR": ["2018-2019"],
-      "MATERIAL_NAME": ["Nutricran Cranberry 1 % proanthocyan Ph.Gr.", "Spirulina Powder Ph.Gr."],
-      "DELETE_DATE": ["1/8/2019 9:54:35 AM"],
-      "BLOCKLIST_NO": ["I003-2018-10930"]
+      "BLOCKLIST_YEAR": [
+        "2018-2019"
+      ],
+      "MATERIAL_NAME": [
+        "Nutricran Cranberry 1 % proanthocyan Ph.Gr.",
+        "Spirulina Powder Ph.Gr."
+      ],
+      "DELETE_DATE": [
+        "1/8/2019 9:54:35 AM"
+      ],
+      "BLOCKLIST_NO": [
+        "I003-2018-10930"
+      ]
     }
   },
   "SCM_CLEARANCE": {
@@ -2155,11 +2724,21 @@
     },
     "usage_notes": "Use this table to track actual shipments. If a user asks 'When did the Cefuroxime arrive?' or 'Which invoice covers the shipment of Racecadotril?', this is the table to query.",
     "sample_values": {
-      "LC_NO": ["074918020101", "147818021349"],
-      "INV_NO": ["UPIH0426B", "U06/18-19/665"],
-      "MATERIAL_NAME": ["Racecadotril EP", "Cefuroxime Sodium Sterile BP/USP"]
+      "LC_NO": [
+        "074918020101",
+        "147818021349"
+      ],
+      "INV_NO": [
+        "UPIH0426B",
+        "U06/18-19/665"
+      ],
+      "MATERIAL_NAME": [
+        "Racecadotril EP",
+        "Cefuroxime Sodium Sterile BP/USP"
+      ]
     }
-  },"SCM_COMPANY_INFO": {
+  },
+  "SCM_COMPANY_INFO": {
     "description": "Registry of company entities and manufacturing plants. This table acts as the central reference for the organizational structure, linking Plant Codes (e.g., 'I003', 'I010') to full Company Names, Head Office and Factory Addresses, Import License numbers, and other regulatory registration details.",
     "synonyms": [
       "company registry",
@@ -2196,9 +2775,19 @@
     },
     "usage_notes": "Use this table to look up address or license details for a plant. For example, 'What is the factory address for plant I010?' or 'Which company does the code I020 represent?'.",
     "sample_values": {
-      "PLANT": ["I003", "I010", "I020"],
-      "COMPANY_FULL_NAME": ["Incepta Pharmaceuticals Ltd.", "Incepta Hygiene & Hospicare Ltd."],
-      "COMPANY_IMPORT_LN_NEW": ["BA-111064", "260326120738422"]
+      "PLANT": [
+        "I003",
+        "I010",
+        "I020"
+      ],
+      "COMPANY_FULL_NAME": [
+        "Incepta Pharmaceuticals Ltd.",
+        "Incepta Hygiene & Hospicare Ltd."
+      ],
+      "COMPANY_IMPORT_LN_NEW": [
+        "BA-111064",
+        "260326120738422"
+      ]
     }
   },
   "SCM_COMPARATIVE_FINAL_DATA": {
@@ -2241,11 +2830,140 @@
     },
     "usage_notes": "Use this table to analyze procurement decisions. For example, 'What was the last purchase price for Fentanyl Citrate?' or 'Show me all purchase requests approved by the Vice Chairman'.",
     "sample_values": {
-      "MATERIAL_DESC": ["FENTANYL CITRATE", "ACECLOFENAC", "AQUATOX VET (READY TO FILL SOLUTION)"],
-      "PLANT_ID": [1100, 1400],
-      "PR_QUANTITY": ["300 G", "2500 KG"]
+      "MATERIAL_DESC": [
+        "FENTANYL CITRATE",
+        "ACECLOFENAC",
+        "AQUATOX VET (READY TO FILL SOLUTION)"
+      ],
+      "PLANT_ID": [
+        1100,
+        1400
+      ],
+      "PR_QUANTITY": [
+        "300 G",
+        "2500 KG"
+      ]
+    }
+  },
+  "YEARLY_SALES_ANALYSIS_WEB": {
+    "description": "Comprehensive yearly sales analysis with monthly breakdowns across different sales types, teams, and companies. Contains actual sales figures in crores and growth percentages (month-over-month and year-over-year). This is the primary table for sales comparison and trend analysis.",
+    "synonyms": [
+      "sales comparison",
+      "yearly sales",
+      "monthly sales",
+      "sales analysis",
+      "sales trends",
+      "depot sales",
+      "export sales",
+      "institution sales",
+      "company sales",
+      "sales growth",
+      "month over month",
+      "year over year",
+      "monthly breakdown",
+      "sales performance",
+      "revenue analysis"
+    ],
+    "entities": {
+      "DEPOT": "Domestic market sales through depot/pharmacy channel",
+      "EXPORT": "International sales (A01, A02, A03 teams)",
+      "INSTITUTION": "Hospital and government institutional sales (B01, B02, B03, B04 teams)",
+      "COMPANY": "Company-wise consolidated sales (IPL, IVL, IHHL, IHNL)",
+      "TOLL_MFG": "Toll manufacturing revenue",
+      "EXPORT_SERVICE": "Service export revenue"
+    },
+    "sales_teams": {
+      "A01": "Export team - Mr. Ehsan Aziz",
+      "A02": "Export team - Mr. Arefin Ahmed",
+      "A03": "Export team - Mr. Mahbubul Karim",
+      "B01": "Institution team - Mr. Wahid",
+      "B02": "Institution team - Mr. Mahbubul",
+      "B03": "Institution team - Mr. Ehsan",
+      "B04": "Institution team - Mr. Arefin",
+      "DEPOT": "Depot sales team",
+      "INST": "Institutional sales team"
+    },
+    "companies": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "Year of the sales data (e.g., 2023, 2024, 2025). Use this to filter by year.",
+      "SALES_TYPE": "Category of sales: 'DEPOT SALES', 'EXPORT SALES', 'INSTITUTION SALES', 'COMPANY', 'TOLL_MFG', 'EXPORT_SERVICE'. Use this to filter by sales channel.",
+      "SALES_DESC": "Description of the sales record. Common values: 'Depot Total Sales', 'Export Total Sales', 'Institutional Total Sales', 'Growth % CY M/M' (month-over-month growth), 'Growth % CY M /PY M' (year-over-year growth), team-specific descriptions like 'Export-A01 (Mr. Ehsan Aziz)', 'Inst-Mr. Wahid (B01)', company names like 'Company Wise Sales Summary'.",
+      "SALES_PERSON": "Sales person or team code. Values: 'DEPOT', 'INST', 'EXPORT', 'A01', 'A02', 'A03', 'B01', 'B02', 'B03', 'B04', 'TOLL', 'SERVICE', 'Company Wise Sales Summary'.",
+      "JAN": "January sales value in crores. For growth rows, this is the growth percentage.",
+      "FEB": "February sales value in crores. For growth rows, this is the growth percentage.",
+      "MAR": "March sales value in crores. For growth rows, this is the growth percentage.",
+      "APR": "April sales value in crores. For growth rows, this is the growth percentage.",
+      "MAY": "May sales value in crores. For growth rows, this is the growth percentage.",
+      "JUN": "June sales value in crores. For growth rows, this is the growth percentage.",
+      "JUL": "July sales value in crores. For growth rows, this is the growth percentage.",
+      "AUG": "August sales value in crores. For growth rows, this is the growth percentage.",
+      "SEP": "September sales value in crores. For growth rows, this is the growth percentage.",
+      "OCT": "October sales value in crores. For growth rows, this is the growth percentage.",
+      "NOV": "November sales value in crores. For growth rows, this is the growth percentage.",
+      "DEC": "December sales value in crores. For growth rows, this is the growth percentage.",
+      "SL": "Serial number for ordering records. Use this for consistent sorting.",
+      "CREATE_DATE": "Record creation or last update timestamp."
+    },
+    "usage_notes": "This table stores monthly sales data in separate columns (JAN through DEC). To analyze monthly trends, you MUST use UNPIVOT to convert month columns into rows. Always filter by SALES_DESC to distinguish between actual sales ('Total Sales') and growth metrics ('Growth %'). For year-over-year comparisons, query multiple years and compare the same months. Common queries: 'Show monthly sales trend' (use UNPIVOT), 'Compare year-over-year' (filter by year and month), 'Depot vs Export sales' (filter by SALES_TYPE), 'Top performing months' (UNPIVOT then ORDER BY sales value).",
+    "query_patterns": {
+      "monthly_trend": "Use UNPIVOT to convert JAN-DEC columns to rows with MONTH_NAME and SALES columns. Example: SELECT MONTH_NAME, SALES FROM (SELECT * FROM MIS.YEARLY_SALES_ANALYSIS_WEB WHERE SALES_YEAR = 2024 AND SALES_DESC = 'Depot Total Sales') UNPIVOT (SALES FOR MONTH_NAME IN (JAN AS 'JAN', FEB AS 'FEB', ...)).",
+      "year_comparison": "Filter by SALES_YEAR IN (2023, 2024) and compare same SALES_DESC values.",
+      "sales_type_filter": "Use WHERE SALES_TYPE = 'DEPOT SALES' or similar to filter by channel.",
+      "actual_vs_growth": "Filter by SALES_DESC LIKE '%Total Sales%' for actual values, or LIKE '%Growth %' for growth percentages.",
+      "team_performance": "Filter by SALES_PERSON (e.g., 'A01', 'B01') to see individual team performance."
+    },
+    "important_filters": [
+      "Always filter by SALES_DESC to avoid mixing actual sales with growth percentages",
+      "Use SALES_YEAR to specify the time period",
+      "Use SALES_TYPE to filter by sales channel (DEPOT, EXPORT, INSTITUTION, COMPANY)",
+      "For monthly trends, UNPIVOT is required to convert columns to rows",
+      "Growth % rows have different semantics - values are percentages, not crores"
+    ],
+    "sample_values": {
+      "SALES_YEAR": [
+        2023,
+        2024,
+        2025
+      ],
+      "SALES_TYPE": [
+        "DEPOT SALES",
+        "EXPORT SALES",
+        "INSTITUTION SALES",
+        "COMPANY"
+      ],
+      "SALES_DESC": [
+        "Depot Total Sales",
+        "Export Total Sales",
+        "Growth % CY M/M",
+        "Growth % CY M /PY M",
+        "Export-A01 (Mr. Ehsan Aziz)",
+        "Company Wise Sales Summary"
+      ],
+      "SALES_PERSON": [
+        "DEPOT",
+        "EXPORT",
+        "INST",
+        "A01",
+        "A02",
+        "B01",
+        "IPL"
+      ],
+      "JAN": [
+        476.31,
+        14.91,
+        6.3,
+        4.08
+      ],
+      "SALES_DESC_PATTERNS": {
+        "total_sales": "Depot Total Sales, Export Total Sales, Institutional Total Sales, Export-A01 (Mr. Ehsan Aziz)",
+        "growth_mom": "Growth % CY M/M (month-over-month growth percentage)",
+        "growth_yoy": "Growth % CY M /PY M (year-over-year growth percentage)"
+      }
     }
   }
-
-
 }
