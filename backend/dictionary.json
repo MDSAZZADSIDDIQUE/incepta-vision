@@ -1,170 +1,2251 @@
 {
-  "EXPO_PLANT": {
-    "description": "Master Plant Reference. Maps 'PLANT_ID' (e.g., 1100, 1300) to 'PLANT_NAME'.",
-    "columns": { "PLANT_ID": "ID", "PLANT_NAME": "Factory Name" }
+  "ALL_COMP_SALES_CWISE_WB03_B04": {
+    "description": "Comprehensive annual sales matrix for WB03 and B04 business units. This table tracks financial performance across multiple decades (2000-2025), breaking down revenue by Sales Year, Entity (IPL, IVL, IHHL, IHNL), and Channel (Depot, Institution, Export, Service Export, and Toll Manufacturing).",
+    "synonyms": [
+      "wb03 company sales", 
+      "b04 yearly achievement", 
+      "pharma vs vaccine sales matrix", 
+      "export channel totals wb03", 
+      "institutional sales breakdown",
+      "toll manufacturing revenue",
+      "yearly revenue by business unit"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd (General Pharma)",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "Numerical year of the report (e.g., 2000, 2024, 2025)",
+      "DEPOT_IPL": "Depot (Domestic market) sales for Incepta Pharmaceuticals Ltd",
+      "DEPOT_IVL": "Depot (Domestic market) sales for Incepta Vaccine Ltd",
+      "DEPOT_IHHL": "Depot (Domestic market) sales for Incepta Hygiene and Hospitacare Ltd",
+      "DEPOT_IHNL": "Depot (Domestic market) sales for Incepta Herbal and Nutritive Ltd",
+      "DEPOT_TOTAL": "Sum of all entity sales via the Depot (Domestic) channel",
+      "INST_IPL": "Institutional (Government/Private Hospital) sales for IPL",
+      "INST_IVL": "Institutional sales for Incepta Vaccine Ltd",
+      "INST_IHHL": "Institutional sales for Incepta Hygiene and Hospitacare Ltd",
+      "INST_IHNL": "Institutional sales for Incepta Herbal and Nutritive Ltd",
+      "INST_TOTAL": "Total Institutional sales across all entities",
+      "EXPOT_IPL": "Export (International) sales for Incepta Pharmaceuticals Ltd",
+      "EXPOT_IVL": "Export sales for Incepta Vaccine Ltd",
+      "EXPOT_IHHL": "Export sales for Incepta Hygiene and Hospitacare Ltd",
+      "EXPOT_IHNL": "Export sales for Incepta Herbal and Nutritive Ltd",
+      "EXPOT_TOTAL": "Total International/Export revenue excluding service exports",
+      "SER_EXPOT_IPL": "Service Export revenue for Incepta Pharmaceuticals Ltd",
+      "SER_EXPOT_IVL": "Service Export revenue for Incepta Vaccine Ltd",
+      "SER_EXPOT_TOTAL": "Total Service Export revenue (revenue from services rather than goods)",
+      "TOLL_MFG_IPL": "Toll Manufacturing revenue for IPL (manufacturing for third parties)",
+      "TOLL_MFG_IVL": "Toll Manufacturing revenue for IVL",
+      "ALL_COM_TOTAL": "Grand total company sales revenue including all channels (Depot, Inst, Export, Service, Toll) and all entities",
+      "CREATE_DATE": "Timestamp of when the record was last updated or generated"
+    },
+    "usage_notes": "Use for long-term trend analysis (2000-2025). Note that IVL, IHHL, and IHNL columns may contain null/empty values in earlier years (2000-2010) as those units were likely established later. 'Depot' refers to general trade/pharmacy sales, while 'Inst' refers to bulk hospital/government tenders. All monetary values should be treated as the same currency unit (likely Millions).",
+    "sample_values": {
+      "SALES_YEAR": [2023, 2024, 2025],
+      "DEPOT_TOTAL": [4068.37, 5199.43, 5539.61],
+      "ALL_COM_TOTAL": [4379.41, 5588.87, 5842.02]
+    }
   },
-  "EXPO_PLANT_WISE_PRODUCTS": {
-    "description": "Production Site Map. Links Products to the Plant that makes them.",
-    "columns": { "PLANT_ID": "Plant ID", "PRODUCT_NAME": "Brand Name" }
+  "ALL_COMPANY_SALES": {
+    "description": "Consolidated annual sales and growth report for all major Incepta business units. This table tracks revenue (Sales) and year-over-year performance (Growth %) for IPL, IVL, IHHL, and IHNL, along with inter-company adjustments and net totals.",
+    "synonyms": [
+      "group sales summary",
+      "yearly growth report",
+      "business unit performance comparison",
+      "net sales vs gross sales",
+      "inter-company revenue adjustments"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "The fiscal or calendar year of the record",
+      "IPL_SALES": "Total sales revenue for Incepta Pharmaceuticals Ltd",
+      "IPL_GROWTH": "Percentage growth of IPL sales compared to the previous year",
+      "IVL_SALES": "Total sales revenue for Incepta Vaccine Ltd",
+      "IVL_GROWTH": "Percentage growth of IVL sales compared to the previous year",
+      "IHHL_SALES": "Total sales revenue for Incepta Hygiene and Hospitacare Ltd",
+      "IHHL_GROWTH": "Percentage growth of IHHL sales compared to the previous year",
+      "IHNL_SALES": "Total sales revenue for Incepta Herbal and Nutritive Ltd",
+      "IHNL_GROWTH": "Percentage growth of IHNL sales compared to the previous year",
+      "TOT_SALES": "Gross total sales across all business units before adjustments",
+      "TOT_GROWTH": "Percentage growth of gross total sales",
+      "INTER_COM_SALES": "Value of sales made between internal company units (to be deducted for net calculations)",
+      "INTER_COM_GROWTH": "Percentage change in inter-company sales volume",
+      "NET_SALES": "Net revenue after deducting inter-company sales (Total Sales - Inter Company Sales)",
+      "NET_GROWTH": "Percentage growth of net sales revenue",
+      "CREATE_DATE": "Timestamp of record creation or last update"
+    },
+    "usage_notes": "Use this table for high-level executive summaries and growth tracking. 'Growth' columns are percentages (e.g., 7.79 means 7.79% growth). Negative values in 'Growth' indicate a contraction. Inter-company sales are tracked separately to allow for both Gross and Net revenue reporting.",
+    "sample_values": {
+      "SALES_YEAR": [2023, 2024, 2025],
+      "NET_SALES": [4765.59, 5642.6, 5881.77],
+      "IPL_GROWTH": [7.95, 17.7, 4.44]
+    }
   },
-  "EXPO_REPORT_GROUP": {
-    "description": "Report Bundles/Groups definition.",
-    "columns": { "RPT_ID": "Group ID", "RPT_TYPE": "Report IDs" }
+  "ALL_COMPANY_SALES_CHANNEL_WISE": {
+    "description": "Comprehensive channel-wise sales breakdown for the entire company group. Unlike 'ALL_COMP_SALES_CWISE_WB03_B04' which is a subset (WB03/B04 units), this table aggregates revenue for ALL business units. It aligns with the totals in 'ALL_COMPANY_SALES' but provides the granular split by Channel (Depot, Institution, Export, Service Export, Toll) and Entity.",
+    "synonyms": [
+      "total company channel matrix",
+      "group revenue by channel",
+      "depot vs institution vs export all units",
+      "complete sales breakdown",
+      "consolidated channel sales"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "Numerical year of the report (e.g., 2020, 2025)",
+      "DEPOT_IPL": "Depot (Domestic) sales for IPL (All Units)",
+      "DEPOT_IVL": "Depot (Domestic) sales for IVL",
+      "DEPOT_IHHL": "Depot (Domestic) sales for IHHL",
+      "DEPOT_IHNL": "Depot (Domestic) sales for IHNL",
+      "DEPOT_TOTAL": "Total Domestic/Depot sales across all entities",
+      "INST_IPL": "Institutional (Hospital/Govt) sales for IPL",
+      "INST_IVL": "Institutional sales for IVL",
+      "INST_IHHL": "Institutional sales for IHHL",
+      "INST_IHNL": "Institutional sales for IHNL",
+      "INST_TOTAL": "Total Institutional sales",
+      "EXPOT_IPL": "Export sales for IPL",
+      "EXPOT_IVL": "Export sales for IVL",
+      "EXPOT_IHHL": "Export sales for IHHL",
+      "EXPOT_IHNL": "Export sales for IHNL",
+      "EXPOT_TOTAL": "Total Export revenue (Goods)",
+      "SER_EXPOT_IPL": "Service Export revenue for IPL",
+      "SER_EXPOT_IVL": "Service Export revenue for IVL",
+      "SER_EXPOT_TOTAL": "Total Service Export revenue",
+      "TOLL_MFG_IPL": "Toll Manufacturing revenue for IPL",
+      "TOLL_MFG_IVL": "Toll Manufacturing revenue for IVL",
+      "ALL_COM_TOTAL": "Grand total sales revenue (matches 'NET_SALES' in ALL_COMPANY_SALES table)",
+      "CREATE_DATE": "Record timestamp"
+    },
+    "usage_notes": "Use this table when the user asks for a channel breakdown (e.g., 'How much did we export?' or 'What are the domestic sales?') for the *entire* company. If the user specifically mentions 'WB03' or 'B04', use the 'ALL_COMP_SALES_CWISE_WB03_B04' table instead.",
+    "sample_values": {
+      "SALES_YEAR": [2023, 2024, 2025],
+      "DEPOT_TOTAL": [4414.04, 5199.43, 5539.61],
+      "ALL_COM_TOTAL": [4765.6, 5642.6, 5881.77]
+    }
   },
-  "EXPO_REPORT_GROUP_DETAILS": {
-    "description": "User Permissions for Reports.",
-    "columns": { "EMP_ID": "Employee ID", "REPORT_GROUP": "Access Group ID" }
+  "ALL_COMPANY_SALES_WB03_B04": {
+    "description": "Annual sales and growth report specifically for WB03 and B04 business units. This table tracks revenue (Sales) and year-over-year performance (Growth %) for IPL, IVL, IHHL, and IHNL within these specific units. It allows for comparison between gross totals, inter-company adjustments, and net sales.",
+    "synonyms": [
+      "wb03 growth report",
+      "b04 financial summary",
+      "unit specific sales performance",
+      "wb03 b04 net sales vs gross",
+      "business unit growth metrics"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "The fiscal or calendar year of the record",
+      "IPL_SALES": "Sales revenue for IPL (WB03/B04 only)",
+      "IPL_GROWTH": "Percentage growth of IPL sales compared to the previous year",
+      "IVL_SALES": "Sales revenue for IVL (WB03/B04 only)",
+      "IVL_GROWTH": "Percentage growth of IVL sales compared to the previous year",
+      "IHHL_SALES": "Sales revenue for IHHL (WB03/B04 only)",
+      "IHHL_GROWTH": "Percentage growth of IHHL sales compared to the previous year",
+      "IHNL_SALES": "Sales revenue for IHNL (WB03/B04 only)",
+      "IHNL_GROWTH": "Percentage growth of IHNL sales compared to the previous year",
+      "TOT_SALES": "Gross total sales for WB03/B04 units before adjustments",
+      "TOT_GROWTH": "Percentage growth of gross total sales",
+      "INTER_COM_SALES": "Value of inter-company sales within these units",
+      "INTER_COM_GROWTH": "Percentage change in inter-company sales volume",
+      "NET_SALES": "Net revenue after deducting inter-company sales",
+      "NET_GROWTH": "Percentage growth of net sales revenue",
+      "CREATE_DATE": "Timestamp of record creation or last update"
+    },
+    "usage_notes": "Use this table ONLY when the user explicitly queries about 'WB03' or 'B04'. For general company-wide queries, use 'ALL_COMPANY_SALES'. The data structure is identical to the general table, but the values are subsets specific to these units.",
+    "sample_values": {
+      "SALES_YEAR": [2023, 2024, 2025],
+      "NET_SALES": [4379.41, 5588.87, 5842.02],
+      "IPL_GROWTH": [-1.01, 16.45, 3.65]
+    }
+  },
+  "BRAND_RANKING_YEARLY": {
+    "description": "Year-over-year brand performance and ranking report. This table compares sales performance between two specific years (designated as YEAR1 and YEAR2) for individual product brands. It tracks Quantity (QTY), Sales Value, Rank Position, Market Contribution, and Growth metrics.",
+    "synonyms": [
+      "brand performance scorecard",
+      "top selling brands",
+      "product ranking report",
+      "year over year brand growth",
+      "brand contribution analysis"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "COMPANY_CODE": "Internal code for the business unit (e.g., 1000 for IPL, 2000 for IVL)",
+      "COMPANY_NAME": "Full name of the business unit",
+      "COMP_SHORT_NAME": "Abbreviated name of the business unit (IPL, IVL, IHHL, IHNL)",
+      "BRAND_NAME": "Name of the specific product brand (e.g., TWINCARD, PANTOMIX)",
+      "YEAR2_NAME": "The more recent year being analyzed (e.g., 2024)",
+      "YEAR2_QTY": "Quantity sold in the recent year",
+      "YEAR2_VALUE": "Sales revenue in the recent year",
+      "YEAR2_RANK_POSITION": "Brand's rank based on revenue in the recent year",
+      "YEAR2_CONTRIBUTION": "Percentage contribution of this brand to total company sales in YEAR2",
+      "YEAR2_CUMULATIVE": "Cumulative contribution percentage (Pareto analysis)",
+      "YEAR1_NAME": "The previous year being used for comparison (e.g., 2023)",
+      "YEAR1_QTY": "Quantity sold in the previous year",
+      "YEAR1_VALUE": "Sales revenue in the previous year",
+      "YEAR1_RANK_POSITION": "Brand's rank based on revenue in the previous year",
+      "YEAR1_CONTRIBUTION": "Percentage contribution of this brand to total company sales in YEAR1",
+      "YEAR1_CUMULATIVE": "Cumulative contribution percentage in YEAR1",
+      "GROWTH": "Absolute monetary growth (YEAR2_VALUE - YEAR1_VALUE)",
+      "GROWTH_INDICATE": "Direction of growth ('UP' or 'DOWN')",
+      "CREATE_DATE": "Record timestamp",
+      "P_GROUP": "Product Group classification (often empty in raw data)"
+    },
+    "usage_notes": "This table is critical for 'Top 10' or 'Best Performing' brand queries. Pay attention to 'YEAR2_RANK_POSITION' for current rankings. 'GROWTH_INDICATE' provides a quick 'UP'/'DOWN' status without calculating numbers.",
+    "sample_values": {
+      "BRAND_NAME": ["PANTONIX", "MAXSULIN", "OSARTIL"],
+      "YEAR2_VALUE": [3371005852, 1302512830, 1360781163],
+      "YEAR2_RANK_POSITION": [1, 3, 4],
+      "GROWTH_INDICATE": ["UP", "DOWN"]
+    }
+  },"BRAND_WISE_SALES_DATA": {
+    "description": "Granular monthly sales performance report broken down by Brand, Product, and Territory. Unlike the annual tables, this dataset focuses on specific date ranges (e.g., Month-to-Month comparison) and geographical hierarchy (Region, Area, Territory), tracking both Quantity and Sales Value.",
+    "synonyms": [
+      "monthly brand sales",
+      "territory sales report",
+      "product wise sales breakdown",
+      "regional sales performance",
+      "current vs previous month sales",
+      "sku level sales data"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_TYPE": "Channel or type of sale (e.g., 'DEPOT')",
+      "CUR_MONTH_RANGE": "The current time period being analyzed (e.g., 'MAR-MAR-24')",
+      "PRE_MONTH_RANGE": "The previous time period used for comparison (e.g., 'MAR-MAR-23')",
+      "COMPANY_CODE": "Numeric code for the business unit (e.g., 1000, 3000, 5000)",
+      "COMPANY_NAME": "Abbreviated name of the business unit (IPL, IHNL, IHHL)",
+      "P_GROUP": "Product Group classification (if available)",
+      "BRAND_NAME": "Name of the brand family (e.g., VITAGROW, NEOCARE)",
+      "PRODUCT_STRENGTH": "Specific dosage or concentration (e.g., '100ML', '500 MG')",
+      "SAP_CODE": "Unique SAP system identifier for the product",
+      "P_CODE": "Short product code",
+      "P_NAME": "Full descriptive name of the specific product SKU",
+      "RM_TERR_ID": "Regional Manager Territory ID (High-level sales region)",
+      "AM_TERR_ID": "Area Manager Territory ID (Mid-level sales area)",
+      "TERR_ID": "Territory ID (Field force/Representative level)",
+      "CMR_SOLD_QTY": "Quantity sold in the Current Month Range",
+      "CMR_SOLD_VALUE": "Sales value in the Current Month Range",
+      "PMR_SOLD_QTY": "Quantity sold in the Previous Month Range",
+      "PMR_SOLD_VALUE": "Sales value in the Previous Month Range",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "ID of the user who generated the report"
+    },
+    "usage_notes": "Use this table for deep-dive queries requiring specific geographical data (e.g., 'How did Sylhet region perform?') or specific time-period comparisons (e.g., 'Compare March 2024 to March 2023'). It is also the only table that provides SKU-level details (P_NAME) distinguishing between different pack sizes or strengths of the same brand.",
+    "sample_values": {
+      "BRAND_NAME": ["VITAGROW", "NEOCARE", "ALGICID"],
+      "CUR_MONTH_RANGE": ["MAR-MAR-24"],
+      "RM_TERR_ID": ["MZR-00", "SYL-00", "DHK5-00"],
+      "CMR_SOLD_VALUE": [2519, 10000, 52469]
+    }
+  },
+  "BRAND_WISE_SALES_REPORT": {
+    "description": "Hierarchical sales performance report focusing on Growth, Ranking, and Contribution. Unlike 'BRAND_WISE_SALES_DATA' which maps sales to territories, this table analyzes performance trends (UP/DOWN) and market position (Rank/Contribution) at three specific levels: Individual Product/SKU (P), Product Strength (PS), and overall Brand Family (PB).",
+    "synonyms": [
+      "product growth analysis",
+      "sku vs brand performance",
+      "sales ranking report",
+      "contribution percentage analysis",
+      "growth indicators up down",
+      "hierarchical sales report"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "COMPANY_NAME": "Name of the business unit (e.g., IPL, IHNL)",
+      "BRAND_NAME": "Name of the brand family (e.g., REPOSE, SIESTA)",
+      "PRODUCT_STRENGTH": "Specific dosage or concentration (e.g., '100 TABLET')",
+      "SAP_CODE": "Unique SAP system identifier",
+      "P_CODE": "Short product code",
+      "P_NAME": "Full descriptive name of the specific product SKU",
+      "P_CMR_SOLD_QTY": "Product (SKU) Quantity sold in Current Month Range",
+      "P_PMR_SOLD_QTY": "Product (SKU) Quantity sold in Previous Month Range",
+      "P_CMR_SOLD_VALUE": "Product (SKU) Sales Value in Current Month Range",
+      "P_PMR_SOLD_VALUE": "Product (SKU) Sales Value in Previous Month Range",
+      "P_GROWTH_INDICATE": "Growth direction for the specific SKU ('UP' or 'DOWN')",
+      "PS_GROWTH_INDICATE": "Growth direction for the Product Strength ('UP' or 'DOWN')",
+      "PB_GROWTH_INDICATE": "Growth direction for the overall Brand Family ('UP' or 'DOWN')",
+      "P_CODE_CMR_SL": "Rank/Serial position of the SKU in Current Month",
+      "P_CODE_PMR_SL": "Rank/Serial position of the SKU in Previous Month",
+      "PS_CMR_SL": "Rank/Serial position of the Strength in Current Month",
+      "PS_PMR_SL": "Rank/Serial position of the Strength in Previous Month",
+      "PB_CMR_SL": "Rank/Serial position of the Brand in Current Month",
+      "PB_PMR_SL": "Rank/Serial position of the Brand in Previous Month",
+      "P_CMR_CONTRIBUTION": "Percentage contribution of this SKU to total sales in Current Month",
+      "P_PMR_CONTRIBUTION": "Percentage contribution of this SKU to total sales in Previous Month",
+      "PS_CMR_CONTRIBUTION": "Percentage contribution of this Strength to total sales in Current Month",
+      "PS_PMR_CONTRIBUTION": "Percentage contribution of this Strength to total sales in Previous Month",
+      "PB_CMR_CONTRIBUTION": "Percentage contribution of this Brand to total sales in Current Month",
+      "PB_PMR_CONTRIBUTION": "Percentage contribution of this Brand to total sales in Previous Month",
+      "CUR_MONTH_RANGE": "The current date range being analyzed (e.g., 'NOV-DEC-22')",
+      "PRE_MONTH_RANGE": "The previous date range used for comparison (e.g., 'NOV-NOV-21')",
+      "CREATE_DATE": "Report generation timestamp",
+      "CREATE_USER": "User ID who generated the report"
+    },
+    "usage_notes": "Use this table when the user asks about 'Growth Trends' (e.g., 'Which brands are going UP?'), 'Rankings' (e.g., 'What is the rank of Repose?'), or 'Contribution' (e.g., 'How much does this SKU contribute to total sales?'). It allows for nuanced analysis because a single SKU might be 'DOWN' while the overall Brand is 'UP'.",
+    "sample_values": {
+      "BRAND_NAME": ["REPOSE", "REVERT", "SIESTA"],
+      "P_NAME": ["REPOSE 100 TABLET 10'S AFG", "REVERT TABLET 100'S"],
+      "P_GROWTH_INDICATE": ["UP", "DOWN"],
+      "PB_GROWTH_INDICATE": ["DOWN", "UP"],
+      "CUR_MONTH_RANGE": ["NOV-DEC-22"]
+    }
+  },
+  "COMPANY_WISE_SALES_SUMMARY": {
+    "description": "Monthly sales summary broken down by specific business sectors and divisions within each company. Unlike other tables that split by 'Channel' (Depot/Inst), this table splits by 'Product Category' (e.g., Animal Health, Human Health, Diaper, Infusion). It provides a high-level monthly performance view of these specific operational divisions.",
+    "synonyms": [
+      "sector wise monthly sales",
+      "division performance report",
+      "animal health vs human health",
+      "diaper and infusion sales",
+      "monthly business unit summary",
+      "ipl general vs animal health"
+    ],
+    "entities": {
+      "IPL": "Incepta Pharmaceuticals Ltd",
+      "IVL": "Incepta Vaccine Ltd",
+      "IHHL": "Incepta Hygiene and Hospitacare Ltd",
+      "IHNL": "Incepta Herbal and Nutritive Ltd"
+    },
+    "columns": {
+      "SALES_YEAR": "Numerical year of the record (e.g., 2019, 2020)",
+      "SALES_MONTH": "Month and Year of the record (e.g., 'SEP-19', 'FEB-20')",
+      "IPL_GENERAL": "Sales revenue from IPL General Pharma products (Human Health)",
+      "IPL_INSTITUTE": "Sales revenue from IPL Institutional/Hospital business",
+      "IPL_ANIMAL_HEALTH": "Sales revenue from IPL Animal Health division",
+      "IPL_TOTAL": "Total monthly sales for Incepta Pharmaceuticals Ltd",
+      "IVL_HUMAN": "Sales revenue from IVL Human Vaccines",
+      "IVL_ANIMAL": "Sales revenue from IVL Animal Vaccines",
+      "IVL_INSTITUTE": "Sales revenue from IVL Institutional business",
+      "IVL_TOTAL": "Total monthly sales for Incepta Vaccine Ltd",
+      "IHHL_DIAPER": "Sales revenue from Hygiene/Diaper division (NeoCare)",
+      "IHHL_INFUSION": "Sales revenue from Hospitacare/Infusion division",
+      "IHHL_TOTAL": "Total monthly sales for Incepta Hygiene and Hospitacare Ltd",
+      "IHNL_TOTAL": "Total monthly sales for Incepta Herbal and Nutritive Ltd",
+      "TOTAL": "Grand total monthly sales across all companies and divisions",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table specifically when the user asks about 'Animal Health', 'Diaper', or 'Infusion' sales, or wants to compare 'Human vs Animal' performance. The 'IPL_GENERAL' column typically represents the core human pharmaceutical business.",
+    "sample_values": {
+      "SALES_MONTH": ["SEP-19", "FEB-20"],
+      "IPL_ANIMAL_HEALTH": [1.61, 2.27],
+      "IHHL_DIAPER": [3.23, 4.1]
+    }
+  },
+  "DASH_NATIONAL_REPORT": {
+    "description": "Daily national sales dashboard report tracking targets vs. achievement at the Depot and SKU level. This table provides a snapshot of daily operations, showing how specific Sales Areas (e.g., Kushtia, Comilla) are performing against their targets for individual products. It includes metrics for Quantity, Value, Discounts, and Stock levels.",
+    "synonyms": [
+      "daily sales dashboard",
+      "national sales report",
+      "depot daily achievement",
+      "target vs achievement daily",
+      "stock and sales position",
+      "territory performance monitor"
+    ],
+    "entities": {
+      "Sales Areas": "Regional depots or territories (e.g., Kushtia, Comilla, Feni)",
+      "Product Groups": "Operational divisions (e.g., KINETIX, ZYMOS, ANIMAL HEALTH)"
+    },
+    "columns": {
+      "WDATE": "Date of the dashboard report (e.g., 12/22/2025)",
+      "SALES_AREA_CODE": "Numeric identifier for the sales area",
+      "D_ID": "Distributor or Depot ID",
+      "NAME": "Name of the Sales Area or Depot (e.g., 'Kushtia', 'Dhaka')",
+      "SAP_CODE": "System code for the product",
+      "P_CODE": "Short product code",
+      "DESCRIPTION": "Full description of the product",
+      "PACK_S": "Pack size (e.g., '100S', '100ML')",
+      "P_GROUP": "Product Group or Division name",
+      "T_P": "Trade Price (Unit Price)",
+      "N_TGT": "National Target quantity",
+      "DEPT_TGT": "Depot Target quantity",
+      "VAL_N_TGT": "National Target Value (Monetary)",
+      "VAL_DEP_TGT": "Depot Target Value (Monetary)",
+      "N_T_TGT": "National Trade Target (?)",
+      "DEP_T_TGT": "Depot Trade Target Quantity (Used for Achievement calculation)",
+      "QTY_SOLD": "Quantity sold (Primary Sales)",
+      "QTY_INT": "Quantity sold via Internal/Institutional channel",
+      "QTY_EXP_SALE": "Total Quantity Sold (Sum of Sold + Int)",
+      "VAL_SOLD": "Value of primary sales",
+      "VAL_INT": "Value of Internal/Institutional sales",
+      "VAL_EXP_SALE": "Total Sales Value (Sum of Val Sold + Val Int)",
+      "INT_VDIS_AMT": "Internal Value Discount Amount",
+      "SOLD_VDIS_AMT": "Sold Value Discount Amount",
+      "INT_TDIS_AMT": "Internal Trade Discount Amount",
+      "SOLD_TDIS_AMT": "Sold Trade Discount Amount",
+      "QTY_STOCK": "Current quantity in stock at the depot",
+      "ACH": "Achievement Percentage (Total Qty Sold / Depot Trade Target * 100)",
+      "ID": "Record unique identifier",
+      "CREATE_USER": "User ID who generated the record",
+      "CREATE_DATE": "Timestamp of record generation"
+    },
+    "usage_notes": "Use this table for tactical, daily queries like 'Which depots missed their target yesterday?' or 'What is the stock level of Omidon in Kushtia?'. The 'ACH' column gives a direct percentage performance metric. 'QTY_EXP_SALE' represents the total effective sales volume.",
+    "sample_values": {
+      "NAME": ["Kushtia", "Comilla", "Feni"],
+      "DESCRIPTION": ["OMIDON D 10 TABLET (100S)", "OSARTIL 50 PLUS TABLET (50S)"],
+      "ACH": [81, 19.3, 124.9],
+      "QTY_STOCK": [21, 158, 2383]
+    }
   },
   "DASHBOARD_USERS_INFO": {
-    "description": "System User Profiles & Designations.",
-    "columns": { "USER_ID": "Employee ID", "DESIG": "Designation", "VALID": "Active Status" }
+    "description": "User management and authentication registry for the sales dashboard. This table stores employee credentials, role assignments, and specific access rights (which Territories or Product Groups they can view). It is used for login verification and permission handling.",
+    "synonyms": [
+      "user list",
+      "login credentials",
+      "employee access control",
+      "dashboard user roles",
+      "admin and user directory",
+      "password table"
+    ],
+    "entities": {
+      "HO": "Head Office (Central Admin/Management)",
+      "NSM": "National Sales Manager",
+      "MIS": "Management Information Systems (Admin)",
+      "General": "General Product Group access"
+    },
+    "columns": {
+      "ID": "Unique system identifier for the user record",
+      "NAME": "Full name of the user/employee",
+      "USER_ID": "Unique login ID or Employee ID (e.g., 1015975)",
+      "DESIG": "Job Designation (e.g., 'NSM', 'HO', 'MIS')",
+      "P_GROUP": "Product Group access scope (e.g., 'GENERAL', 'ALL' - defines which products the user can see)",
+      "TERR_ID": "Territory ID access scope (e.g., 'NSM0', 'HO', 'All' - defines which regions the user can see)",
+      "EMAIL": "User's email address",
+      "UPASSWORD": "Bcrypt hashed password string for secure authentication",
+      "UROLE": "Numeric User Role ID defining permission level (e.g., 1, 3, 4)",
+      "REMEMBER_TOKEN": "Session persistence token",
+      "RAW_PASSWORD": "Unmasked/Plaintext password (Sensitive column, likely for recovery or initial setup)",
+      "SALES_REPORT": "Flags or codes indicating specific report access permissions (e.g., 'ALL')",
+      "REMARK1": "General remarks or notes about the user account",
+      "EMP_PLANT": "Plant or Manufacturing Unit code associated with the employee",
+      "CREATE_DATE": "Timestamp when the user account was created",
+      "CREATE_USER": "ID of the admin who created this user account",
+      "VALID": "Account status flag (e.g., 'YES' for active)",
+      "PLANT_ID": "Plant ID association",
+      "UNIT": "Business unit association",
+      "SYSTEM_TOKEN": "System-level access token"
+    },
+    "usage_notes": "Use this table to look up who has access to specific data (via P_GROUP or TERR_ID) or to map 'CREATE_USER' IDs from other tables to actual names. WARNING: This table contains 'RAW_PASSWORD' and 'UPASSWORD'; treat this data as highly sensitive credential information.",
+    "sample_values": {
+      "NAME": ["NSM NSM", "Mohammad Anwar Hossain", "Md. Titumir Chowdhury"],
+      "DESIG": ["NSM", "HO"],
+      "P_GROUP": ["GENERAL", "ALL", "HO"],
+      "TERR_ID": ["NSM0", "HO", "All", "IT"],
+      "VALID": ["YES"]
+    }
+  },
+  "DEPOT_GROUP_WISE_SALES": {
+    "description": "Daily sales performance report broken down by Depot and Product Group. This table tracks Target vs. Actual Sales values for specific operational divisions (e.g., Hygiene, Human Vaccine) within each depot. It also includes working day metrics (Total Working Days vs. Worked Days) for run-rate analysis.",
+    "synonyms": [
+      "depot group performance",
+      "division wise target vs achievement",
+      "daily group sales",
+      "working day analysis",
+      "depot division sales"
+    ],
+    "entities": {
+      "P_GROUP": "Major Product Groups/Divisions (e.g., HYGIENE (DIAPER), HUMAN VACCINE, HERBAL & NUTRICARE, HOSPICARE, KINETIX)",
+      "Depots": "Identified by D_ID"
+    },
+    "columns": {
+      "REPORT_MONTH": "The month being reported (e.g., 'DEC-25')",
+      "REPORT_TYPE": "Frequency of the report (e.g., 'DAILY')",
+      "REPORT_UPTO": "The data cut-off date for the report",
+      "REPORT_DATE": "The date the report was generated or presented",
+      "TWD": "Total Working Days in the month (e.g., 27)",
+      "WD": "Working Days elapsed so far (e.g., 19)",
+      "D_ID": "Numeric ID of the Depot/Sales Center",
+      "P_GROUP": "Name of the Product Group or Division",
+      "TARGET_VALUE": "Monetary sales target for this group at this depot",
+      "SALES_VALUE": "Actual monetary sales achieved",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table to analyze divisional performance at a depot level. The 'TWD' (Total Working Days) and 'WD' (Worked Days) columns are essential for calculating 'Required Run Rate' or 'Pro-rated Target' (e.g., is the depot ahead or behind schedule given the number of days passed?).",
+    "sample_values": {
+      "P_GROUP": ["HYGIENE (DIAPER)", "HUMAN VACCINE", "KINETIX"],
+      "REPORT_MONTH": ["DEC-25"],
+      "TWD": [27],
+      "WD": [19],
+      "SALES_VALUE": [2720431, 3756593, 15329733]
+    }
+  },
+  "DEPOT_SALE": {
+    "description": "Daily operational sales ledger for depots. This table records the most granular daily transaction details, distinguishing between 'Sold' (Regular Trade) and 'Int' (Internal/Institutional) transactions. It tracks Quantities, Values, and specific Discount amounts (Volume Discount, Trade Discount) for each Product (P_CODE) within each Territory (TERR_ID).",
+    "synonyms": [
+      "daily depot ledger",
+      "territory transaction log",
+      "daily discount report",
+      "stock out report",
+      "sold vs internal daily",
+      "cumulative outflow tracker"
+    ],
+    "entities": {
+      "P_GROUP": "Product Group (e.g., ZYMOS, CELLBIOTIC, KINETIX)",
+      "TERR_ID": "Specific Sales Territory ID (e.g., KUS-Z-72)",
+      "D_ID": "Depot ID"
+    },
+    "columns": {
+      "REPORT_DATE": "Date the report was run",
+      "WDATE": "Actual Date of the sales transaction (Working Date)",
+      "WDAY": "Working Day number of the month (e.g., 17)",
+      "SALES_AREA_CODE": "Numeric Area code",
+      "D_ID": "Depot ID",
+      "TERR_ID": "Territory ID associated with the sale",
+      "P_GROUP": "Product Group Name",
+      "P_CODE": "Short Product Code",
+      "INT_QTY": "Quantity sold/transferred via Internal/Institutional channel",
+      "INT_VALUE": "Value of Internal/Institutional sales",
+      "INT_QTY_WB": "Internal Quantity (WB unit specific?)",
+      "INT_VALUE_WB": "Internal Value (WB unit specific?)",
+      "SOLD_QTY": "Quantity sold via General/Trade channel",
+      "SOLD_VALUE": "Value of General/Trade sales",
+      "TODAY_CMIC": "Today's Contribution Margin (Current Month)? / Cost Metric?",
+      "TODAY_PMIC": "Today's Contribution Margin (Previous Month)? / Cost Metric?",
+      "TODAY_INT": "Today's Internal Total?",
+      "CMONTH_SOLD_QTY": "Cumulative Sold Quantity for the Current Month",
+      "CMONTH_SOLD_VALUE": "Cumulative Sold Value for the Current Month",
+      "CMONTH_SOLD_VOLUME_DIS": "Cumulative Volume Discount given this month",
+      "INT_VOLUME_DIS": "Volume Discount on Internal sales today",
+      "INT_TRADE_DIS": "Trade Discount on Internal sales today",
+      "SOLD_VOLUME_DIS": "Volume Discount on General sales today",
+      "SOLD_TRADE_DIS": "Trade Discount on General sales today",
+      "TO_DAY_OUT_QTY": "Total Outflow Quantity Today (Sold + Int)",
+      "TO_DAY_OUT_VALUE": "Total Outflow Value Today",
+      "CUM_OUT_QTY": "Cumulative Outflow Quantity Month-to-Date",
+      "CUM_OUT_VALUE": "Cumulative Outflow Value Month-to-Date",
+      "TOTAL_INT_VALUE": "Total Internal Value calculated field",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table for auditing daily operations. It answers questions like 'How much discount was given on Zymos products in Kushtia yesterday?' or 'What is the daily split between Trade Sales and Internal Sales for this territory?'. It contains the rawest form of daily transactional data.",
+    "sample_values": {
+      "TERR_ID": ["KUS-Z-72", "SYL-BK-62"],
+      "P_CODE": ["CMS", "OTX", "ALC"],
+      "SOLD_VALUE": [2436, 112, 225],
+      "INT_VALUE": [225, 0]
+    }
+  },
+  "DHK_GRP_MKT_WISE_SALES": {
+    "description": "Daily sales breakdown specifically for the Dhaka region, segmented by Market Type. This table analyzes Product Group performance across three distinct channels: Dhaka Retail (City Pharmacies), Mitford (Wholesale Market), and Outstation (Peripheral areas).",
+    "synonyms": [
+      "dhaka market analysis",
+      "mitford vs retail sales",
+      "wholesale vs retail dhaka",
+      "group wise market split",
+      "dhaka region sales breakdown"
+    ],
+    "entities": {
+      "Mitford": "The largest wholesale medicine market in Bangladesh (located in Old Dhaka)",
+      "Dhaka Retail": "Direct sales to pharmacies within Dhaka city",
+      "Outstation": "Sales to areas outside the main Dhaka metro area but managed by this unit"
+    },
+    "columns": {
+      "REPORT_MONTH": "The month being reported (e.g., 'DEC-25')",
+      "REPORT_TYPE": "Frequency of the report (e.g., 'DAILY')",
+      "REPORT_UPTO": "The data cut-off date",
+      "REPORT_DATE": "Date the report was generated",
+      "TWD": "Total Working Days in the month",
+      "WD": "Working Days elapsed so far",
+      "D_ID": "Depot ID (likely Dhaka-based depots)",
+      "P_GROUP": "Product Group or Division name (e.g., CELLBIOTIC, ZYMOS)",
+      "DHAKA_RETAIL": "Sales revenue from retail pharmacies in Dhaka",
+      "MITFORD": "Sales revenue from the Mitford wholesale market",
+      "OUTSTATION": "Sales revenue from outstation territories",
+      "GRAND_TOTAL": "Total sales sum of Retail + Mitford + Outstation",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table specifically to analyze the 'Mitford' effect (wholesale contribution) or to compare city-center retail vs. peripheral sales for specific product groups in Dhaka.",
+    "sample_values": {
+      "P_GROUP": ["CELLBIOTIC", "ZYMOS"],
+      "MITFORD": [10028, 5817],
+      "DHAKA_RETAIL": [0],
+      "GRAND_TOTAL": [4037881, 2001833]
+    }
+  },
+  "EXPO_ABC": {
+    "description": "Registry of international export partners and product registrations. This table maps specific products to their destination countries and provides details on the local 'Agent' (distributor/partner) and the primary contact person. It also includes product-specific details like Generic Name and Pack Size.",
+    "synonyms": [
+      "export agent list",
+      "international distributor registry",
+      "country wise product registration",
+      "export partners",
+      "foreign market agents",
+      "global contact list"
+    ],
+    "entities": {
+      "Agent Company": "The local distributor or partner company in the destination country",
+      "Agent Person": "The specific point of contact at the distributor's office"
+    },
+    "columns": {
+      "EXPORT_COUNTRY": "Name of the destination country (e.g., Armenia, Sri Lanka, Togo)",
+      "PRODUCT_NAME": "Brand name of the product being exported (e.g., Levoxin, Trego)",
+      "GENERIC_NAME": "The generic or chemical name of the active ingredient (e.g., Levofloxacin, Mupirocin)",
+      "PRODUCT_CODE": "Internal code for the product",
+      "FINISH_PRODUCT_CODE": "Code for the specific finished good/SKU",
+      "PLANT_ID": "Identifier for the manufacturing plant (e.g., 1100)",
+      "PACK_SIZE": "Packaging configuration (e.g., '20's', '1's')",
+      "AGENT_COMPANY": "Name of the local agent or distributor company",
+      "AGENT_PERSON": "Name of the key contact person at the agent company"
+    },
+    "usage_notes": "Use this table to answer questions about international operations, such as 'Who is our agent in Sri Lanka?', 'What products are registered in Togo?', or 'Who is the contact person for APES Pharma?'. It bridges the gap between products and foreign markets.",
+    "sample_values": {
+      "EXPORT_COUNTRY": ["Armenia", "Burundi", "Togo", "Vietnam"],
+      "AGENT_COMPANY": ["Armfarm", "Citihealth Imports (Pvt) Limited", "APES Pharma"],
+      "AGENT_PERSON": ["Mr. Eduard", "Mr. Snajay Jayaratne", "Mr. KLOKPA Komlan Sefandji"]
+    }
+  },
+  "EXPO_AGENT_LIST": {
+    "description": "Master directory of international export customers and agents. This table contains the core contact and address information for all foreign entities Incepta does business with. It includes unique Customer IDs, full addresses (Street, City, Country), and communication details (Phone, Fax).",
+    "synonyms": [
+      "export customer master",
+      "international agent directory",
+      "foreign buyer address book",
+      "distributor contact list",
+      "global customer registry"
+    ],
+    "entities": {
+      "Customer": "The international business entity (Distributor/Agent/Buyer)",
+      "Search Term": "Short code or alias used to quickly find the customer"
+    },
+    "columns": {
+      "CUSTOMER": "Unique numeric identifier for the international customer/agent",
+      "COUNTRY": "Name of the country where the customer is located",
+      "NAME_1": "Primary legal name of the customer company",
+      "NAME_2": "Secondary name or continuation of the company name",
+      "CITY": "City of the customer's office",
+      "POST_CODE": "Postal or ZIP code",
+      "SEARCH_TERM": "Abbreviated search key or alias",
+      "TELEPHONE_1": "Primary contact phone number",
+      "TELEPHONE_2": "Secondary contact phone number",
+      "FAX_NUMBER": "Fax number",
+      "STREET_2": "Address line 2 (Street/Building)",
+      "STREET_3": "Address line 3",
+      "STREET_4": "Address line 4",
+      "CREATE_USER": "User ID of the admin who created the record",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table when you need the physical address or phone number of an international partner. It is often cross-referenced with 'EXPO_ABC' using the Agent Name to get full contact details.",
+    "sample_values": {
+      "CUSTOMER": [5000000, 5000001, 5000140],
+      "COUNTRY": ["Cambodia", "Togo", "Uganda"],
+      "NAME_1": ["World Heath Pharmaceuticals Co Ltd", "Universal Marketing", "Pharma Ville Ltd"]
+    }
+  },
+  "EXPO_COUNTRY_LIST": {
+    "description": "Master reference table for country codes and names. This table lists standardized two-letter codes (e.g., 'AD', 'AE') mapped to their full country names. It acts as a lookup source for validating country entries in other export-related tables.",
+    "synonyms": [
+      "country code list",
+      "iso country codes",
+      "export destinations list",
+      "master country table",
+      "nation codes",
+      "geographical reference"
+    ],
+    "entities": {
+      "Country Code": "Two-letter unique identifier (ISO 3166-1 alpha-2 format)",
+      "Country Name": "Full official English name of the country"
+    },
+    "columns": {
+      "COUNTRY_CODE": "Two-letter standardized country code (e.g., 'US', 'BD', 'AE')",
+      "COUNTRY_NAME": "Full English name of the country (e.g., 'United States', 'Bangladesh')",
+      "CREATE_USER": "User ID of the admin who added the country to the list",
+      "CREATE_DATE": "Timestamp when the record was created"
+    },
+    "usage_notes": "Use this table to standardize country names or resolve codes found in other tables. For example, if another table uses 'AE', this table confirms it stands for 'United Arab Emirates'. It is essential for generating dropdown lists or validating user input for geography.",
+    "sample_values": {
+      "COUNTRY_CODE": ["AD", "AE", "AF"],
+      "COUNTRY_NAME": ["Andorra", "United Arab Emirates", "Afghanistan"]
+    }
+  },
+  "EXPO_COUNTRY_WISE_PRODUCTS": {
+    "description": "Detailed registry mapping specific finished export products (SKUs) to their destination countries and designated local agents. Unlike the simpler 'EXPO_ABC' view, this table includes the specific physical address of the agent for each product registration, along with system audit trails (creation and update logs).",
+    "synonyms": [
+      "export product registration details",
+      "agent address by product",
+      "country sku map",
+      "export product master list",
+      "detailed export agent registry"
+    ],
+    "entities": {
+      "Agent": "The local distributor/partner (Company Agent Name)",
+      "Generic": "Active pharmaceutical ingredient (Product Generic)"
+    },
+    "columns": {
+      "ID": "Unique system identifier for the registration record",
+      "FINISH_PRODUCT_CODE": "Unique code for the specific finished good/SKU",
+      "PLANT_ID": "Manufacturing plant identifier (e.g., 1100)",
+      "PRODUCT_CODE": "Base product code",
+      "PRODUCT_NAME": "Brand name of the export product",
+      "PRODUCT_GENERIC": "Generic name of the active ingredient",
+      "EXPORT_COUNTRY": "Destination country",
+      "PACK_SIZE": "Packaging configuration (e.g., '1's', '30's')",
+      "COMPANY_AGENT_NAME": "Name of the local agent company",
+      "CONTACT_NAME": "Name of the contact person at the agency",
+      "ADDRESS": "Full physical address of the agent for this specific product context",
+      "CREATE_USER": "ID of the user who created this record",
+      "CREATE_DATE": "Timestamp when the record was created",
+      "UPDATED_AT": "Timestamp when the record was last modified",
+      "UPDATE_USER": "ID of the user who last modified the record"
+    },
+    "usage_notes": "Use this table when the query requires the specific *address* of an agent for a particular product, or for auditing purposes (e.g., 'Who updated the record for Myanmar?'). It provides the most complete contact details linked to a specific SKU.",
+    "sample_values": {
+      "EXPORT_COUNTRY": ["Bolivia", "Ethiopia", "Myanmar"],
+      "PRODUCT_NAME": ["Cispenam 500 Injection", "Exephin 1 gm IV/IM Injection", "Uroben XR 50 Tablet"],
+      "COMPANY_AGENT_NAME": ["Cell Chem Pharmaceuticals Inc", "Remkaln General Trading Plc.", "RNA Global Trading Company limited"]
+    }
   },
   "EXPO_INFO": {
-    "description": "Regulatory Status Tracker (Registration/Expiry).",
-    "columns": { "BRAND_NAME": "Product", "CURRENT_STATUS": "Status", "EXPIRY_RENEWAL_DATE": "Expiry" }
+    "description": "Comprehensive regulatory affairs tracking table for international product registrations. This table monitors the entire lifecycle of an export product's registration process in a specific country. It tracks detailed milestones including Dossier preparation (CTD/Non-CTD), API sourcing, submission to local agents and regulatory bodies, approval status, registration certificates, renewals, and variations.",
+    "synonyms": [
+      "regulatory affairs tracker",
+      "export registration lifecycle",
+      "dossier status report",
+      "product approval database",
+      "international registration master",
+      "regulatory submission tracker"
+    ],
+    "entities": {
+      "IM_TEAM": "International Marketing Team (Internal department)",
+      "IRA": "International Regulatory Affairs (Internal department)",
+      "Agent": "Local partner facilitating the registration"
+    },
+    "columns": {
+      "LINE_ID": "Unique system identifier for the tracking record",
+      "STATUS": "Current status of the registration (e.g., 'REG' for Registered, 'NEW', 'Process')",
+      "RENEW_STATUS": "Status of the renewal process if applicable",
+      "PLANT_ID": "Manufacturing plant identifier",
+      "FINISH_PRODUCT_CODE": "Code for the finished export product",
+      "PRODUCT_CODE": "Base product code",
+      "BRAND_NAME": "Domestic brand name",
+      "EXPORT_COUNTRY": "Target destination country",
+      "EXPO_PRODUCT_NAME": "Brand name used in the export market",
+      "PRODUCT_GENERIC": "Active pharmaceutical ingredient (Generic name)",
+      "PACK_SIZE": "Packaging configuration",
+      "COMPANY_AGENT_NAME": "Name of the local agent company",
+      "CONTACT_NAME": "Contact person at the agency",
+      "ADDRESS": "Agent's address",
+      "IM_TEAM": "Name/ID of the International Marketing team member responsible",
+      "SUBMITTED_TO_IM": "Date dossier was submitted to IM team",
+      "SUB_NAME": "Name of the submitter",
+      "SUB_BY_IRA": "Name of the IRA team member responsible",
+      "DOSSIER_TYPE": "Type of regulatory dossier (e.g., 'CTD', 'NON_CTD')",
+      "API_TYPE": "Type/Grade of API used",
+      "CTD_API_SOURCE": "Source of API for CTD dossiers",
+      "CTD_FP_SPEC": "Finished Product specifications (CTD)",
+      "CTD_MANUFACTURER": "Manufacturer details (CTD)",
+      "CTD_STABILITY": "Stability study data (CTD)",
+      "PV": "Pharmacovigilance data status",
+      "IMPURITY_OF_FP": "Finished Product impurity profile status",
+      "CTDP_MATCH": "CTD Profile match status",
+      "CTD_STUDY": "CTD Study details",
+      "NONCTD_API_SOURCE": "Source of API for Non-CTD dossiers",
+      "NONCTD_FP_SPEC": "Finished Product specifications (Non-CTD)",
+      "NONCTD_MANUFACTURER": "Manufacturer details (Non-CTD)",
+      "NONCTD_STABILITY": "Stability study data (Non-CTD)",
+      "NAME_OF_THE_COMPANY_AGENT": "Agent name (Redundant/Alternative field)",
+      "SUBMITTED_TO_AGENT": "Date dossier was sent to the local agent",
+      "SUBMITTED_TO_REGULARITY": "Date dossier was submitted to the local regulatory authority",
+      "UPDATE_USER_IM_STAGE1": "User who updated the IM Stage 1 status",
+      "UPDATE_DATE_IM_STAGE1": "Timestamp of IM Stage 1 update",
+      "CREATE_USER": "User ID who created the record",
+      "CREATE_DATE": "Record creation timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "IN_PROCESS_DEF_GEN": "Deficiency letter generation status",
+      "IN_PROCESS_DG_DATE": "Date of deficiency generation",
+      "DG_DATE_CLOSE": "Date deficiency was closed/resolved",
+      "DG_COMMENTS": "Comments regarding the deficiency",
+      "DEF_GEN_CLOSE": "Deficiency generation closure status",
+      "UPDATE_USER_IRA_STAGE2": "User who updated IRA Stage 2",
+      "UPDATE_DATE_IRA_STAGE2": "Timestamp of IRA Stage 2 update",
+      "DROPPED_BY_AGENT_MAH": "Flag if dropped by Agent or Marketing Authorization Holder",
+      "WITHDRAWAL_FORM_RA_DATE": "Date of withdrawal from Regulatory Authority",
+      "APPROVAL_DATE": "Date of final registration approval",
+      "REGISTRATION_NUMBER": "Official registration license number",
+      "EXPIRY_RENEWAL_DATE": "Date when the registration expires or needs renewal",
+      "REGISTRATION_CERTIFICATE": "Status of the physical certificate",
+      "REG_CERT_PATH": "File path/URL to the scanned registration certificate",
+      "REJECTION_DATE": "Date of rejection (if applicable)",
+      "REG_SHELF_LIFE_PRODUCT": "Approved shelf life of the product",
+      "LAUNCHED_DATE": "Date the product was commercially launched",
+      "VARIATION_DATE": "Date a variation was requested",
+      "VARIATION_GRANTED_REFUSED": "Status of the variation request",
+      "VARIATION_GRANTED_REFUSED_DATE": "Date of variation decision",
+      "IM_2_REMARKS": "Additional remarks from IM team (Stage 2)"
+    },
+    "usage_notes": "Use this table for deep-dive questions about the *status* of a registration (e.g., 'Is Cefamax registered in Sri Lanka?', 'When does the license for Pantonix expire in Kenya?'). It is the definitive source for regulatory compliance data.",
+    "sample_values": {
+      "STATUS": ["REG", "NEW", "Process"],
+      "EXPORT_COUNTRY": ["Sri Lanka", "Togo", "Vietnam"],
+      "DOSSIER_TYPE": ["CTD", "NON_CTD"],
+      "APPROVAL_DATE": ["6/8/2021 11:46:14 AM"],
+      "REG_CERT_PATH": ["/IRA_PDF/NONCTD/Sri_Cenolo_API_CoA.pdf"]
+    }
   },
   "EXPO_INFO_ABC": {
-    "description": "Regulatory Workflow Tracker (Sent to Agent).",
-    "columns": { "BRAND_NAME": "Product", "SENT_TO_AGENT": "Date Sent" }
+    "description": "Workflow-focused export registration tracker containing a subset of regulatory data. This table is likely optimized for the International Marketing (IM) and Agent coordination teams, focusing heavily on submission dates (Submitted to IM, Agent, Regulatory), approval milestones, and status updates. It acts as a timeline monitor for the registration process.",
+    "synonyms": [
+      "im team registration view",
+      "export submission timeline",
+      "agent coordination tracker",
+      "registration milestone report",
+      "simplified regulatory status"
+    ],
+    "entities": {
+      "IM_TEAM": "International Marketing Team",
+      "IRA": "International Regulatory Affairs",
+      "Agent": "Local external partner"
+    },
+    "columns": {
+      "LINE_ID": "Unique system identifier",
+      "PLANT_ID": "Manufacturing plant ID (e.g., 1100)",
+      "FINISH_PRODUCT_CODE": "Finished product SKU code",
+      "COMPANY_AGENT_NAME": "Name of the local agent company",
+      "CONTACT_NAME": "Contact person at the agent company",
+      "ADDRESS": "Agent's physical address",
+      "NAME_OF_THE_COMPANY_AGENT": "Agent name (redundant/alternative field)",
+      "PACK_SIZE": "Packaging configuration (e.g., '30's')",
+      "IM_TEAM": "IM Team member identifier (e.g., 'IM-1', 'IM-2')",
+      "SUBMITTED_TO_IM": "Date the dossier was submitted to the International Marketing team",
+      "SUB_NAME": "Name of the submitter",
+      "SUB_BY_IRA": "Name of the IRA member handling the submission",
+      "SUBMITTED_TO_AGENT": "Date the dossier was sent to the Agent",
+      "SUBMITTED_TO_REGULARITY": "Date the dossier was submitted to the Regulatory Authority",
+      "UPDATE_USER_IM_STAGE1": "User who updated IM Stage 1",
+      "UPDATE_DATE_IM_STAGE1": "Timestamp of IM Stage 1 update",
+      "UPDATE_USER": "User who last modified the record",
+      "IN_PROCESS_DEF_GEN": "Deficiency generation status",
+      "IN_PROCESS_DG_DATE": "Date of deficiency generation",
+      "DG_DATE_CLOSE": "Date deficiency was resolved",
+      "DG_COMMENTS": "Comments on deficiency",
+      "DEF_GEN_CLOSE": "Deficiency closure status",
+      "UPDATE_USER_IRA_STAGE2": "User who updated IRA Stage 2",
+      "UPDATE_DATE_IRA_STAGE2": "Timestamp of IRA Stage 2 update",
+      "DROPPED_BY_AGENT_MAH": "Flag if dropped by Agent/Marketing Authorization Holder",
+      "WITHDRAWAL_FORM_RA_DATE": "Date of withdrawal from Regulatory Authority",
+      "APPROVAL_DATE": "Date of registration approval",
+      "REGISTRATION_NUMBER": "License/Registration number",
+      "EXPIRY_RENEWAL_DATE": "Registration expiry or renewal date",
+      "REJECTION_DATE": "Date of rejection",
+      "REG_SHELF_LIFE_PRODUCT": "Approved shelf life",
+      "LAUNCHED_DATE": "Commercial launch date",
+      "VARIATION_DATE": "Date variation was requested",
+      "VARIATION_GRANTED_REFUSED": "Variation status",
+      "VARIATION_GRANTED_REFUSED_DATE": "Variation decision date",
+      "IM_2_REMARKS": "Remarks from IM Team (Stage 2)",
+      "CURRENT_STATUS": "Current status of the registration (e.g., 'REG', 'NEW')",
+      "UPDATE_USER_IM_STAGE2": "User who updated IM Stage 2",
+      "UPDATE_DATE_IM_STAGE2": "Timestamp of IM Stage 2 update"
+    },
+    "usage_notes": "Use this table when queries focus on the *timeline* of submissions (e.g., 'When was the dossier sent to the agent?') or for tracking the specific workflow steps between IM and IRA teams. For full technical dossier details (API source, Stability data), use 'EXPO_INFO' instead.",
+    "sample_values": {
+      "COMPANY_AGENT_NAME": ["Radiance Pharmaceuticals Limited", "Han Ideal Trading Ltd."],
+      "IM_TEAM": ["IM-1", "IM-2"],
+      "SUBMITTED_TO_IM": ["12/28/2016", "2/22/2015"],
+      "CURRENT_STATUS": ["REG", "NEW"]
+    }
+  },
+  "EXPO_PERMISSION_GROUP": {
+    "description": "Access control definition table for the export module. This reference table defines the specific permission levels (e.g., Read Only, Read and Extract, Read/Write) that can be assigned to user groups. It acts as a security classification system for data access.",
+    "synonyms": [
+      "permission levels",
+      "access rights definition",
+      "user group privileges",
+      "security roles export",
+      "read write access types"
+    ],
+    "entities": {
+      "Extract": "The ability to export data to Excel/CSV",
+      "Write": "The ability to create or modify records",
+      "Read": "The ability to view data only"
+    },
+    "columns": {
+      "PERMISSION_ID": "Unique numeric identifier for the permission level",
+      "PERMISSION_TYPE": "Description of the access rights (e.g., 'Read, Write and Extract', 'Read only')",
+      "REMARKS": "Additional notes regarding the permission scope",
+      "CREATE_USER": "User ID of the admin who defined this permission type",
+      "CREATE_DATE": "Timestamp of creation",
+      "UPDATE_DATE": "Timestamp of the last update",
+      "UPDATE_USER": "User ID of the admin who last updated the record"
+    },
+    "usage_notes": "Use this table to interpret the 'Permission ID' found in user assignment tables. It explains what a specific ID (e.g., 1, 2, 3) actually allows the user to do.",
+    "sample_values": {
+      "PERMISSION_ID": [1, 2, 3],
+      "PERMISSION_TYPE": ["Read, Write and Extract", "Read and Extract", "Read only"]
+    }
+  },
+  "EXPO_PLANT": {
+    "description": "Master reference table for manufacturing plants and operational units. This table maps numeric Plant IDs (used in export and sales tables) to their specific facility names (e.g., Savar Factory, Animal Health Unit, Vaccine Unit). It is essential for decoding the 'PLANT_ID' column found throughout the database.",
+    "synonyms": [
+      "plant code list",
+      "manufacturing unit registry",
+      "factory codes",
+      "production site list",
+      "facility id map"
+    ],
+    "entities": {
+      "Savar": "Main manufacturing site",
+      "Dhamrai": "Secondary manufacturing site",
+      "IBS": "Incepta Biologics/Specialized Unit",
+      "Vaccine": "Dedicated Vaccine manufacturing unit"
+    },
+    "columns": {
+      "PLANT_ID": "Unique numeric identifier for the manufacturing plant (e.g., 1100, 2100)",
+      "PLANT_NAME": "Official name of the manufacturing facility or unit (e.g., 'FACTORY(SAVAR)', 'IPL-ANNIMAL HEALTH')",
+      "CREATE_USER": "User ID of the admin who created the record",
+      "CREATE_DATE": "Timestamp of record creation"
+    },
+    "usage_notes": "Use this table to resolve 'PLANT_ID' references found in other tables like 'EXPO_INFO', 'EXPO_ABC', or 'DASHBOARD_USERS_INFO'. For example, if a user asks 'Which products are made in the Vaccine Unit?', you first look up the ID for 'Vaccine' here (2100) and then filter the product tables by that ID.",
+    "sample_values": {
+      "PLANT_ID": [1100, 1300, 2100],
+      "PLANT_NAME": ["FACTORY(SAVAR)", "IPL-DHAMRAI", "FACTORY (VACCINE)"]
+    }
+  },
+  "EXPO_PLANT_WISE_PRODUCTS": {
+    "description": "Registry mapping base products to their specific manufacturing plant or unit. Unlike the export country maps, this table focuses on the production source, linking a 'Product Code' to a 'Plant ID' (e.g., showing which products are made in the Vaccine Unit vs. the Savar Factory).",
+    "synonyms": [
+      "product plant map",
+      "manufacturing source list",
+      "factory wise product list",
+      "production unit registry",
+      "where is this made"
+    ],
+    "entities": {
+      "Plant": "Manufacturing Facility (linked via PLANT_ID)",
+      "Product": "Base pharmaceutical product"
+    },
+    "columns": {
+      "PLANT_ID": "Numeric identifier for the manufacturing plant (e.g., 1100, 2100)",
+      "PRODUCT_CODE": "Unique code for the base product",
+      "PRODUCT_NAME": "Brand name of the product (e.g., 'Tetrafast 250 Capsule')",
+      "PRODUCT_GENERIC": "Generic name of the active ingredient (e.g., 'Sucralfate', 'Semaglutide')",
+      "CREATE_USER": "User ID of the admin who created the record",
+      "CREATE_DATE": "Timestamp of record creation",
+      "UPDATE_DATE": "Timestamp of the last update",
+      "UPDATE_USER": "User ID of the admin who last updated the record"
+    },
+    "usage_notes": "Use this table to answer questions about manufacturing origins, such as 'Which products are manufactured in the Vaccine Unit?' or 'Where is Fitaro produced?'. It links directly to 'EXPO_PLANT' via 'PLANT_ID'.",
+    "sample_values": {
+      "PLANT_ID": [1100, 2100, 5200],
+      "PRODUCT_NAME": ["Tetrafast 250 Capsule", "Prenovax Vaccine", "Assembled Chamber"],
+      "PRODUCT_GENERIC": ["Sucralfate", "Pneumococcal Polysaccharide (23 serotypes)"]
+    }
+  },
+  "EXPO_REPORT_GROUP": {
+    "description": "Configuration table for grouping multiple reports together. This table defines 'Report Groups' where the 'RPT_TYPE' column typically contains a pipe-separated list of specific Report IDs (e.g., '3|4|9|10') or keywords like 'All'. This allows for managing access or display of reports in bundles rather than individually.",
+    "synonyms": [
+      "report bundles",
+      "report collections",
+      "report grouping definition",
+      "access groups for reports",
+      "report package config"
+    ],
+    "entities": {
+      "Report IDs": "Numbers found within the pipe-separated lists (e.g., 3, 4, 9, 10)"
+    },
+    "columns": {
+      "RPT_ID": "Unique numeric identifier for the report group",
+      "RPT_TYPE": "Definition of the group content. Usually a string of pipe-delimited Report IDs (e.g., '3|4|9|10') or special keywords (e.g., 'All')",
+      "REMARKS": "Description or name of the report group (e.g., 'All Report')",
+      "CREATE_USER": "User ID of the admin who created the group",
+      "CREATE_DATE": "Timestamp of creation",
+      "UPDATE_DATE": "Timestamp of the last update",
+      "UPDATE_USER": "User ID of the admin who last updated the record"
+    },
+    "usage_notes": "Use this table to understand which specific reports (by ID) are included in a group. You will often need to split the 'RPT_TYPE' string by the '|' character to get the individual Report IDs.",
+    "sample_values": {
+      "RPT_ID": [1, 2, 3],
+      "RPT_TYPE": ["All", "3|4|9|10", "3|4"],
+      "REMARKS": ["All Report"]
+    }
+  },
+  "EXPO_REPORT_GROUP_DETAILS": {
+    "description": "User access assignment table for the export module. This table links specific employees (EMP_ID) to defined Report Groups and Permission types. It controls 'who sees what' by assigning a specific scope of access (e.g., 'All reports') and a permission level (e.g., 'Read and Extract') to individual users.",
+    "synonyms": [
+      "user permission assignment",
+      "employee access rights",
+      "report group members",
+      "user role mapping",
+      "export module users"
+    ],
+    "entities": {
+      "IM-1 / IM-2": "International Marketing Teams",
+      "Quality Control": "QC Department users",
+      "Product Planning": "Planning Department users"
+    },
+    "columns": {
+      "SL_ID": "Unique system serial identifier",
+      "EMP_ID": "Employee ID of the user being assigned access (e.g., 1000001)",
+      "NAME": "Full name of the employee",
+      "TEAM": "Internal team or department code (e.g., 'IM-1', 'Quality Control')",
+      "DESIGNATION": "Job title of the employee",
+      "EMAIL": "Corporate email address",
+      "SCOPE_OF_ACCESS": "Text description of the data scope assigned (e.g., 'All reports', 'Report no. 3 & 4')",
+      "REPORT_GROUP": "Numeric ID linking to the 'EXPO_REPORT_GROUP' table (defines which bundle of reports they see)",
+      "PERMISSION_TYPE": "Text description of the permission level (e.g., 'Read and Extract')",
+      "PERMISSION_GROUP": "Numeric ID linking to the 'EXPO_PERMISSION_GROUP' table (defines the technical access level)",
+      "CREATE_USER": "User ID of the admin who assigned the access",
+      "CREATE_DATE": "Timestamp of assignment",
+      "UPDATE_DATE": "Timestamp of last modification",
+      "UPDATE_USER": "User ID of the admin who last updated the assignment"
+    },
+    "usage_notes": "Use this table to check an individual user's access rights. For example, 'Does Ehsan Aziz have write access?' or 'Who are the members of IM-1 with access to the system?'. It bridges the gap between the abstract 'Groups' and actual 'People'.",
+    "sample_values": {
+      "EMP_ID": [1000001, 1011586],
+      "TEAM": ["IM-1", "Quality Control"],
+      "PERMISSION_TYPE": ["Read and Extract", "Read only"]
+    }
   },
   "EXPORT_INSTITUTE_SAL_DET_TEMP": {
-    "description": "Recent/Temp Sales Transactions. Date: Text 'APR-2023'.",
-    "columns": { "SALES_MONTH": "Text Month", "SOLD_VALUE": "Revenue", "SALES_TYPE": "Export/Inst" }
+    "description": "Detailed monthly sales ledger for institutional and export channels. Unlike the summary tables, this table records specific product sales (SKU level) to foreign countries or domestic institutions by month. It tracks Quantity, Value, and the specific destination Country for each transaction block.",
+    "synonyms": [
+      "export sales details",
+      "institutional sales ledger",
+      "country wise sku sales",
+      "monthly export report",
+      "institutional product performance",
+      "transaction details export"
+    ],
+    "entities": {
+      "INSTITUTION": "Domestic bulk sales (e.g., Government tenders, Hospitals)",
+      "EXPORT": "International sales to foreign countries"
+    },
+    "columns": {
+      "SALES_MONTH": "The month and year of the transaction (e.g., 'APR-2023', 'SEP-2023')",
+      "COMPANY_CODE": "Numeric code for the business unit (e.g., 1000)",
+      "COMPANY_NAME": "Name of the business unit (e.g., IPL)",
+      "SAP_CODE": "Unique SAP system identifier for the product",
+      "P_NAME": "Full descriptive name of the product (often includes strength, pack size, and destination market tag like 'CHILE' or 'ZAMBIA')",
+      "COUNTRY": "Destination country for export sales or territory for institutional sales",
+      "SOLD_QTY": "Quantity sold",
+      "SOLD_VALUE": "Monetary value of the sale",
+      "SALES_TYPE": "Classification of the sale ('EXPORT' or 'INSTITUTION')",
+      "CREATE_USER": "User ID who created the record",
+      "CREATE_DATE": "Record creation timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATE_DATE": "Timestamp of the last update"
+    },
+    "usage_notes": "Use this table for granular queries about specific export shipments or institutional deals, such as 'How much Amidol was sold to institutions in April 2023?' or 'List all export sales to Chile'. Note that the 'P_NAME' often contains specific market identifiers.",
+    "sample_values": {
+      "SALES_MONTH": ["APR-2023", "SEP-2023"],
+      "P_NAME": ["AMIDOL 370 INJECTION 50 ML", "RECONIL (HCQS) 200 TABLET 60'S (CHILE)"],
+      "COUNTRY": ["ZAMBIA", "CHILE", "MAURITIUS"],
+      "SALES_TYPE": ["INSTITUTION", "EXPORT"]
+    }
   },
   "EXPORT_INSTITUTE_SALES_DETAILS": {
-    "description": "Historical Sales Archive. Date: Text 'JAN-21'.",
-    "columns": { "SALES_MONTH": "Text Month", "SOLD_VALUE": "Revenue" }
-  },
-  "YEARLY_SALES_ANALYSIS_WEB": {
-    "description": "Pivoted Monthly Dashboard (Columns JAN, FEB...).",
-    "columns": { "SALES_YEAR": "Year", "JAN": "Jan Sales", "SALES_TYPE": "Category" }
+    "description": "Master historical sales ledger for specialized channels: Export, Institution, and Deemed Export. This table records granular transaction details (SKU level) for every month. Unlike the '_TEMP' table which might hold current/processing data, this table serves as the permanent history of non-retail revenue, tracking specific products sold to foreign countries, domestic institutions, or special economic zones (Deemed Export).",
+    "synonyms": [
+      "historical export ledger",
+      "deemed export sales",
+      "institutional sales master",
+      "special sales details",
+      "foreign and tender sales history"
+    ],
+    "entities": {
+      "INSTITUTION": "Domestic bulk sales (e.g., Govt tenders, Army, Hospitals)",
+      "EXPORT": "International sales to foreign countries",
+      "DEEMED EXPORT": "Sales to domestic Special Economic Zones (EPZ) or projects treated as exports"
+    },
+    "columns": {
+      "SALES_MONTH": "The month and year of the transaction (e.g., 'JAN-21')",
+      "COMPANY_CODE": "Numeric code for the business unit (e.g., 1000)",
+      "COMPANY_NAME": "Name of the business unit (e.g., IPL)",
+      "SAP_CODE": "Unique SAP system identifier for the product",
+      "P_NAME": "Full descriptive name of the product (often includes pack size)",
+      "COUNTRY": "Destination country (for Export) or Territory/Institution name",
+      "SOLD_QTY": "Quantity sold",
+      "SOLD_VALUE": "Monetary value of the sale",
+      "SALES_TYPE": "Classification of the sale ('EXPORT', 'INSTITUTION', 'DEEMED EXPORT')",
+      "CREATE_USER": "User ID who created the record",
+      "CREATE_DATE": "Record creation timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATE_DATE": "Timestamp of the last update"
+    },
+    "usage_notes": "Use this table for long-term historical analysis (e.g., 'Show me Deemed Export sales for 2021'). If the user specifically asks about 'Deemed Export', this is the primary table to check, as other tables may group it under generic 'Export' or 'Institution' headers.",
+    "sample_values": {
+      "SALES_MONTH": ["JAN-21"],
+      "SALES_TYPE": ["DEEMED EXPORT", "INSTITUTION"],
+      "P_NAME": ["PANOVIR TABLET 28'S", "TOFACENT 5 TABLET 60'S"],
+      "SOLD_VALUE": [6600000, 503043.4]
+    }
   },
   "EXPORT_SALES_GROWTH": {
-    "description": "High-Level Annual Trends (USD vs BDT).",
-    "columns": { "SALES_YEAR": "Year", "SALES_USD": "USD", "SALES_BDT": "BDT" }
+    "description": "Year-over-year export sales performance report tracking revenue in both US Dollars (USD) and Bangladeshi Taka (BDT). This table is essential for analyzing international revenue trends and currency conversion impacts over time. It calculates percentage growth based on the sales volume.",
+    "synonyms": [
+      "export growth report",
+      "yearly export revenue",
+      "usd vs bdt export sales",
+      "international sales trend",
+      "foreign currency revenue"
+    ],
+    "entities": {
+      "USD": "United States Dollar",
+      "BDT": "Bangladeshi Taka"
+    },
+    "columns": {
+      "SALES_YEAR": "Calendar year of the sales report (e.g., 2011, 2012)",
+      "SALES_USD": "Total Export Sales Revenue in Million USD",
+      "SALES_BDT": "Total Export Sales Revenue in Million BDT",
+      "GROWTH": "Year-over-year percentage growth (calculated on BDT value)",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table for high-level financial trend analysis. It is the only table that explicitly provides the USD equivalent of sales, which is useful for forex analysis. Note that the 'GROWTH' column is typically calculated based on the BDT figures.",
+    "sample_values": {
+      "SALES_YEAR": [2007, 2011, 2013],
+      "SALES_USD": [0.95, 5.22, 7.92],
+      "GROWTH": [473.45, 84.69, 77.09]
+    }
+  },
+  "GM_SM_SALES_ANALYSIS_ACH": {
+    "description": "Sales performance and achievement analysis for high-level management roles. This table tracks the annual targets, actual sales, and percentage achievement for General Managers (GM), Sales Managers (SM), and Deputy Sales Managers (DSM). It allows for performance evaluation of the sales leadership team.",
+    "synonyms": [
+      "management performance report",
+      "gm sm achievement",
+      "sales leadership targets",
+      "managerial sales analysis",
+      "top management scoreboard"
+    ],
+    "entities": {
+      "GM": "General Manager (Top-level sales executive)",
+      "SM": "Sales Manager (Mid-level sales executive)",
+      "DSM": "Deputy Sales Manager",
+      "ASM": "Area Sales Manager (occasionally present)"
+    },
+    "columns": {
+      "SALES_YEAR": "The fiscal or calendar year of the performance review (e.g., 2020, 2025)",
+      "SALES_PERSON": "Role or Designation code (e.g., 'GM', 'SM', 'DSM')",
+      "NAME": "Full name of the sales executive",
+      "TARGET_VALUE": "Total sales target assigned to this manager (in Millions)",
+      "SALES_VALUE": "Total actual sales achieved by this manager (in Millions)",
+      "ACHIEVEMENT": "Percentage of target achieved (Sales / Target * 100)",
+      "CREATE_DATE": "Date the record was created or updated",
+      "REMARK": "Status notes (e.g., 'PRESENT', 'UPTO JUL-20')"
+    },
+    "usage_notes": "Use this table when the user asks about specific people in leadership (e.g., 'How did Ashraf Uddin Ahmed perform in 2025?') or wants to compare management tiers (e.g., 'List all SMs who achieved 100% target').",
+    "sample_values": {
+      "SALES_PERSON": ["GM", "SM", "DSM"],
+      "NAME": ["ABDUL MANNAN", "AHMED SHARIF", "EHSAN AZIZ"],
+      "ACHIEVEMENT": [101.22, 98.96, 96.95]
+    }
+  },
+  "GROUP_WISE_SALES_RM_TO_GM": {
+    "description": "Hierarchical sales performance report mapping the entire chain of command from Regional Manager (RM) to General Manager (GM). Unlike other tables that focus on Depots or Products, this table focuses on People and Leadership. It shows who reports to whom and tracks Target vs. Achievement at every level of the sales organization (RM -> ASM -> DSM -> SM -> NSM -> GM).",
+    "synonyms": [
+      "sales hierarchy report",
+      "chain of command performance",
+      "rm to gm sales",
+      "leadership achievement tracker",
+      "managerial tree",
+      "who reports to whom"
+    ],
+    "entities": {
+      "RM": "Regional Manager (Base level leadership)",
+      "ASM": "Area Sales Manager",
+      "DSM": "Deputy Sales Manager",
+      "SM": "Sales Manager",
+      "NSM": "National Sales Manager",
+      "GM": "General Manager (Top level)"
+    },
+    "columns": {
+      "REPORT_MONTH": "The month being reported (e.g., 'DEC-25')",
+      "REPORT_TYPE": "Frequency of the report (e.g., 'DAILY')",
+      "REPORT_UPTO": "Data cut-off date",
+      "REPORT_DATE": "Date the report was generated",
+      "TWD": "Total Working Days in the month",
+      "WD": "Working Days elapsed so far",
+      "P_GROUP": "Product Group or Division (e.g., ZYMOS, CELLBIOTIC)",
+      "RM_TERR_ID": "Territory ID of the Regional Manager",
+      "RM_NAME": "Name of the Regional Manager",
+      "ASM_ID": "Employee ID of the Area Sales Manager",
+      "ASM_NAME": "Name of the Area Sales Manager",
+      "DSM_ID": "Employee ID of the Deputy Sales Manager",
+      "DSM_NAME": "Name of the Deputy Sales Manager",
+      "SM_ID": "Employee ID of the Sales Manager",
+      "SM_NAME": "Name of the Sales Manager",
+      "NSM_ID": "Employee ID of the National Sales Manager",
+      "NSM_NAME": "Name of the National Sales Manager",
+      "GM_ID": "Employee ID of the General Manager",
+      "GM_NAME": "Name of the General Manager",
+      "TGT_VALUE": "Sales Target assigned to this hierarchy line",
+      "SALES_VALUE": "Actual Sales achieved",
+      "ACH": "Achievement Percentage (Sales / Target * 100)",
+      "TODAY_PRODUCT_OUT": "Value of product that left the depot/warehouse today",
+      "TOTAL_IN_TRANSIT": "Value of product currently in transit to customers/depots",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table for organizational structure queries (e.g., 'Who is the ASM for Kushtia?', 'Who does Alamgir Hossain report to?') or for evaluating leadership performance (e.g., 'Which SM has the highest achievement in the Zymos group?').",
+    "sample_values": {
+      "RM_NAME": ["Alamgir Hossain", "Munshi Sayam Hossen"],
+      "GM_NAME": ["Kh. Mainul Islam"],
+      "P_GROUP": ["ZYMOS", "CELLBIOTIC"],
+      "ACH": [56.51, 87.61]
+    }
+  },
+  "LONG_LIST_INFORMATION": {
+    "description": "Comprehensive cross-functional tracker for the international product registration pipeline ('Long List'). This table monitors the end-to-end readiness of export products, tracking status across multiple departments: Supply Chain (SCM) for API sourcing, R&D Analytical (RDA) for method validation, R&D Formulation (RDF) for stability and bioequivalence, Quality Control (QC) for specifications, and International Regulatory Affairs (IRA) for dossier compilation.",
+    "synonyms": [
+      "regulatory pipeline tracker",
+      "export product long list",
+      "dossier preparation master",
+      "r&d project status",
+      "inter-departmental registration tracker",
+      "product readiness report"
+    ],
+    "entities": {
+      "IRA": "International Regulatory Affairs (Oversees the registration process)",
+      "SCM": "Supply Chain Management (Handles API/Material sourcing)",
+      "RDA": "R&D Analytical (Handles Method Validation/Transfer)",
+      "RDF": "R&D Formulation (Handles Product Development & Stability)",
+      "QC": "Quality Control (Handles Specifications & Testing)",
+      "DDS": "Dossier Development Services (or similar internal documentation team)",
+      "IVA / IVB": "Climatic Zones for Stability Studies (Zone 4A / Zone 4B)"
+    },
+    "columns": {
+      "ID": "Unique system identifier",
+      "SERIAL_NO": "Serial number for the list entry",
+      "IRA_TEAM": "International Regulatory Affairs team responsible (e.g., IM-1, IM-2)",
+      "IRA_COUNTRY": "Target export country code (e.g., GH, KE, MY)",
+      "IRA_PROD_NAME": "Brand name of the product",
+      "IRA_GENERIC_NAME": "Generic name of the active ingredient",
+      "IRA_SITE": "Manufacturing site ID (e.g., 1100, 1300)",
+      "IRA_PACK_SIZE": "Packaging configuration",
+      "IRA_DOSS_TYPE": "Type of dossier (e.g., CTD, ACTD, Non-CTD)",
+      "IRA_REG_CAT": "Registration category (e.g., New, Renewal)",
+      "IRA_OPEN_AVAIL_STATUS": "Open part availability status",
+      "IRA_STUD_CDP_REQ": "Comparative Dissolution Profile (CDP) requirement",
+      "IRA_REMARKS": "General remarks from Regulatory Affairs",
+      "IRA_DOSS_SUB_TIMELINE": "Target date for dossier submission",
+      "SCM_MAT_NAME": "Name of the raw material (API)",
+      "SCM_SOURCE_NAME": "Name of the API manufacturer/source",
+      "SCM_APPR_SOURCE": "Approved source status",
+      "SCM_DMF_AVAIL_STATUS": "Drug Master File (DMF) availability status",
+      "SCM_DEV_STATUS": "Development status of the source",
+      "SCM_MAT_AVAIL": "Material availability status",
+      "RDA_FEAS_ONGOING": "R&D Analytical feasibility ongoing flag",
+      "RDA_FEAS_DONE": "R&D Analytical feasibility completion flag",
+      "RDA_FEAS_NOT_MATCH": "Feasibility mismatch flag",
+      "RDA_API_AVAIL": "API availability for analytical work",
+      "RDA_DMF_AVAIL": "DMF availability for analytical work",
+      "RDA_SAMPLE_AVAIL": "Sample availability for analytical work",
+      "RDA_ASSAY_MV_START": "Start date: Assay Method Validation",
+      "RDA_ASSAY_MV_COMP": "Completion date: Assay Method Validation",
+      "RDA_DISS_MV_START": "Start date: Dissolution Method Validation",
+      "RDA_DISS_MV_COMP": "Completion date: Dissolution Method Validation",
+      "RDA_REL_SUBST_MV_START": "Start date: Related Substances Method Validation",
+      "RDA_REL_SUBST_MV_COMP": "Completion date: Related Substances Method Validation",
+      "RDA_OTHERS_MV_TEST": "Other tests required for Method Validation",
+      "RDA_OTHERS_MV_START": "Start date: Other MV tests",
+      "RDA_OTHERS_MV_COMP": "Completion date: Other MV tests",
+      "RDA_ASSAY_MT_START": "Start date: Assay Method Transfer",
+      "RDA_ASSAY_MT_COMP": "Completion date: Assay Method Transfer",
+      "RDA_DISS_MT_START": "Start date: Dissolution Method Transfer",
+      "RDA_DISS_MT_COMP": "Completion date: Dissolution Method Transfer",
+      "RDA_RELATED_SUBST_MT_START": "Start date: Related Substances Method Transfer",
+      "RDA_RELATED_SUBST_MT_COMP": "Completion date: Related Substances Method Transfer",
+      "RDA_OTHERS_MT_TEST": "Other tests required for Method Transfer",
+      "RDA_OTHERS_MT_START": "Start date: Other MT tests",
+      "RDA_OTHERS_MT_COMP": "Completion date: Other MT tests",
+      "QC_FP_SPEC_AVAIL": "QC Finished Product Specification availability",
+      "QC_FP_STP_AVAIL": "QC Finished Product STP availability",
+      "QC_FP_COA_AVAIL": "QC Finished Product COA availability",
+      "QC_FP_REMARKS": "Remarks regarding Finished Product QC docs",
+      "QC_FP_DATE_REMARKS": "Date remarks for FP QC",
+      "QC_RM_SPEC_AVAIL": "QC Raw Material Specification availability",
+      "QC_RM_STP_AVAIL": "QC Raw Material STP availability",
+      "QC_RM_COA_AVAIL": "QC Raw Material COA availability",
+      "QC_RM_REMARKS": "Remarks regarding Raw Material QC docs",
+      "QC_RM_DATE_REMARKS": "Date remarks for RM QC",
+      "QC_PM_SPEC_AVAIL": "QC Packaging Material Specification availability",
+      "QC_PM_STP_AVAIL": "QC Packaging Material STP availability",
+      "QC_PM_COA_AVAIL": "QC Packaging Material COA availability",
+      "QC_PM_REMARKS": "Remarks regarding Packaging Material QC docs",
+      "QC_PM_DATE_REMARKS": "Date remarks for PM QC",
+      "QC_WS_SAMP_AVAIL": "Working Standard Sample availability",
+      "QC_WS_COA_AVAIL": "Working Standard COA availability",
+      "QC_WS_REMARKS": "Remarks regarding Working Standards",
+      "QC_WS_DATE_REMARKS": "Date remarks for WS",
+      "RDF_RLD_REQ_DATE": "Date Reference Listed Drug (RLD) requested",
+      "RDF_RLD_RECE_DATE": "Date RLD received",
+      "RDF_CDP_RESULT": "Result of Comparative Dissolution Profile",
+      "RDF_LAB_BATCH_PREP": "Lab batch preparation status",
+      "RDF_LAB_BATCH_PREP_REMARKS": "Remarks on lab batch preparation",
+      "RDF_LAB_STAB_KEPT_ON_DATE": "Date lab batch kept on stability",
+      "RDF_LAB_STAB_THREE_SATISF": "3-month stability satisfactory flag",
+      "RDF_LAB_STAB_SIX_SATISF": "6-month stability satisfactory flag",
+      "RDF_OPT_THREE_BATCHES": "Optimization batches status",
+      "IRA_PV_REQUIREMENT": "Process Validation (PV) requirement (e.g., CPV, RPV)",
+      "RDF_PV_TIMELINE": "Timeline for Process Validation",
+      "RDF_PV_START": "PV start date",
+      "RDF_PV_COMP": "PV completion date",
+      "PROD_PLAN_SITE": "Production planning site",
+      "PROD_PLAN_MAT_AVAIL": "Material availability for production",
+      "PROD_PLAN_PACK_MAT_AVAIL": "Packaging material availability for production",
+      "PROD_PLAN_SCA_AVAIL": "SCA availability",
+      "PROD_PLAN_PV_AVAIL": "PV availability status",
+      "PROD_PLAN_PROD_STAGE": "Current production stage",
+      "PROD_PLAN_REMARKS": "Remarks from production planning",
+      "IVA_BATCH_NUMBER_1": "Batch 1 Number (Zone 4A Stability)",
+      "IVA_KEPT_ON_DATE_1": "Batch 1 Kept on Date (Zone 4A)",
+      "IVA_DATA_AVAIL_1": "Batch 1 Data Availability (Zone 4A)",
+      "IVB_BATCH_NUMBER_1": "Batch 1 Number (Zone 4B Stability)",
+      "IVB_KEPT_ON_DATE_1": "Batch 1 Kept on Date (Zone 4B)",
+      "IVB_DATA_AVAIL_1": "Batch 1 Data Availability (Zone 4B)",
+      "IVA_BATCH_NUMBER_2": "Batch 2 Number (Zone 4A)",
+      "IVA_KEPT_ON_DATE_2": "Batch 2 Kept on Date (Zone 4A)",
+      "IVA_DATA_AVAIL_2": "Batch 2 Data Availability (Zone 4A)",
+      "IVB_BATCH_NUMBER_2": "Batch 2 Number (Zone 4B)",
+      "IVB_KEPT_ON_DATE_2": "Batch 2 Kept on Date (Zone 4B)",
+      "IVB_DATA_AVAIL_2": "Batch 2 Data Availability (Zone 4B)",
+      "IVA_BATCH_NUMBER_3": "Batch 3 Number (Zone 4A)",
+      "IVA_KEPT_ON_DATE_3": "Batch 3 Kept on Date (Zone 4A)",
+      "IVA_DATA_AVAIL_3": "Batch 3 Data Availability (Zone 4A)",
+      "IVB_BATCH_NUMBER_3": "Batch 3 Number (Zone 4B)",
+      "IVB_KEPT_ON_DATE_3": "Batch 3 Kept on Date (Zone 4B)",
+      "IVB_DATA_AVAIL_3": "Batch 3 Data Availability (Zone 4B)",
+      "DDS_DOC_TIMELINE": "Dossier Development timeline",
+      "IM_REMARKS": "International Marketing remarks",
+      "VC_MAM_REMARKS": "Remarks from VC/Management",
+      "CREATED_BY": "User who created the record",
+      "CREATED_AT": "Creation timestamp",
+      "UPDATED_BY": "User who last updated the record",
+      "UPDATED_AT": "Last update timestamp",
+      "IRA_AGENT": "Local agent name",
+      "IRA_PROD_EXP": "Export product name",
+      "RDA_MV_REMARKS": "Remarks on Method Validation",
+      "RDA_MV_REMARKS_OTHER": "Other remarks on MV",
+      "RDA_MT_REMARKS": "Remarks on Method Transfer",
+      "RDA_MT_REMARKS_OTHER": "Other remarks on MT",
+      "RDF_CDP_REMARKS": "Remarks on CDP",
+      "RDF_LAB_STAB_REMARKS": "Remarks on Lab Stability",
+      "RDF_PV_REMARKS": "Remarks on Process Validation",
+      "IRA_ISSUE_CAT": "Issue category",
+      "IRA_RD_CAT": "R&D Category",
+      "RDA_FEAS_METHOD_VALD": "Method validation feasibility status",
+      "RDF_OPTIM_START_DATE": "Optimization start date",
+      "RDF_OPTIM_COMP_DATE": "Optimization completion date",
+      "RDF_MAT_AVAIL_PV_BATCH": "Material availability for PV batch",
+      "STABILITY_REMARKS": "General stability remarks",
+      "LONG_LIST_STATUS": "Overall status on the Long List",
+      "RLD_SOURC_COUNTRY": "Source country of the RLD",
+      "RLD_CURR_STATUS": "Current status of RLD procurement",
+      "RLD_SEND_DATE_TO_FAC": "Date RLD sent to factory",
+      "RDF_RAW_MAT_AVAIL": "Raw material availability for Formulation",
+      "RDF_PACK_MAT_AVAIL": "Packaging material availability for Formulation",
+      "IRA_KEY_DOSS_REQ": "Key dossier requirements",
+      "IRA_PROJ_START_DATE": "Project start date",
+      "IRA_TENT_PROJ_COMP_DATE": "Tentative project completion date",
+      "SCM_SPECIFICATION": "SCM Specifications",
+      "SCM_QUALITY_GRADE": "Quality grade of the material",
+      "SCM_SOURCE_STATUS": "Status of the source",
+      "SCM_SOURCE_APPR_STATUS": "Source approval status",
+      "SCM_CTD_APP_PART_STATUS": "CTD Approved Part status",
+      "SCM_DEV_MAT_STATUS": "Development material status",
+      "SCM_RAW_MAT_AVAIL_TIMELINE": "Timeline for Raw Material availability",
+      "SCM_PACK_MAT_AVAIL_TIMELINE": "Timeline for Packaging Material availability",
+      "SCM_REMARKS": "Remarks from SCM",
+      "RDA_DEV_STABILITY_STATUS": "Development stability status (Analytical)",
+      "RDA_DEV_STAB_COMP_DATE": "Development stability completion date",
+      "RDA_DEV_COMPENDIA_REF": "Compendial reference",
+      "RDA_DEV_ANLYT_METH_DEV_REQ": "Analytical Method Development requirement",
+      "RDA_DEV_TEST_METH_TO_DEV": "Test methods to be developed",
+      "RDA_DEV_TEST_METH_COMP_DATE": "Test method completion date",
+      "RDA_DEV_CCF_STATUS": "CCF Status",
+      "RDA_DEV_CCF_STATUS_COMP_DATE": "CCF completion date",
+      "RDA_ASSAY_MT_FG_START": "Assay MT (Finished Good) Start",
+      "RDA_ASSAY_MT_FG_COMP": "Assay MT (Finished Good) Complete",
+      "RDA_DISS_MT_FG_START": "Dissolution MT (FG) Start",
+      "RDA_DISS_MT_FG_COMP": "Dissolution MT (FG) Complete",
+      "RDA_RELATED_SUBST_MT_FG_START": "Related Subst MT (FG) Start",
+      "RDA_RELATED_SUBST_MT_FG_COMP": "Related Subst MT (FG) Complete",
+      "RDA_OTHERS_MT_FG_TEST": "Other MT (FG) Tests",
+      "RDA_OTHERS_MT_FG_START": "Other MT (FG) Start",
+      "RDA_OTHERS_MT_FG_COMP": "Other MT (FG) Complete",
+      "RDA_MT_FG_REMARKS": "Remarks on MT (FG)",
+      "RDA_MT_FG_REMARKS_OTHER": "Other remarks on MT (FG)",
+      "QC_MT_AVAIL_STATUS": "QC Method Transfer availability",
+      "RDF_RM_REQ_DATE": "Raw Material Requested Date (RDF)",
+      "RDF_RM_RECE_DATE": "Raw Material Received Date (RDF)",
+      "RDF_RM_REMARKS": "Raw Material Remarks (RDF)",
+      "RDF_PM_REQ_DATE": "Packaging Material Requested Date (RDF)",
+      "RDF_PM_RECE_DATE": "Packaging Material Received Date (RDF)",
+      "RDF_PM_REMARKS": "Packaging Material Remarks (RDF)",
+      "RDF_STAB_PROTOCOL_DATE": "Stability Protocol Date",
+      "PROD_PLAN_RAW_MAT_PV_BATCH": "Raw Material for PV Batch (Planning)",
+      "PROD_PLAN_PACK_MAT_PV_BATCH": "Packaging Material for PV Batch (Planning)",
+      "PROD_PLAN_BATCH_ISSUE_DATE": "Batch Issue Date",
+      "PROD_PLAN_BATCH_NO": "Batch Number (Planning)",
+      "IVA_TIMELINE_1": "Timeline for Zone 4A Batch 1",
+      "IVA_TIMELINE_2": "Timeline for Zone 4A Batch 2",
+      "IVA_TIMELINE_3": "Timeline for Zone 4A Batch 3",
+      "IVB_TIMELINE_1": "Timeline for Zone 4B Batch 1",
+      "IVB_TIMELINE_2": "Timeline for Zone 4B Batch 2",
+      "IVB_TIMELINE_3": "Timeline for Zone 4B Batch 3",
+      "OTHER_BATCH_NUMBER_1": "Other Stability Batch 1 Number",
+      "OTHER_KEPT_ON_DATE_1": "Other Stability Batch 1 Date",
+      "OTHER_DATA_AVAIL_1": "Other Stability Batch 1 Data",
+      "OTHER_TIMELINE_1": "Other Stability Batch 1 Timeline",
+      "OTHER_BATCH_NUMBER_2": "Other Stability Batch 2 Number",
+      "OTHER_KEPT_ON_DATE_2": "Other Stability Batch 2 Date",
+      "OTHER_DATA_AVAIL_2": "Other Stability Batch 2 Data",
+      "OTHER_TIMELINE_2": "Other Stability Batch 2 Timeline",
+      "OTHER_BATCH_NUMBER_3": "Other Stability Batch 3 Number",
+      "OTHER_KEPT_ON_DATE_3": "Other Stability Batch 3 Date",
+      "OTHER_DATA_AVAIL_3": "Other Stability Batch 3 Data",
+      "OTHER_TIMELINE_3": "Other Stability Batch 3 Timeline",
+      "COMM_LETTER_STATUS_1": "Commitment Letter Status 1",
+      "COMM_LETTER_STATUS_2": "Commitment Letter Status 2",
+      "COMM_LETTER_STATUS_3": "Commitment Letter Status 3",
+      "COMM_LETTER_STATUS_TIMELINE_1": "Commitment Letter Timeline 1",
+      "COMM_LETTER_STATUS_TIMELINE_2": "Commitment Letter Timeline 2",
+      "COMM_LETTER_STATUS_TIMELINE_3": "Commitment Letter Timeline 3",
+      "IRA_SPE_REQ_RM_PM": "Specific IRA requirements for RM/PM",
+      "DDS_API_OPEN_AVAIL": "DDS API Open Part Available",
+      "DDS_DOC_AVAIL_RDA": "DDS Docs Available from RDA",
+      "DDS_DOC_AVAIL_RDF": "DDS Docs Available from RDF",
+      "DDS_DOC_AVAIL_QC": "DDS Docs Available from QC",
+      "DDS_DOC_AVAIL_PP": "DDS Docs Available from PP",
+      "DDS_DOC_AVAIL_STABILITY": "DDS Stability Docs Available",
+      "DDS_REMARKS": "DDS Remarks",
+      "IRA_IM_DOC_AVAIL": "IM Documents Available",
+      "IRA_DOSS_COMP_STATUS": "Overall Dossier Compilation Status"
+    },
+    "usage_notes": "Use this table for complex status queries like 'Is the method validation complete for Emixef?' or 'What is the stability status of Timozin in Zone 4B?'. It provides a granular view of every stage of product development for export markets. The prefixes (IRA, SCM, RDA, QC, RDF) indicate which department owns the data.",
+    "sample_values": {
+      "IRA_COUNTRY": ["GH", "KE", "MY", "PH", "VN"],
+      "IRA_PROD_NAME": ["EMIXEF 400 CAPSULE", "TIMOZIN SYRUP", "MENARIL 8 TABLET"],
+      "IRA_DOSS_TYPE": ["CTD", "ACTD", "Non-CTD"],
+      "SCM_MAT_AVAIL": ["Available"],
+      "RDA_FEAS_DONE": ["Yes"],
+      "IRA_DOSS_COMP_STATUS": ["Compilation In-process", "Completed"]
+    }
+  },
+  "LONG_LIST_REQ_PROD_LIST": {
+    "description": "Reference list of products requested for the export pipeline ('Long List'). This table acts as a simplified directory, mapping specific Product Names (including strength and form) to the responsible International Marketing (IM) team. It likely serves as a source or validation list for the more detailed tracking tables.",
+    "synonyms": [
+      "export product request list",
+      "long list candidates",
+      "im team product assignments",
+      "requested export items",
+      "product lookup table"
+    ],
+    "entities": {
+      "IM-1": "International Marketing Team 1 (Responsible for a specific set of export markets/products)"
+    },
+    "columns": {
+      "ID": "Unique numeric identifier for the request record",
+      "PRODUCT_NAME": "Full name of the requested product, often including strength and dosage form (e.g., 'LINATAB E 5/10 TABLET', 'MICAGIN IV INFUSION')",
+      "TEAM": "ID of the internal team responsible for this product (e.g., 'IM-1')"
+    },
+    "usage_notes": "Use this table as a simple lookup to find which IM Team is responsible for a specific product, or to get a clean list of all products currently under consideration for the Long List without the complexity of the full tracking table.",
+    "sample_values": {
+      "PRODUCT_NAME": ["CARYON TABLET", "EMPATAB 25 TABLET", "LINATAB E 5/10 TABLET"],
+      "TEAM": ["IM-1"]
+    }
+  },
+  "LONG_LIST_ROLES": {
+    "description": "Role definition table for the Long List application. This table defines the various user roles (e.g., Admin, SCM User, IRA User) and maps them to specific permission sets. It acts as the central authority for what each type of user is allowed to do within the export pipeline tracker.",
+    "synonyms": [
+      "long list user roles",
+      "export pipeline permissions",
+      "access control list",
+      "role definitions",
+      "user privileges"
+    ],
+    "entities": {
+      "Super Admin": "Full system access",
+      "IRA User": "International Regulatory Affairs user (likely focused on dossier tasks)",
+      "SCM User": "Supply Chain Management user (focused on material sourcing)",
+      "RDA User": "R&D Analytical user",
+      "RDF User": "R&D Formulation user",
+      "QC User": "Quality Control user"
+    },
+    "columns": {
+      "ID": "Unique numeric identifier for the role",
+      "ROLE_NAME": "Display name of the user role (e.g., 'Super Admin', 'SCM User')",
+      "ROLE_SLUG": "Unique technical string used in code to identify the role (e.g., 'super-admin', 'scm-user')",
+      "PERMISSIONS": "JSON-formatted string or list defining the specific actions this role can perform (e.g., creating records, editing specific fields, viewing reports)"
+    },
+    "usage_notes": "Use this table to interpret user capabilities. For instance, if you need to know who can edit SCM data, you would look for the 'SCM User' role here and then find users assigned that role in the user table.",
+    "sample_values": {
+      "ROLE_NAME": ["Super Admin", "SCM User", "IRA User"],
+      "ROLE_SLUG": ["super-admin", "scm-user", "ira-user"]
+    }
   },
   "MONTH_WISE_SALES_REPORT": {
-    "description": "Yearly Totals per Channel + Monthly Grand Totals (Wide Format). Use these specific month columns for monthly data.",
-    "columns": { 
-      "SALES_YEAR": "Year",
-      "DEPO_TOTAL": "Yearly Depot Sales", 
-      "INST_SALES": "Yearly Inst Sales", 
-      "JAN": "Jan Sales", 
-      "FEB": "Feb Sales", 
-      "MAR": "Mar Sales", 
-      "APR": "Apr Sales", 
-      "MAY": "May Sales", 
-      "JUN": "Jun Sales",
-      "JUL": "Jul Sales", 
-      "AUG": "Aug Sales", 
-      "SEP": "Sep Sales", 
-      "OCT": "Oct Sales", 
-      "NOV": "Nov Sales", 
-      "DEC": "Dec Sales"
+    "description": "Monthly sales performance report summarizing Target vs. Actual Achievement and Year-over-Year (YoY) growth. This table provides the 'big picture' financial trend, comparing specific months (e.g., Jan 2024) against their targets and the same month in the previous year to calculate growth percentages.",
+    "synonyms": [
+      "monthly sales trend",
+      "monthly growth report",
+      "target vs achievement monthly",
+      "year over year sales comparison",
+      "monthly financial summary"
+    ],
+    "entities": {
+      "Target": "The sales goal set for the month",
+      "Growth": "Percentage increase/decrease compared to the same month last year"
+    },
+    "columns": {
+      "REPORT_YEAR": "Calendar year of the report (e.g., 2024, 2025)",
+      "REPORT_MONTH": "The specific month being reported (e.g., 'JAN-24', 'DEC-25')",
+      "TARGET_VALUE": "Total sales target for the month",
+      "SALES_VALUE": "Total actual sales achieved in the month",
+      "ACHIEVEMENT": "Percentage of the target achieved (Sales / Target * 100)",
+      "LAST_YEAR_SALES": "Total sales value from the same month in the previous year",
+      "GROWTH": "Percentage growth compared to last year ((Current - Last) / Last * 100)",
+      "CREATE_DATE": "Timestamp when the record was created or updated"
+    },
+    "usage_notes": "Use this table for high-level trend analysis, such as 'How much did sales grow in January compared to last year?' or 'Did we hit the target in December?'. It does not provide breakdowns by product or depot.",
+    "sample_values": {
+      "REPORT_YEAR": [2024, 2025],
+      "REPORT_MONTH": ["JAN-24", "DEC-25"],
+      "ACHIEVEMENT": [102.32, 98.5],
+      "GROWTH": [12.5, -5.2]
     }
   },
   "MONTH_WISE_SALES_RP_WB03_B04": {
-    "description": "SPECIFIC Yearly Totals for WB03/B04 units.",
-    "columns": { "DEPO_TOTAL": "WB03 Depot", "SPECIAL_SALES": "Special Sales" }
-  },
-  "SUMMARY_OF_SALES": {
-    "description": "Sub-Channel Breakdown (Inst B01, Export A01).",
-    "columns": { "INST_B01": "Inst B01", "EXPORT_A01": "Export A01" }
-  },
-  "SUMMARY_OF_SALES_WB03_B04": {
-    "description": "SPECIFIC Sub-Channel Breakdown for WB03/B04.",
-    "columns": { "INST_B01": "WB03 Inst B01" }
-  },
-  "COMPANY_WISE_SALES_SUMMARY": {
-    "description": "Monthly Sales by Company & Business Unit (Animal Health, Diaper, Infusion).",
-    "columns": { "SALES_MONTH": "Month", "IPL_ANIMAL_HEALTH": "Animal Health", "IVL_HUMAN": "Human Vaccine" }
-  },
-  "ALL_COMPANY_SALES": {
-    "description": "Total Group Sales by Entity (IPL, IVL, IHHL). Use for Yearly Totals.",
-    "columns": { "IPL_SALES": "Pharma", "IVL_SALES": "Vaccine", "NET_SALES": "Net Total" }
-  },
-  "ALL_COMPANY_SALES_WB03_B04": {
-    "description": "SPECIFIC Entity Sales for WB03/B04.",
-    "columns": { "IPL_SALES": "WB03 Pharma" }
-  },
-  "ALL_COMPANY_SALES_CHANNEL_WISE": {
-    "description": "Matrix: Company x Channel.",
-    "columns": { "EXPOT_IPL": "Pharma Export", "DEPOT_IVL": "Vaccine Depot" }
-  },
-  "ALL_COMP_SALES_CWISE_WB03_B04": {
-    "description": "SPECIFIC Matrix: Company x Channel for WB03/B04.",
-    "columns": { "EXPOT_IPL": "WB03 Pharma Export" }
-  },
-  "YEAR_WISE_SUMMARY_DATA": {
-    "description": "Product Group Performance (Historical/Yearly).",
-    "columns": { "P_GROUP": "Group Name", "SYEAR2": "Current Sales" }
-  },
-  "PRODUCT_GROUP_WISE_SALES": {
-    "description": "GLOBAL Daily/MTD Sales by Product Group.",
-    "columns": { "P_GROUP": "Group Name", "TODAY_SALES": "Daily Sales", "CURRENT_MONTH_SALES": "MTD Total" }
-  },
-  "DEPOT_GROUP_WISE_SALES": {
-    "description": "DEPOT-LEVEL Daily Sales & Targets (Group Level).",
-    "columns": { "D_ID": "Depot ID", "TARGET_VALUE": "Target", "SALES_VALUE": "Achievement" }
-  },
-  "DHK_GRP_MKT_WISE_SALES": {
-    "description": "Dhaka Market Breakdown (Mitford vs Retail).",
-    "columns": { "DHAKA_RETAIL": "Retail Sales", "MITFORD": "Wholesale Sales" }
-  },
-  "DEPOT_SALE": {
-    "description": "Granular DAILY Transactions by Territory & Product Code.",
-    "columns": { "REPORT_DATE": "Date", "TERR_ID": "Territory ID", "P_CODE": "Product Code", "SOLD_VALUE": "Revenue" }
-  },
-  "DASH_NATIONAL_REPORT": {
-    "description": "National Stock & Product Performance. Use for 'Stock Levels', 'Inventory', or 'Top Selling Products'.",
-    "columns": { "NAME": "Depot Name", "DESCRIPTION": "Product Name", "QTY_STOCK": "Stock Quantity", "VAL_SOLD": "Sales Value", "ACH": "Achievement %", "WDATE": "Date" }
+    "description": "Yearly sales summary matrix organized by calendar year. This table provides a wide-format view of sales performance, listing monthly revenue figures (Jan-Dec) for each year. It also breaks down total revenue by channel (Depot, Special, Institution, Export, Toll Mfg) and calculates the Grand Total and Year-over-Year Growth percentage.",
+    "synonyms": [
+      "yearly sales matrix",
+      "monthly sales history by year",
+      "channel wise yearly sales",
+      "annual revenue breakdown",
+      "sales growth history"
+    ],
+    "entities": {
+      "DEPO_TOTAL": "Total sales from regular Depots",
+      "SPECIAL_SALES": "Sales from special campaigns or non-standard channels",
+      "INST_SALES": "Institutional Sales (Government/Hospitals)",
+      "EXPORT_PRODUCT": "Revenue from physical product exports",
+      "EXPORT_SERVICE": "Revenue from export services/consulting",
+      "TOLL_MFG": "Revenue from Toll Manufacturing (contract manufacturing for others)",
+      "KINETIX_INTER": "Internal/Inter-company sales related to Kinetix"
+    },
+    "columns": {
+      "SALES_YEAR": "The calendar year of the record (e.g., 2020, 2024)",
+      "JAN": "Sales revenue for January",
+      "FEB": "Sales revenue for February",
+      "MAR": "Sales revenue for March",
+      "APR": "Sales revenue for April",
+      "MAY": "Sales revenue for May",
+      "JUN": "Sales revenue for June",
+      "JUL": "Sales revenue for July",
+      "AUG": "Sales revenue for August",
+      "SEP": "Sales revenue for September",
+      "OCT": "Sales revenue for October",
+      "NOV": "Sales revenue for November",
+      "DEC": "Sales revenue for December",
+      "DEPO_TOTAL": "Sum of all monthly depot sales",
+      "SPECIAL_SALES": "Total annual special sales",
+      "INST_SALES": "Total annual institutional sales",
+      "EXPORT_PRODUCT": "Total annual export product revenue",
+      "EXPORT_SERVICE": "Total annual export service revenue",
+      "TOLL_MFG": "Total annual toll manufacturing revenue",
+      "KINETIX_INTER": "Total annual Kinetix inter-company sales",
+      "GRAND_TOTAL": "Sum of all sales channels for the year",
+      "GRAND_GROWTH": "Year-over-Year percentage growth of the Grand Total",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table for long-term historical analysis (e.g., 'How has export revenue changed from 2010 to 2024?', 'What was the sales growth in 2020?'). It is the best source for seeing the composition of total revenue (Depot vs Export vs Inst) over time.",
+    "sample_values": {
+      "SALES_YEAR": [2020, 2024],
+      "GRAND_TOTAL": [3119.62, 5588.89],
+      "GRAND_GROWTH": [7.3, 18.28]
+    }
   },
   "NATIONAL_TARGET_SALES_ACHVM": {
-    "description": "National Product-wise Target vs Achievement (QUANTITY). Use for 'National Target Qty', 'Units Sold vs Target'.",
-    "columns": { "P_NAME": "Product Name", "PACK_S": "Pack Size", "N_TGT_QTY": "Target Qty", "N_SALES_QTY": "Sales Qty", "ACHIEVEMENT": "Ach %" }
+    "description": "Daily national sales performance report tracking Target vs. Actual Sales for individual products. This table provides a granular view of achievement at the SKU level, listing the National Target Quantity ('N_TGT_QTY') and Actual Sales Quantity ('N_SALES_QTY') for the current month. It is used to monitor daily progress against sales goals.",
+    "synonyms": [
+      "national sales achievement",
+      "daily product target report",
+      "sku wise target vs actual",
+      "national performance tracker",
+      "sales achievement percentage"
+    ],
+    "entities": {
+      "P_GROUP": "Product Group or Division (e.g., KINETIX, CELLBIOTIC, GYRUS)",
+      "P_CODE": "Short Product Code (e.g., TM5, PV2)"
+    },
+    "columns": {
+      "REPORT_MONTH": "The month being reported (e.g., 'DEC-25')",
+      "REPORT_TYPE": "Frequency of the report (e.g., 'DAILY')",
+      "REPORT_UPTO": "Data cut-off date",
+      "REPORT_DATE": "Date and time the report was generated",
+      "TWD": "Total Working Days in the month",
+      "WD": "Working Days elapsed so far",
+      "P_GROUP": "Product Group or Division name",
+      "P_CODE": "Unique short code for the product",
+      "P_NAME": "Full name of the product",
+      "PACK_S": "Pack Size configuration (e.g., '5 ML', \"6's\")",
+      "N_TGT_QTY": "National Target Quantity assigned for the month",
+      "N_SALES_QTY": "National Actual Sales Quantity achieved so far",
+      "ACHIEVEMENT": "Percentage of target achieved (Sales / Target * 100)"
+    },
+    "usage_notes": "Use this table to check the specific performance of a product, such as 'What is the achievement for Timopress Eye Drops?'. It provides the most direct comparison of 'Plan vs. Actual' for the sales team.",
+    "sample_values": {
+      "P_GROUP": ["OPERON-XENOVISION", "GYRUS", "CELLBIOTIC"],
+      "P_NAME": ["TIMOPRESS 0.5% EYE DROPS", "PANOVIR TABLET 6'S", "NALBUN DS INJECTION 1ML"],
+      "ACHIEVEMENT": [60.68, 80, 53.33]
+    }
   },
-  "SCM_APP_BLOCKLIST": {
-    "description": "Supply Chain & Blocklist Master. Use for 'Import', 'Supplier', 'Raw Material', 'Blocklist', 'API', 'Manufacturer'.",
-    "columns": { "MATERIAL_NAME": "Raw Material/API", "SUPPLIER_NAME": "Supplier", "MANUFACTURER_NAME": "Manufacturer", "BLOCKLIST_NO": "BL Number", "QTY": "Quantity", "AIR_PRICE": "Air Price", "SEA_PRICE": "Sea Price", "CFP": "Finished Product Name" }
-  },
-  "TEAM_WISE_SALES_GROWTH": {
-    "description": "Sales Team GROWTH Tracker (General, Special). Compares Sales Years (SYEAR) only. No Targets.",
-    "columns": { "SALES_GROUP": "Team Name", "SYEAR2": "Current Sales", "SYEAR2G": "Growth %" }
-  },
-  "YEAR_WISE_TEAM_PERFORMANCE": {
-    "description": "GENERAL Team TARGET vs ACHIEVEMENT. Use for 'General Team Target', 'Achievement', or 'Performance'.",
-    "columns": { "TEAM": "Team Name", "YR_TGTVAL": "Yearly Target", "YR_SOLDVAL": "Yearly Sales", "YR_ACHV": "Achievement %" }
-  },
-  "YEAR_WISE_TEAM_PERFOR_WB03_B04": {
-    "description": "Specific Team TARGET vs ACHIEVEMENT (WB03/B04). Use ONLY if 'WB03' or 'B04' is mentioned.",
-    "columns": { "TEAM": "Team Name", "YR_TGTVAL": "Yearly Target", "YR_SOLDVAL": "Yearly Sales", "YR_ACHV": "Achievement %" }
-  },
-  "GM_SM_SALES_ANALYSIS_ACH": {
-    "description": "Sales Leadership Performance (GM, SM, DSM). Use for INDIVIDUAL managers.",
-    "columns": { "SALES_PERSON": "Role (GM/SM)", "NAME": "Manager Name", "TARGET_VALUE": "Target", "SALES_VALUE": "Achieved", "ACHIEVEMENT": "Ach %" }
-  },
-  "RM_SALES_ANALYSIS_ACH": {
-    "description": "Regional Manager (RM) Target vs Achievement.",
-    "columns": { "RM_TERR_ID": "Region ID", "NAME": "RM Name", "TARGET_VALUE": "Target", "SALES_VALUE": "Achieved", "ACHIEVEMENT": "Ach %" }
-  },
-  "GROUP_WISE_SALES_RM_TO_GM": {
-    "description": "Master Sales Hierarchy & Daily Manager Report. Use for 'Reporting Lines', 'Hierarchy', 'ASM', 'NSM'.",
-    "columns": { "RM_NAME": "Region Mgr", "ASM_NAME": "Area Sales Mgr", "NSM_NAME": "National Sales Mgr", "SALES_VALUE": "Daily/Monthly Sales", "ACH": "Achievement" }
-  },
-  "BRAND_WISE_SALES_REPORT": {
-    "description": "Brand & SKU Level Comparative Report.",
-    "columns": { "BRAND_NAME": "Brand", "P_CMR_SOLD_VALUE": "Current Sales" }
-  },
-  "BRAND_WISE_SALES_DATA": {
-    "description": "Territory/Field Force Sales (Region, Area, MPO).",
-    "columns": { "RM_TERR_ID": "Region", "AM_TERR_ID": "Area", "TERR_ID": "MPO", "CMR_SOLD_VALUE": "Current Sales" }
+  "PRODUCT_GROUP_WISE_SALES": {
+    "description": "Comparative sales report aggregated by Product Group (Division). This table analyzes performance trends by comparing the current month's sales ('CURRENT_MONTH_SALES') against the previous month ('LAST_MONTH_SALES'). It includes daily sales figures and specific working day counts for both periods (Current: TWD/WD, Previous: PTWD/PWD) to allow for accurate run-rate comparisons.",
+    "synonyms": [
+      "group wise monthly comparison",
+      "division sales growth",
+      "product group trend report",
+      "month over month group sales",
+      "category performance summary"
+    ],
+    "entities": {
+      "P_GROUP": "Major Product Groups/Divisions (e.g., KINETIX, ANIMAL VACCINE, OPERON-XENOVISION)"
+    },
+    "columns": {
+      "REPORT_CMONTH": "Current reporting month (e.g., 'DEC-25')",
+      "REPORT_PMONTH": "Previous reporting month (e.g., 'NOV-25')",
+      "REPORT_TYPE": "Frequency of the report (e.g., 'DAILY')",
+      "REPORT_UPTO": "Data cut-off date",
+      "REPORT_DATE": "Date the report was generated",
+      "TWD": "Total Working Days in the current month",
+      "WD": "Working Days elapsed in the current month",
+      "PTWD": "Total Working Days in the previous month",
+      "PWD": "Working Days elapsed in the previous month (for comparison)",
+      "P_GROUP": "Name of the Product Group or Division",
+      "TODAY_SALES": "Sales revenue generated on the reporting date",
+      "LAST_MONTH_SALES": "Total sales revenue for the previous month",
+      "CURRENT_MONTH_SALES": "Cumulative sales revenue for the current month",
+      "GROWTH": "Percentage growth in sales (Current vs. Last Month)",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table to identify which business divisions are growing or shrinking compared to the previous month. The inclusion of 'TODAY_SALES' also allows for immediate daily performance checks.",
+    "sample_values": {
+      "P_GROUP": ["KINETIX", "ANIMAL VACCINE", "OPERON-XENOVISION"],
+      "REPORT_CMONTH": ["DEC-25"],
+      "GROWTH": [-8.81, 22.54, 7.48],
+      "CURRENT_MONTH_SALES": [732830621, 37285695]
+    }
   },
   "PRODUCT_RANKING_DEPOT_SALES": {
-    "description": "Monthly Product Ranking.",
-    "columns": { "P_NAME": "Product Name", "MONTH1_RANK_POSITION": "Rank", "MONTH1_VALUE": "Sales" }
+    "description": "Comparative product ranking report analyzing sales performance between two specific months (Month 1 vs. Month 2). This table tracks shifts in market position (Rank), sales value, and contribution to total sales, explicitly highlighting whether a product's performance is trending 'UP' or 'DOWN'. It allows for month-over-month winner and loser analysis.",
+    "synonyms": [
+      "product ranking report",
+      "monthly rank comparison",
+      "top selling products",
+      "product growth analysis",
+      "rank shift tracker",
+      "depot sales ranking"
+    ],
+    "entities": {
+      "Month 1": "The previous or baseline month for comparison (e.g., OCT-25)",
+      "Month 2": "The current or focal month for comparison (e.g., NOV-25)",
+      "UP/DOWN": "Growth indicators showing rank/performance trend"
+    },
+    "columns": {
+      "COMPNAY_CODE": "Numeric code for the company (e.g., 1000)",
+      "COMPANY_NAME": "Full name of the company (e.g., IPL)",
+      "COMP_SHORT_NAME": "Abbreviated company name (e.g., IPL)",
+      "BRAND_NAME": "Name of the product brand (e.g., RIFAMAX, BONE-GUARD)",
+      "MONTH2_QTY": "Sales Quantity in Month 2 (Current)",
+      "MONTH2_VALUE": "Sales Value in Month 2 (Current)",
+      "MONTH2_RANK_POSITION": "Sales Rank position in Month 2",
+      "MONTH2_CONTRIBUTION": "Percentage contribution to total sales in Month 2",
+      "MONTH2_CUMULATIVE": "Cumulative contribution percentage in Month 2",
+      "MONTH1_QTY": "Sales Quantity in Month 1 (Previous)",
+      "MONTH1_VALUE": "Sales Value in Month 1 (Previous)",
+      "MONTH1_RANK_POSITION": "Sales Rank position in Month 1",
+      "MONTH1_CONTRIBUTION": "Percentage contribution to total sales in Month 1",
+      "MONTH1_CUMULATIVE": "Cumulative contribution percentage in Month 1",
+      "GROWTH": "Numeric growth value/percentage between Month 1 and Month 2",
+      "GROWTH_INDICATE": "Text indicator of the trend ('UP' or 'DOWN')",
+      "MONTH1_NAME": "Name of Month 1 (e.g., 'OCT-25')",
+      "MONTH2_NAME": "Name of Month 2 (e.g., 'NOV-25')",
+      "CREATE_DATE": "Record creation timestamp",
+      "P_GROUP": "Product Group associated with the brand"
+    },
+    "usage_notes": "Use this table to find the top performing products for a specific month or to see which products are losing market share. Queries like 'What were the top 10 products in November?' or 'Which products sales went down compared to last month?' should use this table.",
+    "sample_values": {
+      "BRAND_NAME": ["RIFAMAX", "BONE-GUARD", "SCARFIX"],
+      "GROWTH_INDICATE": ["DOWN", "UP"],
+      "MONTH1_NAME": ["OCT-25"],
+      "MONTH2_NAME": ["NOV-25"],
+      "MONTH2_RANK_POSITION": [254, 249, 257]
+    }
   },
-  "BRAND_RANKING_YEARLY": {
-    "description": "Yearly Brand Ranking.",
-    "columns": { "BRAND_NAME": "Brand Name", "YEAR1_RANK_POSITION": "Rank", "YEAR1_VALUE": "Sales" }
+  "RM_SALES_ANALYSIS_ACH": {
+    "description": "Sales performance analysis for Regional Managers (RM). This table tracks the annual targets, actual sales, and percentage achievement for individual Regional Managers. It maps each RM to a specific Territory ID and Product Group (Division), serving as a key performance indicator (KPI) report for mid-level sales leadership.",
+    "synonyms": [
+      "regional manager performance",
+      "rm target achievement",
+      "rm sales report",
+      "territory manager ranking",
+      "regional sales analysis"
+    ],
+    "entities": {
+      "RM": "Regional Manager (Sales leader for a region)",
+      "Territory": "Sales region identified by RM_TERR_ID"
+    },
+    "columns": {
+      "SALES_YEAR": "The fiscal or calendar year of the performance review (e.g., 2019, 2025)",
+      "RM_TERR_ID": "Unique identifier for the Regional Manager's territory (e.g., 'SO-00', 'CTG1-00')",
+      "P_GROUP": "Product Group or Division the RM is responsible for (e.g., 'OPERON-XENOVISION', 'GENERAL')",
+      "NAME": "Full name of the Regional Manager",
+      "REMARK": "Employment status or notes (e.g., 'PRESENT', 'UPTO FEB-19')",
+      "TARGET_VALUE": "Total annual sales target assigned to the RM (in Millions)",
+      "SALES_VALUE": "Total actual annual sales achieved by the RM (in Millions)",
+      "ACHIEVEMENT": "Percentage of target achieved (Sales / Target * 100)",
+      "CREATE_DATE": "Record creation timestamp"
+    },
+    "usage_notes": "Use this table to evaluate the performance of specific Regional Managers or to compare achievement across different territories. For example, 'Who was the RM for Comilla in 2019?' or 'Which RM achieved the highest percentage in the General division?'.",
+    "sample_values": {
+      "RM_TERR_ID": ["SO-00", "CTG1-00", "NRG-00"],
+      "P_GROUP": ["OPERON-XENOVISION", "GENERAL", "ASTER"],
+      "NAME": ["MD. MATIUR RAHMAN", "MD. SULTAN MAHMUD", "SHEIKH FARIDUZZAMAN"],
+      "ACHIEVEMENT": [92.04, 90.13, 101.05]
+    }
+  },
+  "SCM_APP_BLOCKLIST": {
+    "description": "Supply Chain Management (SCM) Block List Application table. This table tracks the application and approval details for importing raw materials (API) and lab items. In the pharmaceutical context (specifically in Bangladesh), a 'Block List' is a regulatory permission list for importing specific quantities of raw materials for a given year. It records details like the Blocklist Number, Year, Material Name, Manufacturer, Supplier, Quantity, and Prices (Air/Sea/Road).",
+    "synonyms": [
+      "import block list",
+      "scm import permission",
+      "raw material import tracker",
+      "blocklist application",
+      "import permit details",
+      "approved raw materials list"
+    ],
+    "entities": {
+      "API": "Active Pharmaceutical Ingredient",
+      "Lab Item": "Laboratory chemicals or equipment",
+      "Block List": "Regulatory list of approved imports"
+    },
+    "columns": {
+      "LINE_ID": "Unique identifier for the line item",
+      "APP_ID": "Application ID linked to the block list request",
+      "BL_TYPE": "Type of Block List entry (e.g., 'API', 'Lab Item')",
+      "SL_NO": "Serial Number within the application",
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the Block List (e.g., '2021-2022')",
+      "BLOCKLIST_DATE": "Date of the Block List issuance",
+      "PLANT": "Plant or LC (Letter of Credit) Reference Code (e.g., 'I003', 'I009')",
+      "BLOCKLIST_NO": "Official Block List Number assigned by the regulatory authority",
+      "MATERIAL_NAME": "Name of the material being imported",
+      "MANUFACTURER_NAME": "Name and country of the manufacturer",
+      "SUPPLIER_NAME": "Name and country of the supplier",
+      "QTY": "Approved quantity for import",
+      "UOM": "Unit of Measure (e.g., 'KG', 'PC')",
+      "AIR_PRICE": "Approved unit price if shipped by Air",
+      "ROAD_PRICE": "Approved unit price if shipped by Road",
+      "SEA_PRICE": "Approved unit price if shipped by Sea",
+      "CURRENCY": "Currency of the transaction (e.g., 'USD')",
+      "CFP": "Corresponding Finished Product (e.g., 'Revert Tablet') linked to this raw material",
+      "QTY_FINISH_PRODUCT": "Projected quantity of finished product to be produced with this material",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATED_AT": "System timestamp for last update",
+      "TRANSFER": "Transfer status flag"
+    },
+    "usage_notes": "Use this table to find details about approved import permissions. For example, 'Who is the approved manufacturer for Cinnarizine BP?' or 'What is the approved quantity for Mefenamic Acid in the 2021-2022 block list?'. It links raw materials to their specific approved sources.",
+    "sample_values": {
+      "BL_TYPE": ["API", "Lab Item"],
+      "MATERIAL_NAME": ["Cinnarizine BP", "Mefenamic Acid Micronized USP", "Evening Primrose Oil"],
+      "MANUFACTURER_NAME": ["Fleming Laboratories Limited, India", "Shaanxi Baoxin Pharmaceutical Co. Ltd., China"],
+      "BLOCKLIST_YEAR": ["2021-2022"]
+    }
+  },
+  "SCM_APPLY_REJECTED_DATA": {
+    "description": "Archive table for rejected Supply Chain Management (SCM) block list applications. This table stores the details of import requests (raw materials, lab items) that were denied approval. It mirrors the structure of the approved block list table, recording the material, supplier, price, and quantity requested but ultimately rejected. This data is critical for audit trails and analyzing rejection reasons.",
+    "synonyms": [
+      "rejected import requests",
+      "scm rejection log",
+      "denied block list items",
+      "failed import applications",
+      "unapproved materials list"
+    ],
+    "entities": {
+      "Rejected Item": "A specific line item (Material + Supplier) that was denied import permission",
+      "CFP": "Corresponding Finished Product (The drug intended to be made with the rejected material)"
+    },
+    "columns": {
+      "LINE_ID": "Unique identifier for the line item",
+      "APP_ID": "Application ID linked to the rejected request",
+      "BL_TYPE": "Type of Block List entry (e.g., 'API', 'Lab Item')",
+      "SL_NO": "Serial Number within the application",
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the requested Block List",
+      "BLOCKLIST_DATE": "Date associated with the block list request",
+      "PLANT": "Plant or LC Reference Code (e.g., 'I003', 'I009')",
+      "BLOCKLIST_NO": "Block List Number (if assigned before rejection, often null or preliminary)",
+      "MATERIAL_NAME": "Name of the material requested",
+      "MANUFACTURER_NAME": "Name and country of the proposed manufacturer",
+      "SUPPLIER_NAME": "Name and country of the proposed supplier",
+      "QTY": "Quantity requested",
+      "UOM": "Unit of Measure (e.g., 'KG', 'PC')",
+      "AIR_PRICE": "Proposed unit price if shipped by Air",
+      "ROAD_PRICE": "Proposed unit price if shipped by Road",
+      "SEA_PRICE": "Proposed unit price if shipped by Sea",
+      "CURRENCY": "Currency of the transaction (e.g., 'USD', 'EUR')",
+      "CFP": "Corresponding Finished Product linked to this material request",
+      "QTY_FINISH_PRODUCT": "Projected quantity of finished product",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the request",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATED_AT": "System timestamp for last update"
+    },
+    "usage_notes": "Use this table to audit failed import attempts. For example, 'Which suppliers had the most rejected applications in 2021?' or 'Was the request for Danazol USP rejected?'. It helps identify problematic suppliers or pricing issues.",
+    "sample_values": {
+      "MATERIAL_NAME": ["Danazol USP", "Lubiprostone INN", "Virgin Olive Oil Ph. Gr."],
+      "MANUFACTURER_NAME": ["Micro Orgo-Chem., India", "Chemvon Biotechnology Co. Ltd., China"],
+      "CFP": ["Lozana 100 Capsule", "Lubistone 24 Capsule"],
+      "APP_ID": [27, 28, 82]
+    }
+  },
+  "SCM_AVAILABLE_QTY_CLEAR": {
+    "description": "Table tracking the specific cleared or available quantities of raw materials against assigned Block List numbers. This table likely functions as a ledger for import permissions, recording how much of a specific material (identified by 'MATERIAL_NAME') from a specific block list ('BLOCKLIST_NO') has been cleared for use or remains available.",
+    "synonyms": [
+      "blocklist clearance tracker",
+      "material availability log",
+      "import clearance quantities",
+      "scm clearance status",
+      "cleared raw materials"
+    ],
+    "entities": {
+      "Block List": "Regulatory import permission (e.g., I003-2018-00068)",
+      "Clear Qty": "Quantity processed/cleared for import or use"
+    },
+    "columns": {
+      "R_ID": "Unique record identifier",
+      "BLOCKLIST_NO": "The unique identifier for the Block List permission (e.g., 'I003-2018-00068')",
+      "MATERIAL_NAME": "Name of the raw material or item (e.g., 'GLYCOCHOLIC ACID INN')",
+      "CLEAR_QTY": "The quantity of the material that has been cleared or is available",
+      "CREATE_USER": "User ID of the person who created the record",
+      "CREATED_AT": "Timestamp of record creation",
+      "UPDATED_AT": "Timestamp of the last update"
+    },
+    "usage_notes": "Use this table to check the status of specific import permissions. For example, 'How much Glycocholic Acid has been cleared from blocklist I003-2018-00068?' or 'Check available quantities for Amikacin Sulphate'.",
+    "sample_values": {
+      "BLOCKLIST_NO": ["I003-2018-00068", "I003-2018-00069", "I003-2018-00072"],
+      "MATERIAL_NAME": ["GLYCOCHOLIC ACID INN", "Lipoid S 100 Pharma Gra", "Amikacin Sulphate EP"],
+      "CLEAR_QTY": [15, 10, 150]
+    }
+  },
+  "SCM_AVAILABLE_QTY_CLEAR_T": {
+    "description": "Temporary or staging table for tracking cleared material quantities. This table allows for intermediate processing or validation of clearance data before it is finalized in the main 'SCM_AVAILABLE_QTY_CLEAR' table. It shares the exact same schema, linking specific cleared quantities to their Block List numbers.",
+    "synonyms": [
+      "clearance staging table",
+      "temp material availability",
+      "import clearance buffer",
+      "processing table for clearance",
+      "intermediate quantity log"
+    ],
+    "entities": {
+      "Block List": "Regulatory import permission (e.g., I003-2018-00068)",
+      "Clear Qty": "Quantity processed/cleared for import or use"
+    },
+    "columns": {
+      "R_ID": "Unique record identifier",
+      "BLOCKLIST_NO": "The unique identifier for the Block List permission (e.g., 'I003-2018-00068')",
+      "MATERIAL_NAME": "Name of the raw material or item (e.g., 'GLYCOCHOLIC ACID INN')",
+      "CLEAR_QTY": "The quantity of the material that has been cleared or is available",
+      "CREATE_USER": "User ID of the person who created the record",
+      "CREATED_AT": "Timestamp of record creation",
+      "UPDATED_AT": "Timestamp of the last update"
+    },
+    "usage_notes": "Use this table primarily for debugging or checking data that might be in-transit or processing. For definitive historical records, prefer the main 'SCM_AVAILABLE_QTY_CLEAR' table.",
+    "sample_values": {
+      "BLOCKLIST_NO": ["I003-2018-00068", "I003-2018-00069"],
+      "MATERIAL_NAME": ["GLYCOCHOLIC ACID INN", "Lipoid S 100 Pharma Gra"],
+      "CLEAR_QTY": [15, 10, 4]
+    }
+  },
+  "SCM_BL_AMENDMENT_INFORMATION": {
+    "description": "Table tracking official amendments to approved Supply Chain Block Lists. This table records changes made to existing permissions, such as modifying the approved quantity, price, or supplier information. It serves as an audit trail for regulatory modifications ('Correction' or 'Amendment') after the initial approval.",
+    "synonyms": [
+      "block list amendment log",
+      "import permission changes",
+      "scm correction tracker",
+      "approved changes log",
+      "blocklist modification history"
+    ],
+    "entities": {
+      "Amendment": "A formal change to the approved block list details",
+      "Correction": "A minor fix or adjustment to the record"
+    },
+    "columns": {
+      "ID": "Unique identifier for the amendment record",
+      "BLOCKLIST_NO": "The unique identifier of the Block List being amended (e.g., 'I003-2018-00003')",
+      "AMENDMENT_NO": "Sequential number of the amendment (e.g., '1st Amendment')",
+      "AMENDMENT_DATE": "Date the amendment was issued",
+      "AMENDMENT_REASON": "Description or reason for the change (e.g., 'Price Correction', 'Quantity Increase')",
+      "PREVIOUS_VALUE": "Original value before the change (if applicable)",
+      "NEW_VALUE": "New approved value (if applicable)",
+      "CREATE_USER": "User ID who recorded the amendment",
+      "CREATE_DATE": "Timestamp of record creation",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATE_DATE": "Timestamp of the last update"
+    },
+    "usage_notes": "Use this table to trace the history of a block list. If a user asks 'Why did the price change for Blocklist I003?' or 'Show me all amendments for 2018', this is the source.",
+    "sample_values": {
+      "BLOCKLIST_NO": ["I003-2018-00003", "I003-2018-00015"],
+      "AMENDMENT_NO": ["1st Amendment", "Correction"],
+      "AMENDMENT_REASON": ["Price Correction", "Change of Supplier"]
+    }
+  },
+  "SCM_BLK_MAT_BK_2017_2019": {
+    "description": "Historical archive table for Supply Chain Management (SCM) Block List materials, covering the specific period of 2017-2019. This table serves as a backup registry for import permissions, recording details of raw materials, lab items, and equipment approved for import during those fiscal years. It mirrors the structure of the main block list table but is static and used for retrospective analysis.",
+    "synonyms": [
+      "block list archive 2017-2019",
+      "historical import data",
+      "old scm permissions",
+      "backup material list",
+      "2017-2019 import log"
+    ],
+    "entities": {
+      "Block List": "Regulatory list of approved imports (Historical)",
+      "Material": "Raw material or lab item approved for import"
+    },
+    "columns": {
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the Block List (e.g., '2018-2019')",
+      "BLOCKLIST_DATE": "Date of the Block List issuance",
+      "PLANT": "Plant or LC Reference Code (e.g., 'I003')",
+      "BLOCKLIST_NO": "Official Block List Number assigned by the regulatory authority",
+      "MATERIAL_NAME": "Name of the material imported (e.g., 'KROMASIL 100-10-C4 Ph. Gr.')",
+      "MANUFACTURER_NAME": "Name and country of the manufacturer",
+      "SUPPLIER_NAME": "Name and country of the supplier",
+      "QTY": "Approved quantity for import",
+      "UOM": "Unit of Measure (e.g., 'Pc', 'KG')",
+      "AIR_PRICE": "Approved unit price if shipped by Air",
+      "ROAD_PRICE": "Approved unit price if shipped by Road",
+      "SEA_PRICE": "Approved unit price if shipped by Sea",
+      "CURRENCY": "Currency of the transaction (e.g., 'USD')",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATED_AT": "System timestamp for last update"
+    },
+    "usage_notes": "Use this table for historical queries specifically targeting the 2017-2019 period. For example, 'What was the price of Valsartan in 2018?' or 'Who supplied Goat anti Mouse IgG in 2019?'. Do not use this for current operational data.",
+    "sample_values": {
+      "BLOCKLIST_YEAR": ["2018-2019"],
+      "MATERIAL_NAME": ["HYPAKSCF1MLL29G1/2-5BTWBD260LWEBPPBTH Ph. Gr.", "Valsartan USP"],
+      "MANUFACTURER_NAME": ["Becton Dickinson Holdings Pte. Ltd.", "Aurobindo Pharma Ltd."],
+      "SUPPLIER_NAME": ["Singapore", "India"]
+    }
+  },
+  "SCM_BLOCKLIST_FILES_TABLE": {
+    "description": "Document management index for Supply Chain Block Lists. This table stores metadata and file paths for digital documents (PDFs) associated with specific block lists. It acts as a bridge between the database records and the actual scanned files stored on the server (e.g., 'public\\SCM\\BlockListFiles\\...'), allowing users to retrieve and view the original approved documents.",
+    "synonyms": [
+      "block list documents",
+      "scm file index",
+      "scanned block lists",
+      "file attachment table",
+      "document repository",
+      "pdf link table"
+    ],
+    "entities": {
+      "File Path": "Server directory location (e.g., public\\SCM\\BlockListFiles\\...)",
+      "Filename": "Name of the physical file (often matching the Block List No, e.g., I003-2021-00001.pdf)"
+    },
+    "columns": {
+      "ID": "Unique numeric identifier for the file record",
+      "PLANT": "Plant code associated with the file (e.g., 'I003')",
+      "COMPANY_FULL_NAME": "Full name of the company entity (e.g., 'Incepta Pharmaceuticals Ltd.')",
+      "FILENAME": "Name of the specific file (e.g., 'I003-2021-00001.pdf')",
+      "FILELOCATION": "Relative path to the file storage location on the server",
+      "CREATED_AT": "Timestamp of file upload/record creation",
+      "CREATE_USER": "User ID of the person who uploaded the file",
+      "UPDATED_AT": "Timestamp of the last update",
+      "UPDATE_USER": "User ID who last updated the record"
+    },
+    "usage_notes": "Use this table to find the actual PDF document associated with a block list. For example, 'Where is the scanned copy of Blocklist I003-2021-00001 stored?'. Note that the 'FILENAME' usually corresponds directly to the 'BLOCKLIST_NO' found in other tables.",
+    "sample_values": {
+      "FILENAME": ["I003-2021-00001.pdf", "I003-2021-00015.pdf"],
+      "FILELOCATION": ["public\\SCM\\BlockListFiles\\I003-2021-00001.pdf"],
+      "PLANT": ["I003"]
+    }
+  },
+  "SCM_BLOCKLIST_MATERIAL": {
+    "description": "Detailed material list for Supply Chain Block Lists. This table records the specific raw materials, chemicals, or items included in a block list permission. It includes precise chemical names (often with CAS numbers), the approved manufacturer and supplier, quantity, unit of measure (UOM), and the approved unit prices for different shipping modes (Air, Road, Sea).",
+    "synonyms": [
+      "block list items",
+      "material price list",
+      "approved chemicals list",
+      "manufacturer supplier map",
+      "import material details"
+    ],
+    "entities": {
+      "Material": "Specific chemical or raw material (e.g., 'Sodium metabisulfite', 'Tert-Butyl Methyl Ether')",
+      "CAS No": "Chemical Abstracts Service Registry Number",
+      "Manufacturer": "Company that makes the material",
+      "Supplier": "Company that supplies/distributes the material"
+    },
+    "columns": {
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the Block List (e.g., '2025-2026')",
+      "BLOCKLIST_DATE": "Date of the Block List issuance",
+      "PLANT": "Plant code (e.g., 'I017', 'I003')",
+      "BLOCKLIST_NO": "Unique identifier for the Block List (e.g., 'I017-2025-R25063233')",
+      "MATERIAL_NAME": "Full descriptive name of the material, often including CAS number",
+      "MANUFACTURER_NAME": "Name and country of the manufacturer",
+      "SUPPLIER_NAME": "Name and country of the supplier",
+      "QTY": "Approved quantity",
+      "UOM": "Unit of Measure (e.g., 'KG', 'mg')",
+      "AIR_PRICE": "Approved unit price for Air shipment",
+      "ROAD_PRICE": "Approved unit price for Road shipment",
+      "SEA_PRICE": "Approved unit price for Sea shipment",
+      "CURRENCY": "Currency of the price (e.g., 'USD', 'EUR')",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATED_AT": "System timestamp for last update"
+    },
+    "usage_notes": "Use this table to find the approved price or supplier for a specific material. For example, 'What is the air price for Sodium metabisulfite?' or 'Who supplies Tert-Butyl Methyl Ether for blocklist I017-2025-R25063232?'. Note the inclusion of CAS numbers in the material name field.",
+    "sample_values": {
+      "MATERIAL_NAME": ["Sodium metabisulfite; CAS No.7681-57-4", "Tert-Butyl Methyl Ether; CAS No.1634-04-4"],
+      "MANUFACTURER_NAME": ["Boyu Chemical Co., Ltd. China", "SHANDONG WONFULL PETROCHEMICAL GROUP CO., LTD. CHINA"],
+      "SUPPLIER_NAME": ["United Pharma Industries Co., Ltd. China", "HANGZHOU CHERRY PHARMACEUTICAL TECHNOLOGY CO., LTD. China"],
+      "BLOCKLIST_NO": ["I017-2025-R25063233", "I017-2025-R25063232"]
+    }
+  },
+  "SCM_BLOCKLIST_MATERIAL_24_25": {
+    "description": "Partitioned material details table for Supply Chain Block Lists covering the fiscal years 2024-2025. This table is a specific subset of the main material list, recording the raw materials, manufacturers, suppliers, and approved prices for import permissions issued during this period. It allows for focused analysis of the 2024-25 procurement cycle.",
+    "synonyms": [
+      "block list materials 2024-25",
+      "import materials 24-25",
+      "2024-2025 raw material list",
+      "scm material archive 2024",
+      "approved prices 2024-2025"
+    ],
+    "entities": {
+      "Material": "Specific chemical or raw material (e.g., 'Sitagliptin Phosphate Monohydrate INN')",
+      "Block List": "Regulatory import permission issued in 2024-2025"
+    },
+    "columns": {
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the Block List (e.g., '2024-2025')",
+      "BLOCKLIST_DATE": "Date of the Block List issuance",
+      "PLANT": "Plant code (e.g., 'I003', 'I010')",
+      "BLOCKLIST_NO": "Unique identifier for the Block List (e.g., 'I003-2024-00001')",
+      "MATERIAL_NAME": "Full descriptive name of the material",
+      "MANUFACTURER_NAME": "Name and country of the manufacturer",
+      "SUPPLIER_NAME": "Name and country of the supplier",
+      "QTY": "Approved quantity",
+      "UOM": "Unit of Measure (e.g., 'KG')",
+      "AIR_PRICE": "Approved unit price for Air shipment",
+      "ROAD_PRICE": "Approved unit price for Road shipment",
+      "SEA_PRICE": "Approved unit price for Sea shipment",
+      "CURRENCY": "Currency of the price (e.g., 'USD', 'EUR')",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "UPDATED_AT": "System timestamp for last update"
+    },
+    "usage_notes": "Use this table for queries specifically targeting the 2024-2025 fiscal year. For example, 'What was the approved price for Sitagliptin in 2024?' or 'List all materials imported from China in the 24-25 block list'.",
+    "sample_values": {
+      "BLOCKLIST_YEAR": ["2024-2025"],
+      "MATERIAL_NAME": ["Sitagliptin Phosphate Monohydrate INN", "Empagliflozin INN"],
+      "MANUFACTURER_NAME": ["Zhejiang Supor Pharmaceuticals Co. Ltd.", "Hubei Biocause Heilen Pharmaceutical Co. Ltd."],
+      "BLOCKLIST_NO": ["I003-2024-00001"]
+    }
+  },
+  "SCM_BLOCKLIST_MATERIAL_BKUP": {
+    "description": "Backup archive for deleted Block List material records. This table stores line items that have been removed from the active 'SCM_BLOCKLIST_MATERIAL' table. It serves as a 'Recycle Bin' or audit log for deletions, preserving the original data along with a 'DELETE_DATE' timestamp to track when the removal occurred.",
+    "synonyms": [
+      "deleted material log",
+      "block list recycle bin",
+      "scm material backup",
+      "removed items tracker",
+      "deletion audit trail"
+    ],
+    "entities": {
+      "Deleted Item": "A material record that was removed from the active block list",
+      "Block List": "The original permission the item belonged to"
+    },
+    "columns": {
+      "BLOCKLIST_YEAR": "Fiscal or Calendar year for the Block List",
+      "BLOCKLIST_DATE": "Date of the Block List issuance",
+      "PLANT": "Plant code (e.g., 'I003')",
+      "BLOCKLIST_NO": "Unique identifier for the Block List (e.g., 'I003-2018-10930')",
+      "MATERIAL_NAME": "Name of the material that was deleted",
+      "MANUFACTURER_NAME": "Name and country of the manufacturer",
+      "SUPPLIER_NAME": "Name and country of the supplier",
+      "QTY": "Quantity that was approved before deletion",
+      "UOM": "Unit of Measure",
+      "AIR_PRICE": "Approved unit price for Air shipment",
+      "ROAD_PRICE": "Approved unit price for Road shipment",
+      "SEA_PRICE": "Approved unit price for Sea shipment",
+      "CURRENCY": "Currency of the price",
+      "CREATE_DATE": "Original record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "DELETE_DATE": "Timestamp when the record was deleted",
+      "UPDATE_DATE": "Last update timestamp before deletion",
+      "UPDATE_USER": "User ID who last updated the record"
+    },
+    "usage_notes": "Use this table to recover lost data or investigate accidental deletions. For example, 'When was the entry for Spirulina Powder deleted?' or 'Show me all materials deleted in 2019'.",
+    "sample_values": {
+      "BLOCKLIST_YEAR": ["2018-2019"],
+      "MATERIAL_NAME": ["Nutricran Cranberry 1 % proanthocyan Ph.Gr.", "Spirulina Powder Ph.Gr."],
+      "DELETE_DATE": ["1/8/2019 9:54:35 AM"],
+      "BLOCKLIST_NO": ["I003-2018-10930"]
+    }
+  },
+  "SCM_CLEARANCE": {
+    "description": "Customs clearance tracking table for imported materials. This table records the actual execution of the import permission, linking the 'Block List No' to commercial documents like the Letter of Credit (LC) and Commercial Invoice. It tracks the specific quantity cleared, the invoice date, and the manufacturer/supplier for each shipment.",
+    "synonyms": [
+      "customs clearance log",
+      "import execution details",
+      "lc invoice mapping",
+      "shipment clearance tracker",
+      "actual import record"
+    ],
+    "entities": {
+      "LC": "Letter of Credit (Banking document for payment)",
+      "Invoice": "Commercial Invoice from the supplier",
+      "CRTF": "Clearance Certificate or Release Order date"
+    },
+    "columns": {
+      "ID": "Unique identifier for the clearance record",
+      "LC_NO": "Letter of Credit Number used for the shipment",
+      "LC_DATE": "Date the LC was opened",
+      "INV_NO": "Commercial Invoice Number from the supplier",
+      "INV_DATE": "Date of the Commercial Invoice",
+      "CRTF_DATE": "Certificate or Clearance Date (when goods were released)",
+      "PLANT": "Plant code receiving the goods",
+      "SL": "Serial number of the item in the invoice/clearance",
+      "BLOCKLIST_NO": "The Block List Number authorizing this import",
+      "MATERIAL_NAME": "Name of the material cleared",
+      "MANUFACTURER_NAME": "Name of the manufacturer",
+      "SUPPLIER_NAME": "Name of the supplier",
+      "QTY": "Quantity cleared in this specific shipment",
+      "UOM": "Unit of Measure",
+      "RATE": "Unit price charged in this invoice",
+      "CURRENCY": "Currency of the transaction",
+      "CREATED_AT": "Record creation timestamp",
+      "CREATE_USER": "User ID who entered the clearance data",
+      "UPDATED_AT": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record"
+    },
+    "usage_notes": "Use this table to track actual shipments. If a user asks 'When did the Cefuroxime arrive?' or 'Which invoice covers the shipment of Racecadotril?', this is the table to query.",
+    "sample_values": {
+      "LC_NO": ["074918020101", "147818021349"],
+      "INV_NO": ["UPIH0426B", "U06/18-19/665"],
+      "MATERIAL_NAME": ["Racecadotril EP", "Cefuroxime Sodium Sterile BP/USP"]
+    }
+  },"SCM_COMPANY_INFO": {
+    "description": "Registry of company entities and manufacturing plants. This table acts as the central reference for the organizational structure, linking Plant Codes (e.g., 'I003', 'I010') to full Company Names, Head Office and Factory Addresses, Import License numbers, and other regulatory registration details.",
+    "synonyms": [
+      "company registry",
+      "plant details",
+      "factory address list",
+      "import license registry",
+      "entity master table"
+    ],
+    "entities": {
+      "Plant Code": "Short code identifying a specific manufacturing site (e.g., I003, I010)",
+      "Import License": "Legal permit number for importing goods (e.g., BA-111064)"
+    },
+    "columns": {
+      "PLANT": "Unique short code for the plant/entity (e.g., 'I003')",
+      "COMPANY_SHORT_NAME": "Abbreviated company name (e.g., 'IPL')",
+      "COMPANY_FULL_NAME": "Full legal name of the company (e.g., 'Incepta Pharmaceuticals Ltd.')",
+      "COMPANY_HO_ADDRESS": "Head Office address",
+      "COMPANY_FACTORY_ADDRESS": "Factory/Plant address",
+      "COMPANY_IMPORT_LN": "Import License Number (Old/Legacy)",
+      "FIRM_WITH_ADDRESS": "Combined firm name and address string",
+      "CATEGORY_REGISTRATION": "Industrial Registration Number (Old/Legacy)",
+      "IMPORT_IN_TAKA": "Import limit or value in local currency (Taka)",
+      "TYPE_OF_LICENSE": "License category (e.g., 'INDUSTRIAL')",
+      "ARRIVAL": "Approved ports of entry (e.g., 'DHAKA AIRPORT/CHITTAGONG SEA PORT')",
+      "VAT_PAID": "VAT payment reference or status",
+      "BL_NUMBER": "Block List reference number pattern or base",
+      "CREATE_DATE": "Record creation timestamp",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATE_DATE": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record",
+      "COMPANY_FULL_NAME_NEW": "Updated full legal name",
+      "COMPANY_IMPORT_LN_NEW": "Current Import License Number",
+      "CATEGORY_REGISTRATION_NEW": "Current Industrial Registration Number"
+    },
+    "usage_notes": "Use this table to look up address or license details for a plant. For example, 'What is the factory address for plant I010?' or 'Which company does the code I020 represent?'.",
+    "sample_values": {
+      "PLANT": ["I003", "I010", "I020"],
+      "COMPANY_FULL_NAME": ["Incepta Pharmaceuticals Ltd.", "Incepta Hygiene & Hospicare Ltd."],
+      "COMPANY_IMPORT_LN_NEW": ["BA-111064", "260326120738422"]
+    }
+  },
+  "SCM_COMPARATIVE_FINAL_DATA": {
+    "description": "Comparative procurement analysis table. This table aggregates purchase requests ('PURCH_REQ'), requested delivery dates, and actual approved quantities to facilitate decision-making. It includes fields for management comments ('COMMENT_GM_SCM', 'COMMENT_VICE_CHAIRMAN') and tracks key metrics like 'LAST_UNIT_PRICE_KG' and 'NEW_UNIT_PER_KG' to monitor price variance.",
+    "synonyms": [
+      "procurement comparative statement",
+      "purchase request analysis",
+      "price comparison sheet",
+      "scm decision support",
+      "material purchase history"
+    ],
+    "entities": {
+      "PR": "Purchase Request (Internal request to buy material)",
+      "Material": "Raw material or item being purchased",
+      "Plant": "Manufacturing site requesting the material"
+    },
+    "columns": {
+      "DOC_ID": "Unique document identifier",
+      "PLANT_ID": "Plant code (e.g., 1100, 1400)",
+      "PURCH_REQ": "Purchase Request (PR) Number",
+      "MATERIAL": "Material Code",
+      "MATERIAL_DESC": "Description of the material",
+      "PR_QUANTITY": "Quantity requested in the PR",
+      "REQ_DATE": "Date the request was made",
+      "DELIVERY_DATE": "Requested delivery date",
+      "USER_CREATED_AT": "Timestamp when the user created the comparison entry",
+      "SUPPLIER_VENDOR": "Selected supplier/vendor code",
+      "MANUFACTURER": "Selected manufacturer code",
+      "SAFETY": "Safety stock or buffer level",
+      "MODE_OF_SHIPMENT": "Shipping mode (Air/Sea/Road)",
+      "LAST_UNIT_PRICE_KG": "Previous purchase price per unit",
+      "QTY_PURCHASE": "Final approved purchase quantity",
+      "NEW_UNIT_PER_KG": "New negotiated price per unit",
+      "COMMENT_GM_SCM": "Remarks from the General Manager of SCM",
+      "COMMENT_VICE_CHAIRMAN": "Remarks/Approval from the Vice Chairman",
+      "DUMMY": "Placeholder or legacy field",
+      "CREATE_USER": "User ID who created the record",
+      "UPDATED_AT": "Last update timestamp",
+      "UPDATE_USER": "User ID who last updated the record"
+    },
+    "usage_notes": "Use this table to analyze procurement decisions. For example, 'What was the last purchase price for Fentanyl Citrate?' or 'Show me all purchase requests approved by the Vice Chairman'.",
+    "sample_values": {
+      "MATERIAL_DESC": ["FENTANYL CITRATE", "ACECLOFENAC", "AQUATOX VET (READY TO FILL SOLUTION)"],
+      "PLANT_ID": [1100, 1400],
+      "PR_QUANTITY": ["300 G", "2500 KG"]
+    }
   }
+
+
 }
